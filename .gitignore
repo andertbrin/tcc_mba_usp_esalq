@@ -1,3 +1,4 @@
-.venv/
 
-literature/*.pdf
+literature/
+.env
+utils/__pycache__/
