@@ -17,16 +17,18 @@ from bs4 import BeautifulSoup
 SPEECH_SELECTOR = 'a[href*="/newsevents/speech/"]'
 TESTIMONY_SELECTOR = 'a[href*="/newsevents/testimony/"]'
 NEXT_BUTTON_XPATH = (
-    "//a[normalize-space()='Next' or contains(@aria-label, 'Next') or contains(@title, 'Next')]"
+    "//a[normalize-space()='Next' or contains(@aria-label, 'Next') or"
+    " contains(@title, 'Next')]"
     " | "
-    "//button[normalize-space()='Next' or contains(@aria-label, 'Next') or contains(@title, 'Next')]"
+    "//button[normalize-space()='Next' or contains(@aria-label, 'Next') or"
+    " contains(@title, 'Next')]"
 )
 
 ENTRY_HREF_PATTERN = re.compile(
-    r"/newsevents/(?P<kind>speech|testimony)/[a-z]+(?P<date>\d{8})(?P<suffix>[a-z])\.htm$",
+    r"/newsevents/(?P<kind>speech|testimony)"
+    r"/[a-z]+(?P<date>\d{8})(?P<suffix>[a-z])\.htm$",
     re.IGNORECASE,
 )
-
 
 
 def extract_index_fomc_materials(path_data):
@@ -68,6 +70,8 @@ def extract_index_fomc_materials(path_data):
         if len(disabled) > 0 and (disabled[0].text == 'Next'):
             break
         next_page.click()
+
+    link_list = [link for link in link_list if "beige" not in link]
 
     with open(os.path.join(path_data, 'links_list.json'), 'w') as f:
         json.dump(link_list, f, indent=2)
