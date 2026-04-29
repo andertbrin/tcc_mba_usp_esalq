@@ -103,7 +103,7 @@ def get_fomc_links():
             if root and 'http' not in link:
                 links.append(root+link)
 
-        if link and link.endswith('.htm') and 'fomcpresscon' in link:
+        if link and link.endswith('.htm') and 'fomcpre' in link:
             if root and 'http' not in link:
                 links.append(root+link)
 

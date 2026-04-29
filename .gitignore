@@ -2,3 +2,4 @@
 literature/
 .env
 utils/__pycache__/
+data/links_text.txt
