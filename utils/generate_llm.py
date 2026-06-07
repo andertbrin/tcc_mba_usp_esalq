@@ -14,19 +14,27 @@ client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
 
 def generate_gpt(prompt, llm_parameters: Dict):
-    model = llm_parameters.get("model", "gpt-5.4-mini")
+    model = llm_parameters.get("model", "gpt-5.5")
     json_mode = llm_parameters.get("json_mode", False)
     temperature = llm_parameters.get("temperature", 0)
     seed = llm_parameters.get("seed", None)
     instructions = llm_parameters.get("instructions", None)
+
+    reasoning_effort = llm_parameters.get("reasoning_effort", "medium")
+    verbosity = llm_parameters.get("verbosity", "medium")
 
     if json_mode:
         text = {"format": {"type": "json_object"}}
     else:
         text = {"format": {"type": "text"}}
 
+    text["verbosity"] = verbosity
+
+
+
     response = client.responses.create(
         model=model,
+        reasoning={"effort": reasoning_effort},
         input=prompt,
         text=text,
         temperature=temperature,
