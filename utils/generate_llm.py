@@ -30,15 +30,22 @@ def generate_gpt(prompt, llm_parameters: Dict):
 
     text["verbosity"] = verbosity
 
+    if reasoning_effort != "none":
+        response = client.responses.create(
+            model=model,
+            reasoning={"effort": reasoning_effort},
+            input=prompt,
+            text=text,
+            )
 
-
-    response = client.responses.create(
-        model=model,
-        reasoning={"effort": reasoning_effort},
-        input=prompt,
-        text=text,
-        temperature=temperature,
-        )
+    else:
+        response = client.responses.create(
+            model=model,
+            reasoning={"effort": reasoning_effort},
+            input=prompt,
+            text=text,
+            temperature=temperature,
+            )
 
     return response.output_text
 

@@ -64,7 +64,9 @@ The output should be in the following JSON format:
         "json_mode": True,
     }
 
-    result = json.loads(generate_gpt(prompt, llm_parameters=llm_parameters))
+    result_llm = generate_gpt(prompt, llm_parameters=llm_parameters)
+
+    result = json.loads(result_llm)
     result["url"] = url
     # print(json.dumps(result, indent=2, ensure_ascii=False))
 
