@@ -5,4 +5,4 @@ literature/
 .vscode/
 utils/__pycache__/
 data/links_text.txt
-
+data/result_analysis.csv
