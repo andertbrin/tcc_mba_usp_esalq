@@ -13,30 +13,46 @@ def extract_text_from_link(url, title_pubdate=False):
 
     response = requests.get(url, timeout=10)
     response.raise_for_status()
-    response.encoding = response.encoding or "utf-8"
+    response.encoding = "utf-8"
+
+    # print(response.text)
+
+    soup = BeautifulSoup(response.text, "html.parser")
+
+    for tag in soup(["script", "style", "noscript", "header", "footer", "nav"]):
+        tag.decompose()
+
+    text = soup.get_text(separator="\n")
+
+    lines = [line.strip() for line in text.splitlines()]
+    clean_text  = "\n".join(line for line in lines if line)
 
     if not title_pubdate:
         prompt = f"""
 <persona>
-You are a helpful assistant that extracts the raw data from the webpage.
+You are a helpful assistant that extracts the data from a webpage.
 </persona>
 
 <context>
-The HTML content of the webpage is {response.text}
+The HTML content of the webpage is:
+{clean_text}
 </context>
 
 <task>
-1. Extract the raw text content from the webpage.
+1. Extract the text from the article of the webpage, excluding navigation menus, advertisements, and other non-essential content.
 2. Extract the publication date of the document.
 3. Extract the title of the document.
 
-The output should be in the following JSON format:
+
+The output should be in the following json format:
 {{
-    "title": "The title of the document.",
-    "text": "The text from the article of the webpage.
-    "publication_date": "The publication date of the document in the
-                         format YYYY-MM-DD.",
+    "title": "The title of the document",
+    "text": "The text from the article of the webpage",
+    "publication_date": "The publication date of the document in the format YYYY-MM-DD."
 }}
+
+Always return the output in the specified JSON format.
+</task>
 """
     else:
         prompt = f"""
@@ -45,7 +61,8 @@ You are a helpful assistant that extracts the raw data from the webpage.
 </persona>
 
 <context>
-The HTML content of the webpage is {response.text}
+The HTML content of the webpage is:
+{clean_text}
 </context>
 
 <task>
@@ -55,16 +72,20 @@ The HTML content of the webpage is {response.text}
 The output should be in the following JSON format:
 {{
     "title": "The title of the document.",
-    "publication_date": "The publication date of the document in the
-                         format YYYY-MM-DD.",
+    "publication_date": "The publication date of the document in the format YYYY-MM-DD.",
 }}
 """
     llm_parameters = {
         "model": "gpt-5.4-mini",
         "json_mode": True,
+        "reasoning_effort": "low",
+        "verbosity": "low",
     }
 
+    # print(prompt)
     result_llm = generate_gpt(prompt, llm_parameters=llm_parameters)
+
+    # print(result_llm)
 
     result = json.loads(result_llm)
     result["url"] = url

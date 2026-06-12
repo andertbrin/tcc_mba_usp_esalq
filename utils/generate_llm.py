@@ -20,28 +20,42 @@ def generate_gpt(prompt, llm_parameters: Dict):
     seed = llm_parameters.get("seed", None)
     instructions = llm_parameters.get("instructions", None)
 
-    reasoning_effort = llm_parameters.get("reasoning_effort", "medium")
+    reasoning_effort = llm_parameters.get("reasoning_effort", "none")
     verbosity = llm_parameters.get("verbosity", "medium")
 
     if json_mode:
-        text = {"format": {"type": "json_object"}}
+        text = {"format": {"type": "json_object"},
+                "verbosity": verbosity,
+                }
     else:
         text = {"format": {"type": "text"}}
 
-    text["verbosity"] = verbosity
+    input_text = [
+        {"role": "user",
+         "content": [
+            {
+            "type": "input_text",
+            "text": prompt
+            }]
+        }
+    ]
+
+    # print(prompt)
 
     if reasoning_effort != "none":
         response = client.responses.create(
             model=model,
-            reasoning={"effort": reasoning_effort},
-            input=prompt,
+            reasoning={"effort": reasoning_effort,
+                       "summary": "auto"},
+            input=input_text,
             text=text,
             )
 
     else:
         response = client.responses.create(
             model=model,
-            reasoning={"effort": reasoning_effort},
+            reasoning={"effort": reasoning_effort,
+                       "summary": "auto"},
             input=prompt,
             text=text,
             temperature=temperature,
