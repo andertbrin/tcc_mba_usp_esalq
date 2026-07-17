@@ -17,28 +17,32 @@ def generate_gpt(prompt, llm_parameters: Dict):
     model = llm_parameters.get("model", "gpt-5.5")
     json_mode = llm_parameters.get("json_mode", False)
     temperature = llm_parameters.get("temperature", 0)
-    seed = llm_parameters.get("seed", None)
-    instructions = llm_parameters.get("instructions", None)
+    # seed = llm_parameters.get("seed", None)
+    # instructions = llm_parameters.get("instructions", None)
 
     reasoning_effort = llm_parameters.get("reasoning_effort", "none")
     verbosity = llm_parameters.get("verbosity", "medium")
 
     if json_mode:
-        text = {"format": {"type": "json_object"},
+        text = {
+                "format": {"type": "json_object"},
                 "verbosity": verbosity,
                 }
     else:
-        text = {"format": {"type": "text"}}
+        text = {
+                "format": {"type": "text"},
+                "verbosity": verbosity,
+                }
 
-    input_text = [
-        {"role": "user",
-         "content": [
-            {
-            "type": "input_text",
-            "text": prompt
-            }]
-        }
-    ]
+    # input_text = [
+    #     {"role": "user",
+    #      "content": [
+    #         {
+    #         "type": "input_text",
+    #         "text": prompt
+    #         }]
+    #     }
+    # ]
 
     # print(prompt)
 
@@ -47,7 +51,7 @@ def generate_gpt(prompt, llm_parameters: Dict):
             model=model,
             reasoning={"effort": reasoning_effort,
                        "summary": "auto"},
-            input=input_text,
+            input=prompt,
             text=text,
             )
 
@@ -60,7 +64,7 @@ def generate_gpt(prompt, llm_parameters: Dict):
             text=text,
             temperature=temperature,
             )
-
+    print(response)
     return response.output_text
 
 

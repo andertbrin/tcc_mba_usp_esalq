@@ -27,35 +27,48 @@ def extract_text_from_link(url, title_pubdate=False):
     lines = [line.strip() for line in text.splitlines()]
     clean_text  = "\n".join(line for line in lines if line)
 
-    if not title_pubdate:
-        prompt = f"""
-<persona>
-You are a helpful assistant that extracts the data from a webpage.
-</persona>
+#     if not title_pubdate:
+#         prompt = f"""
+# <persona>
+# You are a helpful assistant that extracts the data from a webpage.
+# </persona>
 
-<context>
-The HTML content of the webpage is:
-{clean_text}
-</context>
+# <observations>
+# The content below was supplied directly by the user for a structured
+# data-extraction task.
 
-<task>
-1. Extract the text from the article of the webpage, excluding navigation menus, advertisements, and other non-essential content.
-2. Extract the publication date of the document.
-3. Extract the title of the document.
+# Do not retrieve, reconstruct, continue, or reproduce content from any
+# external source. Use only the characters and information contained
+# inside the <source_content> element.
 
+# This is a deterministic transformation task, not a request for creative
+# writing or external article reproduction.
+# </observations>
 
-The output should be in the following json format:
-{{
-    "title": "The title of the document",
-    "text": "The text from the article of the webpage",
-    "publication_date": "The publication date of the document in the format YYYY-MM-DD."
-}}
+# <context>
+# The HTML content of the webpage is:
+# {clean_text}
+# </context>
 
-Always return the output in the specified JSON format.
-</task>
-"""
-    else:
-        prompt = f"""
+# <task>
+# Extract:
+# 1. The document title.
+# 2. The publication date.
+# 3. The article body contained directly in the supplied source, excluding
+# navigation, footer, social-media links, contact details, and interface text.
+
+# Do not summarize, paraphrase, complete missing sentences, or add information.
+
+# The output should be in the following json format:
+# {{
+#     "title": "The title of the document",
+#     "text": "The text from the article of the webpage",
+#     "publication_date": "The publication date of the document in the format YYYY-MM-DD."
+# }}
+# </task>
+# """
+#     else:
+    prompt = f"""
 <persona>
 You are a helpful assistant that extracts the raw data from the webpage.
 </persona>
@@ -74,22 +87,26 @@ The output should be in the following JSON format:
     "title": "The title of the document.",
     "publication_date": "The publication date of the document in the format YYYY-MM-DD.",
 }}
+
+Always return the output in the specified JSON format.
 """
     llm_parameters = {
-        "model": "gpt-5.4-mini",
+        "model": "gpt-5.6-luna",
         "json_mode": True,
-        "reasoning_effort": "low",
+        "reasoning_effort": "none",
         "verbosity": "low",
     }
 
-    # print(prompt)
+    print(prompt)
     result_llm = generate_gpt(prompt, llm_parameters=llm_parameters)
 
-    # print(result_llm)
+    print(result_llm)
 
     result = json.loads(result_llm)
     result["url"] = url
     # print(json.dumps(result, indent=2, ensure_ascii=False))
+
+    result["text"] = clean_text
 
     return result
 
