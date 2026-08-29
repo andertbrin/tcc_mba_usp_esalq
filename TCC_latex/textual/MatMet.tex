@@ -1,0 +1,75 @@
+\chapter{Metodologia ou Material e Métodos}
+\addcontentsline{toc}{chapter}{Metodologia ou Material e Métodos}
+
+% \section*{Experimentos de Campo}
+
+% \subsection*{Área Experimental}
+% Geralmente, é suficiente criar até o nível de subsubseções. O uso de
+% muitos níveis hierárquicos em um documento dificulta a leitura.
+
+% \subsubsection*{Dados climáticos}
+
+Este estudo possui uma abordagem qualitativa e quantitativa, e
+objetivo exploratório, uma vez que busca investigar a viabilidade
+de uma abordagem metodológica. De acordo com Gil (2010), pesquisas
+exploratórias têm como finalidade obter maiores informações sobre o
+assunto que se pretende estudar, de maneira a proporcionar uma melhor
+delimitação do tema pesquisado, tornando-o mais explícito ou permitindo
+a construção de hipóteses.
+
+As principais fontes de dados utilizadas neste estudo consistem
+em documentos oficiais divulgados pelo Federal Reserve, incluindo:
+\begin{itemize}
+\item Comunicados oficiais das reuniões do (FOMC statement);
+\item Atas das reuniões (FOMC minutes);
+\item Discursos de dirigentes;
+\item Press releases.
+\end{itemize}
+
+Após a coleta dos dados, será realizada uma etapa de processamento
+de textos utilizando técnicas de processamento de linguagem natural.
+Modelos de linguagem de grande porte (LLMs) serão utilizados para
+realizar as seguintes tarefas:
+\begin{itemize}
+\item Extração de fatos relacionados a decisão monetária;
+\item Classificação dos fatos em termos de postura monetária (hawkish, mostly hawkish, neutral, mostly dovish ou dovish);
+\end{itemize}
+
+
+A partir das informações extraídas pelos modelos de linguagem,
+será construída uma estrutura de dados baseada em grafos, caracterizando
+um knowledge graph. Nesse grafo, as entidades e fatos identificados serão
+representados como nós, enquanto as relações poderão incluir tanto conexões
+explícitas extraídas dos textos quanto relações de similaridade semântica
+entre os embeddings textuais dos fatos. Essas relações de similaridade
+permitirão conectar nós que apresentam proximidade semântica, mesmo na
+ausência de relações explícitas nos documentos. Nos parágrafos a seguir
+serão apresentados os principais algoritmos de grafos usados no trabalho.
+
+Teste
+
+
+
+% \begin{table}
+% \centering
+% \caption{Estimates of libero ac erat vulputate feugiat non
+%   eu justo. Aenean blandit fermentum efficitur. Fusce faucibus turpis
+%   ac dolor sollicitudin, quis lobortis felis porttitor. Phasellus
+%   hendrerit quam sit amet erat fringilla, et bibendum ligula feugiat.
+%   Phasellus odio tortor, mollis ac cursus ut, fermentum ut orci.
+%   Vestibulum malesuada, justo vitae tincidunt posuere, nibh ipsum
+%   pellentesque mauris, et suscipit magna turpis pellentesque magna.
+%   Mauris sed dui vitae velit facilisis pharetra eu in enim.
+%   Suspendisse fringilla lobortis dolor eget sollicitudin.}
+
+% \begin{tabular}{ c p{5.5pc} c p{5.5pc} }
+% \hline
+% \multicolumn{2}{c}{Múltiplas colunas} & Aqui & Acolá \\
+% \hline
+% Um & \raggedright\arraybackslash Largura fixa em (5.5pc). & Três &
+% \raggedright\arraybackslash Coluna 4, largura fixa.\\
+% \hline
+% \label{Tab:estim}
+% \end{tabular}
+% \end{table}
+

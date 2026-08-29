@@ -1,0 +1,74 @@
+\chapter{Introdução}
+\addcontentsline{toc}{chapter}{Introdução}
+
+A comunicação de bancos centrais desempenha papel fundamental na formação de 
+expectativas dos agentes econômicos e na interpretação dos rumos da política monetária. 
+No caso do Federal Reserve (Fed), autoridade monetária dos Estados Unidos, a 
+divulgação de informações ocorre de forma periódica, especialmente por meio dos comunicados 
+das reuniões do Federal Open Market Committee (FOMC). Entre essas divulgações, o 
+Fed publica diversos documentos, como atas das reuniões, discursos de seus dirigentes e 
+relatórios econômicos, que apresentam análises sobre o comportamento da economia. Esses 
+materiais são amplamente analisados por participantes do mercado financeiro e 
+pesquisadores, que buscam extrair sinais sobre a orientação futura da política monetária e 
+antecipar decisões relacionadas à taxa básica de juros, evidenciando o papel central da 
+comunicação na condução da política monetária \citep{blinder2008central}.
+
+Apesar da relevância dessas comunicações, a interpretação de seu conteúdo ainda 
+representa um desafio significativo. O volume elevado de documentos, aliado à
+ complexidade da linguagem utilizada, dificulta a extração sistemática de informações e 
+a identificação de padrões consistentes ao longo do tempo. Estudos indicam que análises 
+tradicionais baseadas em leitura manual ou métodos simplificados apresentam limitações 
+na captura de nuances semânticas e relações implícitas nos textos \citep{loughran2011liability}.
+Dessa forma, surge a problemática de como analisar, de maneira estruturada e automatizada, 
+os conteúdos textuais produzidos pelo Federal Reserve, de modo a gerar insights úteis para a 
+compreensão e antecipação da política monetária.
+
+Nesse contexto, o avanço recentemente de técnicas de processamento de 
+linguagem natural (Natural Language Processing - NLP), especialmente os 
+chamados modelos de linguagem de grande porte (Large Language Models - LLMs), 
+ampliou significativamente as possibilidades de análise automatizada de textos complexos. 
+Esses modelos são capazes de identificar padrões semânticos, extrair entidades e 
+relações e sintetizar informações presentes em grandes volumes de documentos textuais 
+\citep{brown2020language}. Além disso, aplicações de NLP no contexto econômico têm demonstrado 
+capacidade de capturar informações relevantes para previsão de variáveis financeiras e 
+macroeconômicas \citep{gentzkow2019text}.
+
+De forma mais específica \cite{hansen2024can} investiga a capacidade 
+de modelos GPT em interpretar a linguagem técnica utilizada pelo Federal 
+Reserve em suas comunicações de política monetária. Os autores avaliam o desempenho 
+desses modelos na classificação da orientação de comunicados do FOMC em comparação 
+com avaliações humanas, indicando que os modelos GPT apresentam melhora relevante 
+em relação a métodos tradicionais de classificação textual. Esse resultado reforça 
+o potencial dos LLMs para capturar nuances semânticas presentes na comunicação de 
+bancos centrais, especialmente na identificação de sinais associados a posturas 
+mais expansionistas ou restritivas de política monetária \citep{hansen2024can}.
+
+
+Paralelamente, a utilização de estruturas baseadas em grafos, particularmente 
+os chamados knowledge graphs, tem se mostrado uma abordagem promissora 
+para representar e analisar relações complexas entre entidades, conceitos e 
+eventos (Hogan et al., 2021). Os knowledge graphs permitem identificar 
+padrões e conexões que podem não ser facilmente capturados por abordagens 
+como busca semântica ou análise frequência das palavras.
+
+No campo da ciência de dados, os algoritmos de grafos permitem explorar a 
+estrutura relacional dos dados, identificando proximidades, agrupamentos, 
+relevância dos nós e padrões de influência na rede. Needham e Hodler (2019) 
+destacam que algoritmos de grafos são úteis para revelar padrões difíceis de 
+observar por métodos convencionais, incluindo análise de centralidade, 
+detecção de comunidades e identificação de similaridades. Assim, no contexto deste 
+estudo, tais algoritmos serão utilizados como complemento à extração realizada 
+por LLMs, permitindo que os sinais monetários classificados sejam analisados 
+não apenas individualmente, mas também a partir de sua posição e conexão 
+dentro do knowledge graph. 
+ 
+Nesse contexto, surge a oportunidade de investigar a aplicação 
+conjunta dessas duas abordagens. A utilização de LLMs pode permitir 
+a extração automatizada de entidades e temas presentes nas comunicações 
+do Federal Reserve, enquanto a modelagem dessas informações em um knowledge 
+graph pode possibilitar a análise estruturada dessas relações ao longo do 
+tempo.Dessa forma, este estudo busca investigar se a combinação entre 
+modelos de linguagem e grafos de conhecimento pode contribuir para a 
+construção de um indicador experimental baseado na análise das comunicações 
+do Federal Reserve, com potencial aplicação na antecipação das decisões 
+de política monetária.

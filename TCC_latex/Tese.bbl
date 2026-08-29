@@ -1,0 +1,30 @@
+\begin{thebibliography}{5}
+
+\bibitem[Blinder {\em et~al.\/}(2008)Blinder, Ehrmann, Fratzscher, De~Haan,
+  {\rm e} Jansen]{blinder2008central}
+Blinder, A.~S.; Ehrmann, M.; Fratzscher, M.; De~Haan, J.; Jansen, D., 2008
+  Central bank communication and monetary policy: A survey of theory and
+  evidence. Journal of Economic Literature 46(4): 910--945.
+
+\bibitem[Brown {\em et~al.\/}(2020)Brown, Mann, Ryder, Subbiah, Kaplan,
+  Dhariwal, Neelakantan, Shyam, Sastry, Askell, {\em
+  et~al.\/}]{brown2020language}
+Brown, T.; Mann, B.; Ryder, N.; Subbiah, M.; Kaplan, J.~D.; Dhariwal, P.;
+  Neelakantan, A.; Shyam, P.; Sastry, G.; Askell, A.; others, 2020 Language
+  models are few-shot learners. Advances in neural information processing
+  systems 33: 1877--1901.
+
+\bibitem[Gentzkow {\em et~al.\/}(2019)Gentzkow, Kelly, {\rm e}
+  Taddy]{gentzkow2019text}
+Gentzkow, M.; Kelly, B.; Taddy, M., 2019 Text as data. Journal of Economic
+  Literature 57(3): 535--574.
+
+\bibitem[Hansen {\rm e} Kazinnik(2024)]{hansen2024can}
+Hansen, A.~L.; Kazinnik, S., 2024 Can chatgpt decipher fedspeak? Available at
+  SSRN 4399406 .
+
+\bibitem[Loughran {\rm e} McDonald(2011)]{loughran2011liability}
+Loughran, T.; McDonald, B., 2011 When is a liability not a liability? textual
+  analysis, dictionaries, and 10-ks. The Journal of finance 66(1): 35--65.
+
+\end{thebibliography}
