@@ -6,3 +6,4 @@ literature/
 utils/__pycache__/
 data/links_text.txt
 data/result_analysis.csv
+data/period_sentiment_scores.csv
