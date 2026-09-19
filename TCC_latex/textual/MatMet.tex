@@ -1,52 +1,82 @@
 \chapter{Metodologia ou Material e Métodos}
 \addcontentsline{toc}{chapter}{Metodologia ou Material e Métodos}
 
-% \section*{Experimentos de Campo}
-
-% \subsection*{Área Experimental}
-% Geralmente, é suficiente criar até o nível de subsubseções. O uso de
-% muitos níveis hierárquicos em um documento dificulta a leitura.
-
-% \subsubsection*{Dados climáticos}
-
 Este estudo possui uma abordagem qualitativa e quantitativa, e
 objetivo exploratório, uma vez que busca investigar a viabilidade
-de uma abordagem metodológica. De acordo com Gil (2010), pesquisas
+de uma abordagem metodológica. De acordo com \cite{gil2010elaborar}, pesquisas
 exploratórias têm como finalidade obter maiores informações sobre o
 assunto que se pretende estudar, de maneira a proporcionar uma melhor
 delimitação do tema pesquisado, tornando-o mais explícito ou permitindo
-a construção de hipóteses.
+a construção de hipóteses. Nesse sentido, o objetivo metodológico não é
+estimar um modelo preditivo definitivo, mas avaliar a viabilidade de um procedimento
+para transformar comunicações de política monetária em sinais estruturados e
+comparáveis ao longo do tempo.
 
-As principais fontes de dados utilizadas neste estudo consistem
-em documentos oficiais divulgados pelo Federal Reserve, incluindo:
-\begin{itemize}
-\item Comunicados oficiais das reuniões do (FOMC statement);
-\item Atas das reuniões (FOMC minutes);
-\item Discursos de dirigentes;
-\item Press releases.
-\end{itemize}
+\section{Coleta dos documentos}
 
-Após a coleta dos dados, será realizada uma etapa de processamento
-de textos utilizando técnicas de processamento de linguagem natural.
-Modelos de linguagem de grande porte (LLMs) serão utilizados para
-realizar as seguintes tarefas:
-\begin{itemize}
-\item Extração de fatos relacionados a decisão monetária;
-\item Classificação dos fatos em termos de postura monetária (hawkish, mostly hawkish, neutral, mostly dovish ou dovish);
-\end{itemize}
+O conjunto textual utilizado é composto por documentos oficiais publicados pelo Federal Reserve,
+incluindo comunicados das reuniões do Federal Open Market Committee (FOMC), atas,
+discursos de dirigentes, testemunhos e comunicados de imprensa. Os documentos foram
+coletados a partir do site oficial da instituição. Para cada publicação, foram
+armazenadas informações de identificação, como o endereço eletrônico, a data e o
+texto, permitindo relacionar os sinais extraídos ao documento de origem e ao período
+correspondente.
 
+\section{Extração e classificação dos sinais}
 
-A partir das informações extraídas pelos modelos de linguagem,
-será construída uma estrutura de dados baseada em grafos, caracterizando
-um knowledge graph. Nesse grafo, as entidades e fatos identificados serão
-representados como nós, enquanto as relações poderão incluir tanto conexões
-explícitas extraídas dos textos quanto relações de similaridade semântica
-entre os embeddings textuais dos fatos. Essas relações de similaridade
-permitirão conectar nós que apresentam proximidade semântica, mesmo na
-ausência de relações explícitas nos documentos. Nos parágrafos a seguir
-serão apresentados os principais algoritmos de grafos usados no trabalho.
+Após a coleta dos documentos, modelos de linguagem de grande porte
+(LLMs) foram utilizados para identificar sinais relacionados à política monetária e
+organizar as informações extraídas. Cada sinal recebeu uma classificação de postura
+monetária, podendo ser hawkish, mostly hawkish, neutral,
+mostly dovish ou dovish, além de uma pontuação numérica, uma
+justificativa e o trecho de evidência correspondente.
 
-Teste
+\section{Representação vetorial e construção da rede}
+
+Para representar o conteúdo semântico dos sinais, cada um foi associado a um vetor
+de embedding. A partir desses vetores, foi calculada a similaridade do
+cosseno entre os sinais. O algoritmo k-nearest neighbors (KNN) foi então
+aplicado para selecionar, para cada sinal, os vizinhos semanticamente mais próximos,
+respeitando um número máximo de vizinhos e um limiar mínimo de similaridade.
+
+O resultado é uma rede de similaridade semântica ponderada e não direcionada. Seus
+nós representam sinais monetários, enquanto suas arestas representam relações
+\texttt{SIMILAR\_TO}; o peso de cada aresta corresponde ao escore de similaridade
+calculado entre os respectivos vetores. A rede permite identificar proximidades entre
+sinais que podem ter sido extraídos de documentos ou datas diferentes, mesmo quando
+essa relação não está explicitamente indicada no texto original. As informações de
+publicação, data, classificação, pontuação e evidência são mantidas como atributos
+dos sinais, permitindo análises posteriores por período.
+
+\section{Análise da rede - REFINAR}
+
+Após a construção da rede, foram aplicados algoritmos de análise de grafos para
+investigar sua organização estrutural. O algoritmo de Louvain foi utilizado para
+detectar comunidades, isto é, agrupamentos de sinais que apresentam maior
+proximidade entre si. A modularidade foi considerada na avaliação da separação entre
+essas comunidades e o tamanho dos agrupamentos foi utilizado para caracterizar sua
+representatividade na rede.
+
+O PageRank foi empregado como medida de centralidade. Diferentemente de uma simples
+contagem de conexões, essa métrica considera também a importância dos nós vizinhos,
+permitindo destacar sinais que ocupam posições relevantes na estrutura da rede. As
+medidas de centralidade, os agrupamentos identificados e as classificações de postura
+monetária foram combinados para produzir um indicador experimental da orientação
+presente nas comunicações analisadas.
+
+\section{Comparação temporal e avaliação - REFINAR}
+
+Por fim, o indicador foi organizado por período e comparado com as decisões
+observadas do FOMC, especialmente com a direção dos movimentos da taxa de juros. A
+avaliação foi realizada por meio da comparação temporal entre a trajetória do
+indicador e as decisões efetivamente tomadas, buscando verificar se os sinais
+extraídos e sua organização na rede acompanham mudanças na orientação da política
+monetária e se apresentam indícios de antecipação dessas mudanças.
+
+Considerando o caráter exploratório da pesquisa, os resultados devem ser
+interpretados como evidência inicial sobre a utilidade da abordagem. A análise
+privilegia a coerência entre os sinais, a estrutura da rede e os eventos observados,
+sem pressupor, nesta etapa, a obtenção de elevado poder preditivo.
 
 
 

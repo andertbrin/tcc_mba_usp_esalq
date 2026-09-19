@@ -633,7 +633,7 @@ FUNCTION {format.date}
 }
 
 FUNCTION {format.btitle}
-{ title emphasize
+{ title
 }
 
 FUNCTION {tie.or.space.connect}
@@ -886,6 +886,7 @@ FUNCTION {article}
       "journal" output.check
       add.blank
       format.vol.num.pages output
+      publisher output
     }
     { format.article.crossref output.nonnull
       format.pages output
@@ -1104,6 +1105,7 @@ FUNCTION {misc}
   format.title output
   new.sentence
   howpublished output
+  publisher output
   note output
   fin.entry
 }

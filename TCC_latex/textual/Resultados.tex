@@ -1,155 +1,309 @@
-\chapter*{Resultados}
+\chapter{Resultados}
 \addcontentsline{toc}{chapter}{Resultados}
 
-Nam pulvinar sodales neque vitae tempus. Nam vitae ornare metus.
-Suspendisse aliquet quis massa non convallis. Morbi ligula est,
-interdum et elit nec, efficitur dignissim nisl. Curabitur massa
-sapien, gravida at orci vitae, ultricies dignissim arcu. Ut nec nunc
-at quam pulvinar sodales. Donec nec tincidunt neque, sit amet euismod
-sapien. Pellentesque nibh velit, vulputate a augue eu, vehicula
-fringilla augue. Sed at egestas turpis, nec fermentum lectus. Mauris
-eu tellus vel lacus ultricies laoreet. Donec aliquam euismod mauris
-sed tincidunt. 
+Nesta seção são apresentados os resultados obtidos nas principais etapas do
+estudo: coleta das comunicações públicas do Federal Reserve, preparação dos
+textos, extração e classificação dos sinais de política monetária por modelos
+de linguagem e construção da rede de similaridade semântica. 
 
-\begin{figure}[htb]
-  \centering
-  \includegraphics[scale=0.35]{figuras/graphical_model.pdf}
-  \caption{In in tellus lacus. Sed aliquet efficitur efficitur.
-    Maecenas posuere nulla eros. Pellentesque habitant morbi tristique
-    senectus et netus et malesuada fames ac turpis egestas.
-    Suspendisse ullamcorper diam eu tortor volutpat pharetra. Mauris
-    eget purus non tortor convallis hendrerit. Suspendisse lacinia
-    tincidunt nulla ut pretium. Aliquam nisi lorem, auctor vel nibh a,
-    pharetra egestas est.}
-  \label{fig:1}
-\end{figure}
+Além de descrever o conjunto de dados e os sinais identificados, são analisadas
+as propriedades da rede construída, incluindo a distribuição das conexões, a
+formação de comunidades e a relevância estrutural dos nós. Por fim, os resultados
+são organizados temporalmente para avaliar a relação entre a orientação dos sinais
+extraídos e as decisões observadas do Federal Open Market Committee (FOMC).
 
-Nunc sed urna non augue placerat molestie. Donec ornare convallis
-ultricies. Etiam ornare, nisi vitae vehicula posuere, odio nibh
-tincidunt augue, ac scelerisque odio urna vel magna. Maecenas
-consequat risus eu egestas mollis. Fusce tempus metus eu sapien
-blandit, quis bibendum purus semper. Sed faucibus augue a nibh semper,
-vel condimentum quam placerat. Morbi pulvinar interdum nibh, eu mattis
-lorem iaculis et. Suspendisse iaculis quis ex in sodales. 
+\section{Coleta dos links das publicações}
 
-Donec ut gravida ipsum. Nunc ante ligula, accumsan eget lorem eget,
-tincidunt semper felis. Nullam id enim non augue facilisis viverra.
-Proin eu enim sed tortor iaculis pulvinar vitae nec risus. Phasellus
-dolor tortor, faucibus vitae vulputate eget, malesuada ac neque. Nulla
-ac tincidunt dui. Aliquam sed ligula consectetur, maximus eros et,
-euismod sapien. Sed id auctor nisl. Vivamus et congue ligula. Aenean
-ut blandit tortor. In interdum, urna ut blandit imperdiet, odio turpis
-suscipit nulla, in porttitor est leo ac neque. Lorem ipsum dolor sit
-amet, consectetur adipiscing elit. 
+Na etapa inicial da pesquisa, foram coletados, usando Python, os links referentes às comunicações
+públicas disponibilizadas pelo Federal Reserve em seu site oficial. O objetivo
+foi estruturar uma base documental para as etapas posteriores de extração textual,
+classificação dos sinais de política monetária e construção da rede de similaridade
+semântica entre os sinais extraídos.
 
-Integer sit amet turpis volutpat, laoreet massa non, rutrum justo.
-Pellentesque egestas arcu sit amet viverra facilisis. Ut faucibus
-vitae risus eget tristique. Morbi semper viverra laoreet. Curabitur
-pharetra massa sed dolor suscipit, eget cursus nisl vestibulum.
-Suspendisse potenti. Nullam sit amet maximus mi. Nullam non mauris
-quis mi tincidunt eleifend. Nulla non nulla ac urna scelerisque
-consectetur. Nullam bibendum dui in tellus tincidunt, nec posuere nisl
-fermentum. Nam ut orci sed libero mattis fringilla ut sed ex. Nunc leo
-lorem, vulputate malesuada fermentum sed, porta a odio. Vivamus vitae
-massa luctus, posuere ante sed, consequat nunc. 
+Foram consideradas páginas relacionadas aos materiais de política monetária, ao
+calendário do Federal Open Market Committee (FOMC) e às comunicações públicas de
+dirigentes, como discursos e testemunhos. As principais fontes utilizadas são
+apresentadas na Tabela~\ref{tab:fontes-coleta}. A coleta contemplou comunicações 
+publicadas entre janeiro de 2015 e 12 de setembro de 2025, permitindo a construção
+de uma base com abrangência temporal suficiente para a análise da evolução da
+comunicação monetária ao longo do período recente.
 
-Phasellus tincidunt tincidunt magna, vitae aliquam arcu accumsan vel.
-Nulla condimentum nibh et tortor gravida maximus. Donec nec tempor
-sem, eu porttitor neque. Vivamus ultricies lacinia consectetur. Nulla
-fringilla risus a dolor feugiat elementum. Morbi lectus nunc, lacinia
-et ante quis, tempus tincidunt nulla. Nullam ac scelerisque eros, vel
-faucibus sem. Praesent ac volutpat urna. Etiam nisl libero, elementum
-quis risus non, placerat scelerisque leo. Donec eleifend in elit eget
-auctor. Aenean nec pretium odio, id blandit dui. Nulla facilisi. 
-
-Phasellus posuere mi felis, ac mattis tortor pretium non. Morbi
-aliquam egestas enim vitae sagittis. Quisque id ligula tincidunt,
-gravida eros a, tristique lectus. Proin eget dolor mollis, aliquet
-turpis vel, rutrum tortor. Duis nec molestie mauris. Nulla facilisis
-gravida nulla eget pulvinar. Maecenas lorem eros, porttitor vel arcu
-id, sollicitudin volutpat felis. 
-
-Vestibulum mauris justo, viverra ut massa ut, lacinia euismod eros.
-Nulla semper tempor fringilla. Donec pharetra, mauris ac mollis
-posuere, magna ipsum porta orci, quis maximus lectus lacus at eros.
-Vestibulum posuere, ipsum nec lobortis sagittis, nibh quam pretium ex,
-id bibendum neque massa sed ex. Integer nec magna elit. Donec diam
-velit, rutrum nec orci vitae, fermentum feugiat lacus. Curabitur
-tincidunt, turpis nec ornare imperdiet, lacus velit euismod purus, et
-viverra felis erat vel augue. Aenean imperdiet eros eget orci egestas
-rutrum in non augue. Duis quam lacus, fringilla a enim non, cursus
-pretium elit. Integer in enim ac ligula imperdiet egestas. Morbi vel
-tincidunt tellus, quis pretium elit. Ut vel egestas leo, sed luctus
-urna. Etiam condimentum vitae purus non varius. In nulla nibh,
-convallis sed dignissim non, convallis non purus. Cras non nisl nec
-massa gravida congue. 
-
-Sed sed luctus arcu, sit amet porta libero. Duis volutpat mauris
-risus, eu rutrum lorem posuere in. Phasellus sit amet magna sodales,
-commodo diam quis, mollis elit. Interdum et malesuada fames ac ante
-ipsum primis in faucibus. Ut tempor consequat sem. Sed congue sapien
-sit amet urna consequat, lacinia rutrum quam eleifend. Donec vel
-sapien id sem malesuada consectetur quis ut neque. Vestibulum lacinia
-ullamcorper ornare. 
-
-Duis ac sollicitudin magna, non maximus lectus. Curabitur faucibus
-lorem in ex cursus, a hendrerit est maximus. Vestibulum aliquet lectus
-quis arcu volutpat, id sollicitudin nisi ullamcorper. Sed interdum
-orci sed lacus dignissim, sed facilisis nibh facilisis. Duis aliquet
-dolor sed nunc tincidunt, vitae imperdiet mauris ultricies. Fusce eget
-quam nec enim molestie pulvinar. Sed convallis vulputate nibh, cursus
-malesuada dui consectetur vel. In lorem dolor, blandit vitae dictum
-fringilla, auctor sit amet nisl. Integer laoreet tellus ac felis
-ultricies, vitae imperdiet odio volutpat. Nulla ac tortor bibendum,
-imperdiet libero vel, tincidunt massa. Proin lobortis semper semper.
-Pellentesque sollicitudin lobortis magna, ac dapibus risus ullamcorper
-quis. Mauris cursus urna velit, eget tincidunt massa egestas sit amet. 
-
-Fusce egestas, elit in mattis tempor, nisi felis rutrum sapien, et
-pretium nunc diam sit amet nibh. Donec libero purus, consectetur ut
-dapibus in, condimentum in arcu. Mauris venenatis felis mi, eget
-elementum ligula porta facilisis. Proin elit libero, varius sit amet
-orci id, ultrices sollicitudin felis. Suspendisse vulputate dui id sem
-eleifend, sed hendrerit tortor cursus. Maecenas suscipit libero ut
-accumsan volutpat. Etiam efficitur faucibus metus vel iaculis. Donec
-vel sem sit amet odio tincidunt molestie consectetur et risus. Vivamus
-eleifend massa vitae velit semper suscipit. Duis ut feugiat augue.
-Cras et eros ultrices, eleifend turpis ut, pulvinar libero. Donec
-lectus justo, malesuada fringilla bibendum vitae, convallis vel dolor.
-Aliquam eu ex non mauris pretium viverra. Proin a nisl eget metus
-commodo feugiat. Suspendisse sit amet risus gravida risus convallis
-placerat.
-
-\begin{figure}[htb]
-  \centering
-  \includegraphics[scale=0.45]{figuras/distributions.pdf}
-  \caption{Etiam ut bibendum sapien, id lacinia nisl. In hac
-    habitasse platea dictumst. In congue diam diam. Proin quis risus
-    tincidunt, placerat eros vel, tristique metus. Quisque mi mi,
-    hendrerit vel arcu at, pharetra ultrices tortor. Phasellus
-    euismod, nisl dictum malesuada aliquet, tortor elit commodo magna,
-    at fermentum enim dolor ut purus. Nam bibendum sapien ut justo
-    ullamcorper hendrerit.}
-  \label{fig:2}
-\end{figure}
-
-
-\begin{table}
-\centering
-\caption{Cras eget congue velit, euismod cursus tortor. Donec
-  facilisis dolor in ex suscipit commodo. Donec at vulputate est.
-  Mauris placerat lorem ipsum, vel scelerisque mi aliquam sit amet.
-  Nulla at elit rutrum sem gravida sodales. Maecenas vitae pulvinar
-  nunc.}
-\begin{tabular}{clr} 
+\begin{table}[htb]
+\caption{Páginas do Federal Reserve utilizadas como fontes iniciais para a coleta.}
+\label{tab:fontes-coleta}
+\begin{tabular}{p{0.38\textwidth} p{0.52\textwidth}}
 \hline
-Um & Dois & Três\\
+\textbf{Fonte consultada} & \textbf{Endereço eletrônico} \\
 \hline
-1 & 2 & 3 \\
-One & Two & Three\\
+Materiais de política monetária &
+https://www.federalreserve.gov/ \newline{monetarypolicy/materials/} \\
 \hline
-\label{Tab:result}
+Calendário do FOMC &
+https://www.federalreserve.gov/ \newline{monetarypolicy/fomccalendars.htm} \\
+\hline
+Discursos e testemunhos &
+https://www.federalreserve.gov/ \newline{newsevents/speeches-testimony.htm} \\
+\hline
 \end{tabular}
+\\
+{\justifying Fonte: Autoria própria.\par}
 \end{table}
+
+O procedimento de coleta combinou ferramentas distintas de acordo com a estrutura
+de cada página. Para os materiais de política monetária e para as páginas de
+discursos e testemunhos, que houve necessidade de navegação paginada,
+foi utilizado a biblioteca Selenium com o navegador Microsoft Edge. Essa ferramenta permitiu
+carregar as páginas, avançar entre os resultados e identificar os elementos HTML
+que continham os links das publicações. Já no calendário do FOMC, foram realizadas
+requisições HTTP com a biblioteca Requests, seguidas da análise do código HTML com
+Beautiful Soup. A partir dessa página, foram selecionados links para atas,
+comunicados de decisões monetárias, conferências de imprensa e tabelas de
+projeções.
+
+Ao final da coleta, realizada até 12 de setembro de 2025, a base reuniu 1.306
+links de publicações oficiais.
+
+\section{Extração e preparação dos textos}
+
+Após a obtenção dos links, iniciou-se a etapa de extração e preparação dos textos.
+Os resultados dessa etapa foram armazenados no arquivo JSON, que reúne, 
+para cada publicação processada, a URL, o título, a data de publicação e o 
+conteúdo textual. Antes do processamento de um
+novo endereço, a lista de URLs já armazenadas era carregada para evitar a repetição
+de documentos previamente extraídos.
+
+Para as publicações disponibilizadas em páginas HTML, foram realizadas requisições
+HTTP com a biblioteca Requests. O conteúdo retornado foi interpretado com Beautiful
+Soup, e elementos sem conteúdo relevante para a análise, como scripts, estilos,
+menus, cabeçalhos, rodapés e elementos de navegação, foram removidos. Em seguida,
+o texto foi obtido a partir do conteúdo restante, com a eliminação de linhas vazias
+e de espaços excedentes. Esse procedimento produziu uma versão textual mais
+adequada às etapas posteriores de classificação e extração dos sinais monetários.
+
+Além do conteúdo textual, foram identificados o título e a data de publicação de
+cada documento. Essas informações foram estruturadas no formato JSON com auxílio
+de um modelo de linguagem, que recebeu como entrada o texto limpo da página e
+retornou os metadados no formato padronizado. A URL original foi mantida junto aos
+metadados para preservar a rastreabilidade das informações extraídas.
+
+Algumas publicações, especialmente comunicados de imprensa e páginas do FOMC,
+disponibilizam seu conteúdo principal em arquivos PDF. Para esses casos, foram
+realizadas requisições HTTP às páginas associadas, cujo conteúdo HTML foi
+interpretado com Beautiful Soup. Inicialmente, eram localizadas todas as tags de
+hiperlink \texttt{a}, cujos atributos \texttt{href} eram avaliados para
+identificar links que continham a extensão \texttt{.pdf}. Quando os links estavam
+em formato relativo, eles eram corrigidos a partir da URL raiz do site. Em seguida,
+eram selecionados os arquivos relacionados ao comunicado ou às metas de longo
+prazo. O conteúdo dos PDFs foi extraído com a biblioteca PyPDF2, mediante leitura
+sequencial das páginas.
+
+Durante a preparação, os documentos cujo título continha a expressão
+\textit{implementation note} foram marcados como não extraídos, em vez de terem seu
+conteúdo utilizado nas etapas seguintes. Ao final de cada processamento, o registro
+era acrescentado ao arquivo JSON, que era atualizado incrementalmente. Esse
+procedimento permitiu preservar os dados já coletados e retomar a execução sem
+duplicar publicações.
+
+Como resultado da etapa de extração, cada comunicação passou a ser representada
+em uma estrutura padronizada, contendo quatro campos principais: url,
+title, text e publication\_date, conforme ilustrado
+na Figura~\ref{fig:resultado-extracao-texto}.
+
+\begin{figure}[htb]
+	\centering
+	\includegraphics[width=\textwidth]{figuras/resultado_extracao_texto.png}
+	\caption{Exemplo da estrutura JSON produzida na etapa de extração dos textos. 
+  \newline Fonte: Autoria própria.}
+	\label{fig:resultado-extracao-texto}
+
+\end{figure}
+
+
+\section{Extração e classificação dos sinais monetários}
+
+Após a estruturação da base textual, foi implementada a etapa de extração e
+classificação dos sinais de política monetária presentes nas comunicações do
+Federal Reserve. Essa etapa foi realizada por meio de um prompt estruturado,
+utilizado como entrada para o modelo de linguagem gpt-5.6-terra.
+
+O prompt recebeu, para cada documento, três informações principais: título,
+data de publicação e texto integral da comunicação. A tarefa consistiu em
+identificar trechos que expressassem sinais relevantes para a condução da
+política monetária e classificá-los como \textit{dovish}, \textit{mostly
+dovish}, \textit{neutral}, \textit{mostly hawkish} ou \textit{hawkish}. Para
+reduzir ambiguidades, cada classe foi definida a partir de critérios relacionados
+ao comportamento da inflação, da atividade econômica, do mercado de trabalho e
+da orientação esperada da política monetária, conforme apresentado na
+Tabela~\ref{tab:classes-sinais}.
+
+\begin{table}[htb]
+\centering
+\caption{Descrição das classes para classificação dos sinais monetários.}
+\label{tab:classes-sinais}
+\begin{tabular}{p{0.20\textwidth} p{0.70\textwidth}}
+\hline
+\textbf{Classe} & \textbf{Descrição} \\
+\hline
+\textit{dovish} & Clearly supports monetary easing or maintaining an accommodative stance. Use when the signal indicates that inflation is at target, below target, or moving sustainably toward target; economic activity is weakening; or labor market conditions are softening in a way that reduces the need for restrictive policy. \\
+\hline
+\textit{mostly dovish} & Leans toward monetary easing or delaying further tightening, but it is not definitive. Use when the signal reports progress on inflation, slower growth, or softer labor market conditions, while also mentioning uncertainty. \\
+\hline
+\textit{neutral} & The signal does not clearly imply either easing or tightening. Use when it does not indicate a dominant direction for policy. Do not classify as neutral merely because it is factual or descriptive. \\
+\hline
+\textit{mostly hawkish} & Leans toward monetary tightening or delaying easing, but it is not definitive. Use when the signal reports elevated inflation, upside inflation risks, resilient demand, or strong labor market conditions, while also mentioning uncertainty. \\
+\hline
+\textit{hawkish} & Clearly supports monetary tightening or maintaining a restrictive stance. Use when the signal indicates that inflation is above target, persistent, broad-based, or rising; economic activity remains strong; or labor market conditions remain tight in a way that justifies restrictive policy. \\
+\hline
+\end{tabular}
+\\
+{Fonte: Autoria própria.}
+\end{table}
+
+A saída esperada do modelo foi definida em formato JSON, contendo, para cada
+categoria, uma lista de sinais extraídos. Cada sinal foi estruturado nos
+seguintes campos principais:
+\begin{itemize}
+	\item \texttt{Signal}: ideia principal identificada;
+	\item \texttt{Justification}: breve explicação para a classificação
+	atribuída;
+	\item \texttt{Evidence}: trecho curto extraído diretamente do texto
+	original.
+\end{itemize}
+
+Essa estrutura aumenta a rastreabilidade das classificações e permite a
+transformação posterior dos resultados em uma base tabular.
+
+Além da classificação textual, foi gerado um vetor de \textit{embedding} para
+cada sinal extraído, utilizando o conteúdo do campo \texttt{signal}. Os vetores foram
+gerados pelo modelo \texttt{text-embedding-3-large}, com dimensão de 3.072
+componentes. Cada vetor foi armazenado no campo \texttt{embedding\_signal} e
+será utilizado para o cálculo da similaridade semântica
+entre os sinais monetários.
+
+A tabela final contém as colunas \texttt{url}, \texttt{title},
+\texttt{publication\_date}, \texttt{classification}, \texttt{score},
+\texttt{signal}, \texttt{justification}, \texttt{evidence} e
+\texttt{embedding\_signal}. A coluna \texttt{score} contém uma pontuação
+numérica associada à classificação, de acordo com o mapa apresentado na
+Tabela~\ref{tab:score-sinais}.
+
+\begin{table}[htb]
+\centering
+\caption{Mapa da classificação para o escore.}
+\label{tab:score-sinais}
+\begin{tabular}{p{0.45\textwidth} p{0.20\textwidth}}
+\hline
+\textbf{Classificação} & \textbf{Escore} \\
+\hline
+\textit{dovish} & -1 \\
+\textit{mostly\_dovish} & -0,5 \\
+\textit{neutral} & 0 \\
+\textit{mostly\_hawkish} & 0,5 \\
+\textit{hawkish} & 1 \\
+\hline
+\end{tabular}
+\\
+{Fonte: Autoria própria.}
+\end{table}
+
+\section{Construção do grafo}
+
+Após a estruturação dos sinais monetários, os dados foram inseridos em um banco
+de dados orientado a grafos, Neo4j. A modelagem adotada contém dois tipos de nós:
+\texttt{Publication}, que representa cada comunicação do Federal Reserve, e
+\texttt{Signal}, que representa cada sinal monetário extraído. Os nós de
+publicação foram identificados pela URL do documento e armazenaram os atributos
+de título e data de publicação. Os nós de sinal foram identificados pela
+combinação entre o texto do sinal e a URL do documento de origem, permitindo
+distinguir sinais com conteúdo semelhante extraídos de publicações diferentes.
+
+Cada nó \texttt{Signal} recebeu os atributos \texttt{classification},
+\texttt{score}, \texttt{embedding\_signal} e \texttt{date}. A relação \texttt{HAS\_SIGNAL}
+foi criada entre cada nó \texttt{Publication} e os respectivos nós
+\texttt{Signal}, preservando a vinculação entre o sinal, sua evidência e a
+comunicação que o originou.
+
+Além da relação \texttt{HAS\_SIGNAL}, foram criadas relações \texttt{SIMILAR\_TO}
+entre pares de nós \texttt{Signal} semanticamente semelhantes. Essa relação
+conecta sinais que apresentam proximidade de conteúdo, independentemente de
+terem sido extraídos da mesma publicação ou de documentos distintos. Por ser
+não direcionada, a relação representa uma associação mútua entre os sinais, e
+seu atributo \texttt{score\_similarity} registra a intensidade da similaridade
+calculada entre os respectivos vetores de \textit{embedding}. A definição dos
+períodos, o cálculo da similaridade e os critérios utilizados para selecionar
+essas conexões são apresentados na seção seguinte.
+
+Essa estrutura é ilustrada na Figura~\ref{fig:esquema-grafo}.
+
+\begin{figure}[htb]
+	\centering
+	\includegraphics[width=0.85\textwidth]{figuras/graph_schema.png}
+	\caption{Esquema dos nós e das relações utilizados na construção do grafo.
+	\newline Fonte: Autoria própria.}
+	\label{fig:esquema-grafo}
+\end{figure}
+
+\section{Conexões \textit{SIMILAR\_TO}}
+
+As conexões \texttt{SIMILAR\_TO} não foram criadas considerando todos os nós
+\texttt{Signal} existentes no grafo. Para evitar comparações entre sinais
+pertencentes a períodos distintos, as conexões foram construídas separadamente
+dentro de cada período de análise, utilizando apenas os nós selecionados para
+esse intervalo.
+
+Para definir esses períodos, foram utilizadas as datas dos comunicados do
+FOMC, obtidas a partir da base textual estruturada na etapa de extração. Foram
+selecionados os registros cujo título correspondia a \textit{Federal Reserve issues
+FOMC statement}, referentes aos comunicados oficiais divulgados após as reuniões
+do comitê. As datas de publicação desses registros foram reunidas em um conjunto,
+com a eliminação de eventuais repetições, e posteriormente ordenadas
+cronologicamente.
+
+Cada período foi delimitado por duas datas consecutivas dessa sequência. Em cada
+intervalo, foram selecionados apenas os nós \texttt{Signal} que possuíam vetor de
+\textit{embedding} e cuja data de publicação estivesse compreendida entre o
+início do período, inclusive, e a data do comunicado subsequente, exclusive.
+Em cada período, foram considerados os sinais publicados entre duas datas 
+consecutivas do FOMC, incluindo a data inicial e excluindo a data final.
+Portanto, embora as comunicações divulgadas na data inicial integrem o
+período, todas as comunicações
+publicadas na data de divulgação do \textit{statement} que encerra o intervalo
+são excluídas da construção do indicador desse período. Essa regra evita que o
+indicador incorpore informações divulgadas juntamente com a decisão do FOMC que
+ele busca avaliar e preserva seu caráter prospectivo.
+
+Os nós selecionados foram projetados no Neo4j Graph Data Science (GDS), isto é,
+foram organizados em uma representação temporária em memória contendo somente
+os nós do período e a propriedade vetorial \texttt{embedding\_signal}. Essa
+projeção é independente do grafo armazenado permanentemente no banco de dados e
+serve como estrutura de entrada para a execução dos algoritmos do GDS. Sobre
+ela, foi aplicado o algoritmo \textit{k}-nearest neighbors (KNN), utilizando a
+similaridade do cosseno para comparar os vetores. Para cada sinal, foram
+considerados até 50 vizinhos semanticamente mais próximos, o que restringe a
+rede às relações mais relevantes e evita a formação de um grafo excessivamente
+denso.
+
+No Neo4j GDS, o procedimento \texttt{gds.knn.stream} opera sobre a projeção em
+memória e retorna, para cada comparação selecionada, os identificadores dos dois
+nós e o respectivo escore de similaridade. Esses identificadores foram então
+convertidos novamente em nós \texttt{Signal} e os pares duplicados foram
+eliminados antes de sua persistência no banco. 
+
+Foram mantidos somente os pares cuja similaridade excedesse um limiar mínimo.
+O procedimento foi iniciado com limiar de 0,80 e, quando a rede resultante ainda
+apresentava mais de uma componente conexa, o valor foi reduzido em incrementos
+de 0,01 até o mínimo de 0,10. A cada iteração, a conectividade foi verificada
+por meio do algoritmo de componentes fracamente conectadas. O limiar selecionado
+para cada período foi, portanto, o maior valor que produziu uma única componente
+conexa dentro dos limites definidos pelo procedimento.
+
+Os pares identificados foram armazenados como relações \texttt{SIMILAR\_TO} não
+direcionadas. Cada relação recebeu o atributo \texttt{score\_similarity}, que
+corresponde ao valor da similaridade do cosseno entre os respectivos sinais.
+Assim, cada período é representado por uma rede ponderada, na qual os nós são
+sinais monetários e as arestas expressam a intensidade de sua proximidade
+semântica, inclusive quando os sinais são provenientes de documentos distintos.
+
+Teste wq a
 
 

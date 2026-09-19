@@ -29,14 +29,29 @@
 \usepackage{fontspec}
 
 \defaultfontfeatures{Ligatures=TeX}
-\setmainfont{Arial}
+\setmainfont[
+  UprightFont = *,
+  ItalicFont = * Italic,
+  BoldFont = * Bold,
+  BoldItalicFont = * Bold Italic
+]{Arial}
 \setsansfont{Arial}
-
-% Hyperlinks
-\usepackage{url}
+\setmonofont[
+  UprightFont = *,
+  ItalicFont = * Italic,
+  BoldFont = * Bold,
+  BoldItalicFont = * Bold Italic
+]{Consolas}
 
 % Hifenação e acentuação
 \usepackage[english, brazilian]{babel}
+\usepackage{ragged2e}
+\justifying
+
+% Evita a separação de palavras entre linhas
+\hyphenpenalty=10000
+\exhyphenpenalty=10000
+\emergencystretch=3em
 
 % =========================================================
 % CABEÇALHO
@@ -45,7 +60,7 @@
 \nouppercaseheads
 
 % Espaço necessário para o cabeçalho
-\setlength{\headheight}{1.25cm}
+\setlength{\headheight}{1.5cm}
 \setlength{\headsep}{0.4cm}
 \setlength{\footskip}{1.25cm}
 
@@ -178,11 +193,16 @@
 
 % Formato das legendas de Figuras e Tabelas
 \captiondelim{. }
-\captionnamefont{\bfseries}
+\captionnamefont{\normalfont}
+\captionstyle{\justifying}
 
 % Numeração absoluta das tabelas em todo o documento
 \counterwithout{table}{chapter}
 \renewcommand{\thetable}{\arabic{table}}
+
+% Numeração absoluta das figuras em todo o documento
+\counterwithout{figure}{chapter}
+\renewcommand{\thefigure}{\arabic{figure}}
 
 % Inclusão de referências bibliográficas usando o BibTex
 \usepackage{natbib}
