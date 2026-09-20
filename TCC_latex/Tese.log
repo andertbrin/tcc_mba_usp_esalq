@@ -1,4 +1,4 @@
-This is LuaHBTeX, Version 1.25.7 (MiKTeX 26.5) (format=lualatex 2026.9.12)  19 SEP 2026 23:39
+This is LuaHBTeX, Version 1.25.7 (MiKTeX 26.5) (format=lualatex 2026.9.12)  20 SEP 2026 00:58
  restricted system commands enabled.
  file:line:error style messages enabled.
 **"c:/Users/ander/OneDrive/Cursos/MBA ciencia de dados EsalqUSP/tcc/TCC_latex/T
@@ -1243,7 +1243,7 @@ input line 454.
 (luatex.def)             Requested size: 455.24411pt x 133.50563pt.
 File: ./figuras/logo_mba.png Graphic file (type png)
 <use ./figuras/logo_mba.png>
-Package luatex.def Info: ./figuras/logo_mba.png  used on input line 486.
+Package luatex.def Info: ./figuras/logo_mba.png  used on input line 487.
 (luatex.def)             Requested size: 69.4351pt x 28.45274pt.
 [14<./figuras/similarity_cutoff_by_fomc_period.png>]) (./textual/Conclusao.tex
 Cap\'{\i }tulo 4.
@@ -1270,13 +1270,13 @@ LaTeX Font Warning: Size substitutions with differences
 )
 
 Here is how much of LuaTeX's memory you used:
- 12282 strings out of 475635
+ 12283 strings out of 475635
  125061,953878 words of node,token memory allocated
  1318 words of node memory still in use:
    7 hlist, 2 vlist, 2 rule, 5 glue, 4 kern, 1 glyph, 21 attribute, 203 glue_spe
 c, 11 attribute_list, 4 write nodes
    avail lists: 1:4,2:823,3:186,4:52,5:111,6:85,7:8793,8:14,9:607,10:16,11:1229
- 34828 multiletter control sequences out of 65536+600000
+ 34829 multiletter control sequences out of 65536+600000
  78 fonts using 22016647 bytes
  85i,16n,105p,585b,576s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <C:/WINDOWS/Fonts/consola.ttf><C:/WINDOWS/Fonts/ariali.ttf><C:/WINDOWS/Fonts/ari
