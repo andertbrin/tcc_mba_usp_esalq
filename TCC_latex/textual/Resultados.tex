@@ -329,7 +329,7 @@ Essa estrutura é ilustrada na Figura~\ref{fig:esquema-grafo}.
 	\label{fig:esquema-grafo}
 \end{figure}
 
-\section{Conexões \texttt{SIMILAR\_TO}}
+\section{Caracterização das redes por período}
 
 A construção das relações \texttt{SIMILAR\_TO} foi realizada separadamente 
 para cada intervalo de análise. Essa estratégia restringiu as comparações 
@@ -442,25 +442,63 @@ Essa representação constitui a entrada para os algoritmos de
 detecção de comunidades e de centralidade empregados na construção 
 dos indicadores de orientação monetária.
 
-\textbf{Grafico com limiar de similaridade e numero de conexões na rede para 
-quando wcc é 1. isso para cada período.}
+Os limiares de similaridade obtidos pelo procedimento 
+adaptativo variaram entre os períodos analisados, refletindo 
+diferenças na estrutura semântica dos sinais disponíveis em 
+cada intervalo. A Figura~\ref{fig:similarity_cutoff} apresenta 
+o valor do limiar necessário para que a rede correspondente 
+a cada período formasse uma única componente conexa.
 
-Além da estratégia de limiar adaptativo, foi considerada 
-uma segunda configuração para a construção das redes de 
-similaridade. Nesse cenário, foi utilizado um limiar fixo 
-de similaridade do cosseno igual a 0,72 para todos os 
-períodos analisados. Diferentemente do procedimento 
-adaptativo, no qual o valor do limiar pode variar entre 
-períodos em função da conectividade da rede, a utilização 
-de um valor constante mantém inalterado o critério mínimo 
-para a formação das relações \texttt{SIMILAR\_TO} ao 
-longo de toda a série temporal.
+\begin{figure}[htb]
+\centering
+\includegraphics[width=\textwidth]{figuras/similarity_cutoff_by_fomc_period.png}
+\caption{Limiar de similaridade utilizado na construção da rede em cada período entre comunicados consecutivos do FOMC.
+\newline Fonte: Autoria própria.}
+\label{fig:similarity_cutoff}
+\end{figure}
 
-Dessa forma, foram construídas duas versões da rede 
-para cada intervalo entre comunicados consecutivos do FOMC. 
-Na primeira, denominada neste trabalho de abordagem com limiar 
-adaptativo e outra limitada por um limiar fixo para todos os períodos, 
-independentemente do número de componentes resultantes.
+Os resultados mostram que não foi necessário utilizar o 
+mesmo nível mínimo de similaridade em todos os períodos 
+para obter uma rede conectada. Valores mais elevados indicam 
+que a conectividade foi alcançada preservando relações 
+entre sinais com maior proximidade semântica, enquanto 
+valores menores indicam a necessidade de incorporar 
+relações entre sinais progressivamente menos semelhantes.
+
+A aplicação desses limiares resultou também em 
+diferentes números de relações \texttt{SIMILAR\_TO} entre os períodos. 
+A Figura~\ref{fig:relationship_count_by_fomc_period} apresenta a quantidade de conexões 
+existentes nas redes após a seleção do limiar correspondente a cada intervalo.
+
+\begin{figure}[htb]
+\centering
+\includegraphics[width=\textwidth]{figuras/relationship_count_by_fomc_period.png}
+\caption{Número de relações \texttt{SIMILAR\_TO} na rede de cada período entre comunicados consecutivos do FOMC.
+\newline Fonte: Autoria própria.}
+\label{fig:relationship_count_by_fomc_period}
+\end{figure}
+
+A quantidade de relações formada em cada período depende tanto 
+do número de sinais disponíveis quanto do limiar de similaridade utilizado. 
+Assim, períodos com maior número de nós não necessariamente apresentam 
+proporcionalmente o mesmo número de conexões, uma vez que a estrutura 
+final também depende da proximidade semântica entre os sinais.
+
+
+Além da abordagem com limiar de similaridade adaptativo, 
+foi avaliada uma segunda configuração utilizando um limiar 
+constante para todos os períodos. Para definir esse valor, 
+foi calculada a mediana dos limiares de similaridade 
+obtidos individualmente pelo procedimento adaptativo ao 
+longo dos intervalos analisados. A mediana resultante foi 
+igual a 0,72, valor adotado como limiar fixo no segundo cenário. 
+Essa escolha permite utilizar um valor representativo dos 
+limiares requeridos para a formação das redes no procedimento adaptativo, 
+ao mesmo tempo em que mantém constante o critério de conexão entre os sinais 
+ao longo de toda a série temporal.
+
+
+
 
 
 

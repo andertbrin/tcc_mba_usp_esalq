@@ -1,13 +1,13 @@
 # Fdb version 4
-["bibtex Tese"] 1789868359.41961 "Tese.aux" "Tese.bbl" "Tese" 1789868363.54399 0
+["bibtex Tese"] 1789869720.61564 "Tese.aux" "Tese.bbl" "Tese" 1789869725.35199 0
   "./referencias/bibliografia.bib" 1789854591 4627 31b50450912f35c3aaaefb08511dd185 ""
   "./referencias/genetics.bst" 1789271145 27264 14d33ce67956de02d69ac3dcf55e3edc ""
-  "Tese.aux" 1789868362 6646 975fac62e87ffab2d85c2bac1809432d "lualatex"
+  "Tese.aux" 1789869724 7572 6a3232e7710f6a157061bb1e05a882b0 "lualatex"
   (generated)
   "Tese.bbl"
   "Tese.blg"
   (rewritten before read)
-["lualatex"] 1789868359.67503 "c:/Users/ander/OneDrive/Cursos/MBA ciencia de dados EsalqUSP/tcc/TCC_latex/Tese.tex" "Tese.pdf" "Tese" 1789868363.54488 0
+["lualatex"] 1789869721.04387 "c:/Users/ander/OneDrive/Cursos/MBA ciencia de dados EsalqUSP/tcc/TCC_latex/Tese.tex" "Tese.pdf" "Tese" 1789869725.35256 0
   "C:/Users/ander/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map" 1789864513 80909 eab91d9745dd2edfd62a31d53cd5fe15 ""
   "C:/Users/ander/AppData/Local/MiKTeX/luatex-cache/generic/fonts/otl/arial.luc" 1789262267 699107 2f2a2dc13d52eb7fc7467d131b49706b ""
   "C:/Users/ander/AppData/Local/MiKTeX/luatex-cache/generic/fonts/otl/arialbd.luc" 1789262267 695499 0baf781ee362a9ab0c833f27cd1d8d7e ""
@@ -172,15 +172,16 @@
   "C:/WINDOWS/Fonts/arialbd.ttf" 1781049893 989780 c149928046ae114caf75ff02dd33d0e5 ""
   "C:/WINDOWS/Fonts/ariali.ttf" 1781049893 721584 c1cd3dd9698a3d07b50f8a2790708c10 ""
   "C:/WINDOWS/Fonts/consola.ttf" 1771034273 453088 e4d9557e530bdb7847f84a8967542b03 ""
-  "C:/WINDOWS/Fonts/consolab.ttf" 1771034273 391756 45c5b5470ce47edad9caa24fa420b30e ""
-  "Tese.aux" 1789868362 6646 975fac62e87ffab2d85c2bac1809432d "lualatex"
-  "Tese.bbl" 1789868359 3598 65611c3464089b8d34e61f4949e5c649 "bibtex Tese"
+  "Tese.aux" 1789869724 7572 6a3232e7710f6a157061bb1e05a882b0 "lualatex"
+  "Tese.bbl" 1789869720 3598 65611c3464089b8d34e61f4949e5c649 "bibtex Tese"
   "Tese.tex" 1789864504 5319 1e3b4a012d1d56aa14204c9837f8ff65 ""
   "c:/Users/ander/OneDrive/Cursos/MBA ciencia de dados EsalqUSP/tcc/TCC_latex/Tese.tex" 1789864504 5319 1e3b4a012d1d56aa14204c9837f8ff65 ""
   "figuras/graph_schema.png" 1789342649 33850 f83369cf9420108d14823f04303db1da ""
   "figuras/logo_mba.png" 1787516125 9903 0182f62fcc55f47265d5190d9d9c1655 ""
   "figuras/node_count_by_fomc_period.png" 1789868169 296436 ad7f8d7b1a028476c0d6e924bb7c9c14 ""
+  "figuras/relationship_count_by_fomc_period.png" 1789868789 317717 cb6b15b435bdfb4df0c37f421013161e ""
   "figuras/resultado_extracao_texto.png" 1789334186 94365 d4764c492dfaf8dad8f4ecb5591d5e40 ""
+  "figuras/similarity_cutoff_by_fomc_period.png" 1789868789 246141 9dbe1da290e576ad8134e9b294e446c3 ""
   "generated/link_count.tex" 1789861673 74 a91a6ace18d2829516e292ff509e3e73 ""
   "pre-textual/Capa.tex" 1787706684 2031 9e5f2b93e69404996068c3249f04179a ""
   "pre-textual/Resumo.tex" 1789266145 1558 6d1523a1e7ba7ec2b4f59433a1f0b85f ""
@@ -189,7 +190,7 @@
   "textual/Conclusao.tex" 1789273173 398 db325221f83b51f56127a53e017fc531 ""
   "textual/Introducao.tex" 1789855514 6416 3674af7d9d2431692ef5ba2837aebc49 ""
   "textual/MatMet.tex" 1789856973 5715 1298c9f8bbbf79916136e0b064df44fb ""
-  "textual/Resultados.tex" 1789868355 23899 6b3c44822c5745fb64027e0c06788d33 ""
+  "textual/Resultados.tex" 1789869710 25661 c3689b578fcae0d9655cc6674d6bde11 ""
   (generated)
   "Tese.aux"
   "Tese.log"
