@@ -11,3 +11,4 @@ data/period_sentiment_scores_cutoff_074.csv
 data/period_sentiment_scores_fixed_071.csv
 TCC_latex/textual/Resultados.tex
 data/period_sentiment_scores_fixed.csv
+data/df_fred_statement_dates.csv
