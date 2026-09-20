@@ -19,10 +19,11 @@ def main() -> None:
 
     OUTPUT_PATH.parent.mkdir(parents=True, exist_ok=True)
     formatted_link_count = f"{link_count:,}".replace(",", ".")
+    formatted_similarity_cutoff = f"{constant_similarity_cutoff:.2f}".replace(".", ",")
     OUTPUT_PATH.write_text(
         "% Automatically generated. Do not edit.\n"
-        f"\\newcommand{{\\LinkCount}}{{{formatted_link_count} }}\n",
-        f"\\newcommand{{\\ConstantSimilarityCutoff}}{{{constant_similarity_cutoff:.2f} }}\n",
+        f"\\newcommand{{\\LinkCount}}{{{formatted_link_count} }}\n"
+        f"\\newcommand{{\\ConstantSimilarityCutoff}}{{{formatted_similarity_cutoff}}}\n",
         encoding="utf-8",
     )
 

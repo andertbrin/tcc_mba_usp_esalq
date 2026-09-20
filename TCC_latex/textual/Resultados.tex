@@ -479,14 +479,156 @@ constante para todos os períodos. Para definir esse valor,
 foi calculada a mediana dos limiares de similaridade 
 obtidos individualmente pelo procedimento adaptativo ao 
 longo dos intervalos analisados. A mediana resultante foi 
-igual a 0,72. Valor adotado como limiar fixo no segundo cenário. 
+igual a \ConstantSimilarityCutoff. Valor adotado como limiar 
+fixo no segundo cenário. 
 Essa escolha permite utilizar um valor representativo dos 
 limiares requeridos para a formação das redes no procedimento adaptativo, 
 ao mesmo tempo em que mantém constante o critério de conexão entre os sinais 
 ao longo de toda a série temporal.
 
 
+\section{Construção dos indicadores}
+
+Após a construção da rede de similaridade semântica para cada período 
+entre reuniões consecutivas do FOMC, foram calculadas diferentes versões 
+do indicador de orientação monetária. Para isso, foram combinadas as 
+pontuações atribuídas aos sinais monetários com informações 
+estruturais extraídas do grafo. Foram utilizados o algoritmo de 
+Leiden para detecção de comunidades e três medidas de 
+centralidade: centralidade de intermediação (\textit{betweenness centrality}), 
+centralidade de grau (\textit{degree centrality}) e PageRank.
+
+Inicialmente, as três medidas de centralidade foram 
+calculadas para cada nó \texttt{Signal} da rede. Os 
+resultados foram associados por meio do identificador 
+de cada nó, formando uma base contendo, para cada sinal, 
+sua pontuação de orientação monetária (\texttt{node\_score}) 
+e os respectivos valores de centralidade. 
+
+Como referência, foi calculada a média simples das pontuações 
+dos sinais pertencentes ao período. Esse indicador atribui o 
+mesmo peso a todos os nós e, portanto, não incorpora informações 
+sobre a posição de cada sinal na estrutura da rede. 
+Sua expressão pode ser representada por
+
+\[
+I_{\text{média}} =
+\frac{1}{N}\sum_{i=1}^{N}s_i,
+\]
+
+em que $s_i$ representa a pontuação de orientação monetária 
+do sinal $i$ e $N$ corresponde ao número de sinais 
+considerados no período.
+
+Em seguida, foram construídos três indicadores utilizando as 
+medidas de centralidade como fatores de ponderação. De forma geral, 
+para uma medida de centralidade $c_i$, o indicador foi calculado por
+
+\[
+I_c =
+\frac{\sum_{i=1}^{N}s_i c_i}
+{\sum_{i=1}^{N}c_i}.
+\]
+
+A primeira ponderação utilizou a centralidade de intermediação. 
+Essa medida destaca sinais que ocupam posições de intermediação 
+na rede, isto é, nós que participam com maior frequência dos 
+caminhos que conectam diferentes regiões do grafo. 
+Dessa forma, sinais com maior centralidade de intermediação 
+receberam maior peso na composição do indicador 
+\texttt{betweenness\_weighted\_sentiment}.
+
+A segunda versão utilizou a centralidade de grau ponderado. 
+Nesse caso, o peso atribuído a cada sinal decorre da intensidade 
+de suas conexões com os demais nós da rede, 
+produzindo o indicador \texttt{degree\_weighted\_sentiment}. 
+Essa abordagem atribui maior influência aos sinais que apresentam 
+maior relevância local na estrutura de similaridade semântica.
+
+A terceira ponderação foi realizada utilizando o PageRank. 
+Essa medida considera a relevância estrutural do nó 
+levando em conta não apenas suas próprias conexões, 
+mas também a relevância dos nós aos quais ele está conectado. 
+Os valores calculados pelo algoritmo foram utilizados como pesos 
+das pontuações monetárias, resultando no indicador 
+\texttt{pagerank\_weighted\_sentiment}.
+
+A primeira medida baseada em Leiden foi construída 
+calculando-se, inicialmente, a média simples da pontuação dos 
+sinais pertencentes a cada comunidade. Posteriormente, 
+as médias das comunidades foram agregadas com pesos iguais, conforme
+
+\[
+I_{\text{Leiden}} =
+\frac{1}{K}
+\sum_{k=1}^{K}
+\left(
+\frac{1}{N_k}
+\sum_{i \in C_k}s_i
+\right),
+\]
+
+em que $K$ representa o número de comunidades identificadas, 
+$C_k$ corresponde à comunidade $k$ e $N_k$ representa seu número 
+de sinais. O resultado corresponde ao indicador 
+\texttt{leiden\_equal\_weight\_sentiment}. Esse procedimento 
+faz com que cada comunidade contribua igualmente para o resultado 
+final, independentemente de sua quantidade de nós.
 
 
+Também foram construídas três versões que combinam a detecção de 
+comunidades com as medidas de centralidade. Nesse procedimento, 
+a ponderação pelas centralidades foi realizada inicialmente 
+dentro de cada comunidade. Para uma medida de centralidade $c$, 
+a orientação monetária da comunidade $k$ foi calculada como
 
+\[
+I_{k,c} =
+\frac{
+\sum_{i \in C_k}s_i c_i
+}{
+\sum_{i \in C_k}c_i
+}.
+\]
 
+Após o cálculo individual para cada comunidade, os valores obtidos 
+foram agregados por meio de uma média simples entre as comunidades:
+
+\[
+I_{\text{Leiden},c} =
+\frac{1}{K}
+\sum_{k=1}^{K} I_{k,c}.
+\]
+
+Dessa combinação resultaram três indicadores: um baseado na centralidade
+de intermediação, outro na centralidade de grau e o terceiro no PageRank.
+Em cada caso, a importância estrutural dos sinais é calculada dentro de
+cada comunidade. Posteriormente, os valores das comunidades são agregados
+por meio de uma média simples, de modo que todas recebam o mesmo peso no
+indicador final. Essa abordagem diferencia esses indicadores daqueles
+calculados diretamente sobre toda a rede.
+
+Ao todo, foram obtidas oito formas de agregação da 
+orientação monetária em cada período: a média simples; 
+três indicadores ponderados diretamente pelas centralidades 
+de intermediação, grau e PageRank; 
+o indicador de comunidades de Leiden com pesos iguais; 
+e três indicadores que combinam Leiden com as respectivas 
+medidas de centralidade. Essa estrutura permite comparar 
+uma agregação que utiliza exclusivamente as classificações 
+individuais com diferentes formas de incorporação da 
+organização estrutural e semântica da rede.
+
+Os mesmos algoritmos e procedimentos de cálculo foram 
+utilizados nas duas estratégias de construção das redes 
+consideradas neste trabalho. Na primeira abordagem, 
+o limiar mínimo de similaridade foi determinado de forma 
+variável para cada período, de acordo com o procedimento 
+de conectividade descrito anteriormente. 
+Na segunda, foi utilizado o limiar fixo de 0,72. 
+Dessa forma, tanto o algoritmo de Leiden quanto 
+as três medidas de centralidade e as oito formas de 
+agregação dos indicadores foram mantidos constantes 
+nas duas abordagens, permitindo avaliar os efeitos 
+decorrentes exclusivamente da alteração do critério 
+utilizado para a formação das relações de similaridade.
