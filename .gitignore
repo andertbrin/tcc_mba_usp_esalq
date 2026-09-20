@@ -7,3 +7,5 @@ utils/__pycache__/
 data/links_text.txt
 data/result_analysis.csv
 data/period_sentiment_scores.csv
+data/period_sentiment_scores_cutoff_074.csv
+data/period_sentiment_scores_fixed_071.csv

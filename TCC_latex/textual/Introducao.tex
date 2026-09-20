@@ -1,97 +1,102 @@
 \chapter{Introdução}
 \addcontentsline{toc}{chapter}{Introdução}
 
+A comunicação dos bancos centrais desempenha papel fundamental na formação das
+expectativas dos agentes econômicos e na transmissão da política monetária, pois
+informações sobre as perspectivas econômicas e as trajetórias futuras dos juros
+podem influenciar as decisões dos participantes do mercado \citep{woodford2005central}.
+No caso do Federal Reserve (Fed), essa comunicação ocorre em documentos como
+comunicados e atas do Federal Open Market Committee (FOMC), discursos de seus
+dirigentes e outros materiais institucionais. Essas divulgações são acompanhadas
+por participantes do mercado e pesquisadores interessados em identificar sinais
+sobre a orientação futura da política monetária \citep{blinder2008central}.
+Além das decisões correntes sobre a taxa de juros, os mercados também reagem às
+informações dos comunicados do FOMC sobre a trajetória futura da política monetária
+\citep{gurkaynak2005actions}.
 
-A comunicação dos bancos centrais desempenha papel fundamental na formação das 
-expectativas dos agentes econômicos e constitui parte relevante da própria 
-transmissão da política monetária, uma vez que informações sobre perspectivas 
-econômicas e possíveis trajetórias futuras dos juros podem influenciar as 
-expectativas dos participantes do mercado \citep{woodford2005central}.
-No caso do Federal Reserve (Fed), autoridade monetária dos Estados Unidos, 
-essa comunicação ocorre por meio de diferentes documentos, como comunicados e 
-atas das reuniões do Federal Open Market Committee (FOMC), discursos de seus 
-dirigentes e outros materiais institucionais. Essas divulgações são amplamente 
-acompanhadas por participantes do mercado financeiro e 
-pesquisadores, que buscam identificar sinais sobre a orientação futura da política 
-monetária e antecipar possíveis decisões relacionadas à taxa básica de 
-juros \citep{blinder2008central}. Evidências empíricas indicam que os mercados 
-reagem não apenas às decisões correntes sobre a taxa de juros, mas também às 
-informações contidas nos comunicados 
-do FOMC acerca da trajetória futura da política monetária \citep{gurkaynak2005actions}.
+A interpretação dessas comunicações, contudo, é dificultada pelo volume de
+documentos e pela complexidade de sua linguagem. Métodos baseados em dicionários
+genéricos podem ser limitados em documentos financeiros, pois o significado dos
+termos depende do contexto \citep{loughran2011liability}. Surge, assim, o desafio
+de analisar de forma estruturada e automatizada os conteúdos produzidos pelo Fed,
+gerando subsídios para a compreensão e antecipação da política monetária.
 
-Apesar da relevância dessas comunicações, a interpretação de seu conteúdo ainda 
-representa um desafio significativo. O volume elevado de documentos, aliado à 
-complexidade da linguagem utilizada, dificulta a extração sistemática de informações e 
-a identificação de padrões consistentes ao longo do tempo. Estudos indicam que análises 
-tradicionais baseadas em leitura manual ou métodos simplificados apresentam limitações 
-na captura de nuances semânticas e relações implícitas nos textos \citep{loughran2011liability}.
-Dessa forma, surge a problemática de como analisar, de maneira estruturada e automatizada, 
-os conteúdos textuais produzidos pelo Federal Reserve, de modo a gerar insights úteis para a 
-compreensão e antecipação da política monetária.
+Esse desafio insere-se no uso de documentos textuais como fontes de informação
+quantitativa para a investigação de fenômenos econômicos \citep{gentzkow2019text}.
+Avanços em processamento de linguagem natural (\textit{Natural Language Processing}
+- NLP), especialmente os modelos de linguagem de grande porte (\textit{Large
+Language Models} - LLMs), ampliaram a análise automatizada de textos complexos,
+permitindo realizar diferentes tarefas a partir de instruções e exemplos fornecidos
+em contexto \citep{brown2020language}.
 
-Essa problemática insere-se em um contexto onde documentos textuais são tratados como fontes 
-de informação quantitativa para a investigação de fenômenos econômicos \citep{gentzkow2019text}. 
-Nesse contexto, os avanços recentes em técnicas de processamento de linguagem natural 
-(Natural Language Processing - NLP), especialmente os chamados modelos de linguagem de 
-grande porte (Large Language Models - LLMs), ampliaram significativamente as possibilidades 
-de análise automatizada de textos complexos. Esses modelos são capazes de identificar padrões 
-semânticos, extrair informações e sintetizar conteúdos presentes em grandes volumes de 
-documentos textuais \citep{brown2020language}.
+De forma específica, \cite{hansen2024can} avalia a capacidade de modelos GPT de
+interpretar a linguagem técnica do Fed e classificar a orientação de comunicados
+do FOMC. Em comparação com avaliações humanas e métodos tradicionais, os modelos
+apresentam desempenho superior, reforçando seu potencial para capturar nuances
+semânticas e identificar sinais de orientação expansionista ou restritiva.
 
-De forma mais específica \cite{hansen2024can} investiga a capacidade 
-de modelos GPT em interpretar a linguagem técnica utilizada pelo Federal 
-Reserve em suas comunicações de política monetária. Os autores avaliam o desempenho 
-desses modelos na classificação da orientação de comunicados do FOMC em comparação 
-com avaliações humanas, indicando que os modelos GPT apresentam melhora relevante 
-em relação a métodos tradicionais de classificação textual. Esse resultado reforça 
-o potencial dos LLMs para capturar nuances semânticas presentes na comunicação de 
-bancos centrais, especialmente na identificação de sinais associados a posturas 
-mais expansionistas ou restritivas de política monetária.
+De modo semelhante, \cite{silva2025text} utiliza LLMs para classificar
+comunicações de diferentes bancos centrais segundo tópico, orientação monetária e
+sentimento. A partir dessas classificações, os autores constroem medidas
+quantitativas e investigam sua relação com mudanças futuras na política monetária,
+demonstrando a possibilidade de transformar informações qualitativas em indicadores.
 
-\cite{silva2025text} utilizam modelos de linguagem de grande porte para analisar 
-comunicações de diferentes bancos centrais, classificando os documentos segundo 
-dimensões como tópico, orientação da política monetária e sentimento. 
-A partir dessas classificações, os autores constroem medidas quantitativas capazes 
-de sintetizar a orientação presente nas comunicações e investigam sua relação com 
-mudanças futuras na política monetária. Os resultados demonstram o potencial dos 
-LLMs não apenas para interpretar grandes volumes de documentos textuais, mas também 
-para transformar informações qualitativas presentes na comunicação dos bancos centrais 
-em indicadores quantitativos passíveis de análise ao longo do tempo.
+Paralelamente, técnicas de análise de grafos permitem representar relações que não
+são observadas quando os elementos são considerados isoladamente. Nessa estrutura,
+os nós representam os elementos de interesse e as conexões descrevem suas relações,
+possibilitando investigar proximidade, centralidade e comunidades
+\citep{needham2019graph}.
 
-Paralelamente, técnicas baseadas em grafos permitem representar e analisar relações 
-entre informações que não são facilmente observadas quando os elementos são considerados 
-de forma isolada. Em uma rede, os nós representam os elementos de interesse e as 
-conexões descrevem as relações existentes entre eles, possibilitando a investigação de 
-propriedades como proximidade, centralidade e formação de comunidades 
-\citep{needham2019graph}. 
+Neste estudo, os sinais de política monetária identificados nas comunicações do Fed
+são representados em um grafo com base em suas relações de similaridade semântica.
+Essa representação permite examinar a orientação de cada sinal, sua posição na rede,
+as associações entre sinais semelhantes e a formação de agrupamentos recorrentes.
+Para isso, a análise avalia a conectividade da rede, identifica comunidades e calcula
+medidas de centralidade.
 
-No contexto deste estudo, os sinais de política 
-monetária identificados nas comunicações do Federal Reserve são representados em uma estrutura 
-de grafo a partir de suas relações de similaridade semântica. Essa representação permite 
-investigar não apenas a orientação individual de cada sinal, mas também sua posição 
-relativa na rede, sua associação com outros sinais semanticamente semelhantes e a 
-formação de agrupamentos que podem refletir padrões recorrentes na comunicação da autoridade 
-monetária.
- 
-Paralelamente, técnicas de análise de grafos permitem representar e explorar 
-relações entre informações extraídas de documentos. Algoritmos de grafos podem 
-identificar proximidades e agrupamentos, 
-revelando padrões difíceis de observar quando os dados são analisados 
-isoladamente \citep{needham2019graph}. No contexto deste estudo, relações de 
-similaridade semântica entre os sinais monetários extraídos das comunicações do 
-Federal Reserve são utilizadas para construir uma rede sobre a qual podem ser 
-analisadas estruturas de comunidades e medidas de centralidade. Essas propriedades 
-estruturais servem para complementar a classificação atribuída 
-individualmente aos sinais, uma vez que consideram também o contexto relacional 
-em que cada sinal está inserido. 
+O algoritmo de componentes fracamente conectados (\textit{weakly connected
+components} -- WCC) identifica subconjuntos de nós que permanecem conectados
+quando a direção das relações é desconsiderada \citep{needham2019graph}. No presente 
+estudo, o algoritmo é
+empregado para verificar a conectividade global da rede e orientar a definição do
+limiar de similaridade semântica, evitando que a análise subsequente seja realizada
+sobre grupos isolados de sinais.
 
-Embora estudos recentes tenham demonstrado o potencial dos modelos de 
-linguagem para interpretar e quantificar a comunicação de bancos centrais, 
-permanece menos explorada a utilização conjunta dessas técnicas com métodos de 
-análise de grafos para investigar as relações existentes entre os sinais 
-monetários extraídos dos documentos. Dessa forma, este estudo busca investigar 
-se a combinação entre modelos de linguagem de grande porte 
-e técnicas de análise de grafos pode contribuir para a construção de um indicador 
-experimental da orientação da política monetária do Federal Reserve, avaliando sua 
-capacidade de sintetizar padrões presentes nas comunicações e sua relação com 
-decisões posteriores do FOMC.
+Para identificar esses agrupamentos, emprega-se o algoritmo de Leiden, um método de
+detecção de comunidades que otimiza uma função de qualidade da partição e assegura que
+as comunidades obtidas sejam bem conectadas internamente. Essa propriedade permite
+separar conjuntos de sinais com maior similaridade semântica entre si, favorecendo a
+identificação de temas ou padrões recorrentes na comunicação monetária
+\citep{traag2019louvain}.
+
+A centralidade de intermediação (\textit{betweenness centrality}) quantifica a
+frequência com que um nó se encontra nos caminhos geodésicos entre outros pares de
+nós. Na rede de sinais, essa medida destaca observações que podem conectar grupos
+semanticamente distintos e, portanto, ocupar uma posição de intermediação na
+estrutura relacional \citep{freeman1977set}.
+
+A centralidade de grau ponderado mensura a intensidade das conexões de cada nó a partir 
+dos pesos associados às suas arestas. Nesse caso, a força de um nó pode ser 
+representada pela soma dos pesos de suas conexões, permitindo distinguir nós 
+conectados por relações de maior intensidade \citep{barrat2004architecture}. 
+Neste estudo, essa medida permite atribuir maior relevância aos sinais associados a 
+relações semanticamente mais fortes.
+
+O PageRank estima a importância relativa de um nó ao considerar não somente suas
+conexões, mas também a importância dos nós aos quais ele está ligado \citep{page1999pagerank}. 
+Aplicado à rede
+ponderada de similaridade, o algoritmo permite destacar sinais conectados a outros
+sinais estruturalmente relevantes, oferecendo uma ponderação relacional adicional
+para os indicadores de orientação monetária.
+
+Embora estudos recentes demonstrem o potencial dos modelos de linguagem para
+interpretar e quantificar a comunicação de bancos centrais, permanece menos
+explorada sua utilização conjunta com métodos de análise de grafos para investigar
+as relações entre sinais monetários. Assim, este estudo avalia se essa combinação
+contribui para a construção de um indicador experimental da orientação da política
+monetária do Fed, examinando sua capacidade de sintetizar padrões das comunicações
+e sua relação com decisões posteriores do FOMC.
+
+
+
+

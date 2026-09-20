@@ -1,11 +1,16 @@
-\begin{thebibliography}{10}
+\begin{thebibliography}{14}
 
-\bibitem[Blinder {\em et~al.\/}(2008)Blinder, Ehrmann, Fratzscher, De~Haan,
+\bibitem[Barrat {\em et~al.\/}(2004)Barrat, Barth{\'e}lemy, Pastor-Satorras,
+  {\rm e} Vespignani]{barrat2004architecture}
+Barrat, A.; Barth{\'e}lemy, M.; Pastor-Satorras, R.; Vespignani, A., 2004 The
+  architecture of complex weighted networks. Proceedings of the National
+  Academy of Sciences 101(11): 3747--3752.
+
+\bibitem[Blinder {\em et~al.\/}(2008)Blinder, Ehrmann, Fratzscher, de~Haan,
   {\rm e} Jansen]{blinder2008central}
-Blinder, A.~S.; Ehrmann, M.; Fratzscher, M.; De~Haan, J.; Jansen, D., 2008
+Blinder, A.~S.; Ehrmann, M.; Fratzscher, M.; de~Haan, J.; Jansen, D.-J., 2008
   Central bank communication and monetary policy: A survey of theory and
-  evidence. Journal of Economic Literature 46(4): 910--945, American Economic
-  Association.
+  evidence. Journal of Economic Literature 46(4): 910--945.
 
 \bibitem[Brown {\em et~al.\/}(2020)Brown, Mann, Ryder, Subbiah, Kaplan,
   Dhariwal, Neelakantan, Shyam, Sastry, Askell, {\em
@@ -14,6 +19,10 @@ Brown, T.; Mann, B.; Ryder, N.; Subbiah, M.; Kaplan, J.~D.; Dhariwal, P.;
   Neelakantan, A.; Shyam, P.; Sastry, G.; Askell, A.; others, 2020 Language
   models are few-shot learners. Advances in neural information processing
   systems 33: 1877--1901.
+
+\bibitem[Freeman(1977)]{freeman1977set}
+Freeman, L.~C., 1977 A set of measures of centrality based on betweenness.
+  Sociometry 40(1): 35--41.
 
 \bibitem[Gentzkow {\em et~al.\/}(2019)Gentzkow, Kelly, {\rm e}
   Taddy]{gentzkow2019text}
@@ -25,15 +34,15 @@ Gentzkow, M.; Kelly, B.; Taddy, M., 2019 Text as data. Journal of Economic
 Gil, A.~C., 2010 Como elaborar projetos de pesquisa. Atlas, S{\~a}o Paulo, SP,
   Brasil, fifth edition.
 
-\bibitem[Gurkaynak {\em et~al.\/}(2005)Gurkaynak, Sack, {\rm e}
+\bibitem[G{\"u}rkaynak {\em et~al.\/}(2005)G{\"u}rkaynak, Sack, {\rm e}
   Swanson]{gurkaynak2005actions}
-Gurkaynak, R.~S.; Sack, B.; Swanson, E.~T., 2005 Do actions speak louder than
-  words? the response of asset prices to monetary policy actions and statements
-  .
+G{\"u}rkaynak, R.~S.; Sack, B.; Swanson, E.~T., 2005 Do actions speak louder
+  than words? the response of asset prices to monetary policy actions and
+  statements. International Journal of Central Banking 1(1): 55--93.
 
 \bibitem[Hansen {\rm e} Kazinnik(2024)]{hansen2024can}
-Hansen, A.~L.; Kazinnik, S., 2024 Can chatgpt decipher fedspeak? Disponível em
-  SSRN 4399406 .
+Hansen, A.~L.; Kazinnik, S., 2024 Can chatgpt decipher fedspeak? SSRN Working
+  Paper No. 4399406.
 
 \bibitem[Loughran {\rm e} McDonald(2011)]{loughran2011liability}
 Loughran, T.; McDonald, B., 2011 When is a liability not a liability? textual
@@ -44,14 +53,25 @@ Loughran, T.; McDonald, B., 2011 When is a liability not a liability? textual
 Needham, M.; Hodler, A.~E., 2019 Graph algorithms: practical examples in Apache
   Spark and Neo4j. O'Reilly Media.
 
-\bibitem[Silva {\em et~al.\/}(2025)Silva, Moriya, Veyrune, {\rm e}
+\bibitem[Page {\em et~al.\/}(1999)Page, Brin, Motwani, {\rm e}
+  Winograd]{page1999pagerank}
+Page, L.; Brin, S.; Motwani, R.; Winograd, T., 1999 The pagerank citation
+  ranking: Bringing order to the web. Technical Report 1999-66, Stanford
+  InfoLab.
+
+\bibitem[Silva {\em et~al.\/}(2025)Silva, Moriya, {\rm e}
   Veyrune]{silva2025text}
-Silva, T.~C.; Moriya, K.; Veyrune, M. R.~M.; Veyrune, R., 2025 From text to
-  quantified insights: A large-scale llm analysis of central bank
-  communication. International Monetary Fund.
+Silva, T.~C.; Moriya, K.; Veyrune, R.~M., 2025 From text to quantified
+  insights: A large-scale llm analysis of central bank communication. IMF
+  Working Paper 2025/109, International Monetary Fund.
+
+\bibitem[Traag {\em et~al.\/}(2019)Traag, Waltman, {\rm e} van
+  Eck]{traag2019louvain}
+Traag, V.~A.; Waltman, L.; van Eck, N.~J., 2019 From louvain to leiden:
+  Guaranteeing well-connected communities. Scientific Reports 9(1): 5233.
 
 \bibitem[Woodford(2005)]{woodford2005central}
 Woodford, M., 2005 Central bank communication and policy effectiveness.
-  National Bureau of Economic Research Cambridge, Mass., USA.
+  Technical Report 11898, National Bureau of Economic Research.
 
 \end{thebibliography}

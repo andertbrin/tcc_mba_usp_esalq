@@ -1,10 +1,14 @@
+\newpage
 \chapter{Resultados}
 \addcontentsline{toc}{chapter}{Resultados}
+\input{./generated/link_count.tex}
 
 Nesta seção são apresentados os resultados obtidos nas principais etapas do
 estudo: coleta das comunicações públicas do Federal Reserve, preparação dos
 textos, extração e classificação dos sinais de política monetária por modelos
-de linguagem e construção da rede de similaridade semântica. 
+de linguagem, construção da rede de similaridade semântica, 
+definição do indicador e validação da sua capacidade de refletir a orientação 
+da política monetária.
 
 Além de descrever o conjunto de dados e os sinais identificados, são analisadas
 as propriedades da rede construída, incluindo a distribuição das conexões, a
@@ -15,18 +19,20 @@ extraídos e as decisões observadas do Federal Open Market Committee (FOMC).
 \section{Coleta dos links das publicações}
 
 Na etapa inicial da pesquisa, foram coletados, usando Python, os links referentes às comunicações
-públicas disponibilizadas pelo Federal Reserve em seu site oficial. O objetivo
-foi estruturar uma base documental para as etapas posteriores de extração textual,
-classificação dos sinais de política monetária e construção da rede de similaridade
-semântica entre os sinais extraídos.
+públicas disponibilizadas pelo Federal Reserve em seu site oficial. Ao todo, foram
+obtidos \LinkCount links. O objetivo
+foi estruturar as origens da base documental à ser utilizada nas etapas de extração textual e 
+classificação dos sinais de política monetária.
 
 Foram consideradas páginas relacionadas aos materiais de política monetária, ao
 calendário do Federal Open Market Committee (FOMC) e às comunicações públicas de
-dirigentes, como discursos e testemunhos. As principais fontes utilizadas são
-apresentadas na Tabela~\ref{tab:fontes-coleta}. A coleta contemplou comunicações 
-publicadas entre janeiro de 2015 e 12 de setembro de 2025, permitindo a construção
-de uma base com abrangência temporal suficiente para a análise da evolução da
-comunicação monetária ao longo do período recente.
+dirigentes, como discursos e testemunhos. Os endereços apresentados na
+Tabela~\ref{tab:fontes-coleta} correspondem a páginas institucionais de consulta
+que reúnem links para os textos integrais das publicações, e não aos documentos
+individuais que compõem a base. Em particular, o Calendário do FOMC disponibiliza
+os links para as atas e os comunicados associados a cada reunião do Comitê. A partir
+dessas páginas, foram extraídos os links das comunicações publicadas entre janeiro
+de 2015 e setembro de 2025. 
 
 \begin{table}[htb]
 \caption{Páginas do Federal Reserve utilizadas como fontes iniciais para a coleta.}
@@ -49,53 +55,61 @@ https://www.federalreserve.gov/ \newline{newsevents/speeches-testimony.htm} \\
 {\justifying Fonte: Autoria própria.\par}
 \end{table}
 
-O procedimento de coleta combinou ferramentas distintas de acordo com a estrutura
+O procedimento de coleta dos links combinou ferramentas distintas de acordo com a estrutura
 de cada página. Para os materiais de política monetária e para as páginas de
 discursos e testemunhos, que houve necessidade de navegação paginada,
 foi utilizado a biblioteca Selenium com o navegador Microsoft Edge. Essa ferramenta permitiu
 carregar as páginas, avançar entre os resultados e identificar os elementos HTML
 que continham os links das publicações. Já no calendário do FOMC, foram realizadas
 requisições HTTP com a biblioteca Requests, seguidas da análise do código HTML com
-Beautiful Soup. A partir dessa página, foram selecionados links para atas,
-comunicados de decisões monetárias, conferências de imprensa e tabelas de
-projeções.
+Beautiful Soup. 
 
-Ao final da coleta, realizada até 12 de setembro de 2025, a base reuniu 1.306
-links de publicações oficiais.
+\section{extração e padronização dos textos}
 
-\section{Extração e preparação dos textos}
+Após a obtenção dos endereços eletrônicos das publicações, foi realizada a 
+etapa de extração e padronização de seu conteúdo textual. Os resultados foram 
+armazenados em formato JSON, mantendo-se, para cada publicação processada, 
+a URL de origem, o título, a data de publicação e o texto extraído. 
+Antes do processamento de um novo endereço, eram verificadas as URLs 
+já presentes no conjunto de dados, evitando o processamento repetido de 
+publicações previamente extraídas.
 
-Após a obtenção dos links, iniciou-se a etapa de extração e preparação dos textos.
-Os resultados dessa etapa foram armazenados no arquivo JSON, que reúne, 
-para cada publicação processada, a URL, o título, a data de publicação e o 
-conteúdo textual. Antes do processamento de um
-novo endereço, a lista de URLs já armazenadas era carregada para evitar a repetição
-de documentos previamente extraídos.
+Para as publicações disponibilizadas diretamente em páginas HTML, foram realizadas 
+requisições HTTP por meio da biblioteca \textit{Requests}. As requisições foram 
+configuradas com tempo limite de resposta e, após o recebimento do conteúdo, 
+sua codificação foi definida como UTF-8. O documento HTML retornado foi então 
+interpretado utilizando a biblioteca \textit{Beautiful Soup}.
 
-Para as publicações disponibilizadas em páginas HTML, foram realizadas requisições
-HTTP com a biblioteca Requests. O conteúdo retornado foi interpretado com Beautiful
-Soup, e elementos sem conteúdo relevante para a análise, como scripts, estilos,
-menus, cabeçalhos, rodapés e elementos de navegação, foram removidos. Em seguida,
-o texto foi obtido a partir do conteúdo restante, com a eliminação de linhas vazias
-e de espaços excedentes. Esse procedimento produziu uma versão textual mais
-adequada às etapas posteriores de classificação e extração dos sinais monetários.
+Antes da obtenção do texto, foram removidos elementos HTML sem 
+interesse para a análise, especificamente as tags \texttt{script}, 
+\texttt{style}, \texttt{noscript}, \texttt{header}, \texttt{footer} e 
+\texttt{nav}. Em seguida, o conteúdo restante da página foi convertido em 
+texto, utilizando quebras de linha como separadores. Cada linha foi 
+posteriormente tratada para remoção de espaços excedentes em suas extremidades, 
+e as linhas vazias foram descartadas. O resultado desse procedimento constituiu 
+o conteúdo textual utilizado nas etapas seguintes do trabalho.
 
-Além do conteúdo textual, foram identificados o título e a data de publicação de
-cada documento. Essas informações foram estruturadas no formato JSON com auxílio
-de um modelo de linguagem, que recebeu como entrada o texto limpo da página e
-retornou os metadados no formato padronizado. A URL original foi mantida junto aos
-metadados para preservar a rastreabilidade das informações extraídas.
+A identificação do título e da data de publicação foi realizada com auxílio 
+de um modelo de linguagem de grande escala. O texto obtido após o tratamento 
+da página HTML foi fornecido ao modelo juntamente com uma instrução para 
+retornar essas duas informações em formato JSON. A data de publicação 
+foi padronizada no formato \texttt{YYYY-MM-DD}. Após o processamento, 
+a URL original e o conteúdo textual previamente extraído eram incorporados 
+ao registro, resultando em uma estrutura padronizada para cada publicação.
 
-Algumas publicações, especialmente comunicados de imprensa e páginas do FOMC,
-disponibilizam seu conteúdo principal em arquivos PDF. Para esses casos, foram
-realizadas requisições HTTP às páginas associadas, cujo conteúdo HTML foi
-interpretado com Beautiful Soup. Inicialmente, eram localizadas todas as tags de
-hiperlink \texttt{a}, cujos atributos \texttt{href} eram avaliados para
-identificar links que continham a extensão \texttt{.pdf}. Quando os links estavam
-em formato relativo, eles eram corrigidos a partir da URL raiz do site. Em seguida,
-eram selecionados os arquivos relacionados ao comunicado ou às metas de longo
-prazo. O conteúdo dos PDFs foi extraído com a biblioteca PyPDF2, mediante leitura
-sequencial das páginas.
+Para documentos cujo conteúdo estava disponibilizado em arquivos PDF, 
+foi adotado um procedimento específico. Inicialmente, a página associada à 
+publicação era obtida por meio de uma requisição HTTP e 
+processada com \textit{Beautiful Soup}. Todas as tags de 
+hiperlink \texttt{<a>} eram examinadas e seus atributos \texttt{href} avaliados 
+para identificar endereços contendo a extensão \texttt{.pdf}.
+
+Após a identificação do arquivo, uma nova requisição HTTP era realizada 
+para seu download. O documento era armazenado temporariamente como arquivo 
+PDF e processado com a biblioteca \textit{PyPDF2}. A extração era realizada 
+sequencialmente, percorrendo todas as páginas do documento por meio 
+da classe \texttt{PdfReader} e concatenando o conteúdo textual obtido. 
+Após a conclusão da leitura, o arquivo temporário era removido.
 
 Durante a preparação, os documentos cujo título continha a expressão
 \textit{implementation note} foram marcados como não extraídos, em vez de terem seu
@@ -105,8 +119,9 @@ procedimento permitiu preservar os dados já coletados e retomar a execução se
 duplicar publicações.
 
 Como resultado da etapa de extração, cada comunicação passou a ser representada
-em uma estrutura padronizada, contendo quatro campos principais: url,
-title, text e publication\_date, conforme ilustrado
+em uma estrutura padronizada, contendo quatro campos principais: 
+\texttt{url}, \texttt{title}, \texttt{text} e \texttt{publication\_date}, 
+conforme ilustrado
 na Figura~\ref{fig:resultado-extracao-texto}.
 
 \begin{figure}[htb]

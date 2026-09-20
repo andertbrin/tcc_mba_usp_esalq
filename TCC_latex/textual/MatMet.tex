@@ -1,5 +1,6 @@
-\chapter{Metodologia ou Material e Métodos}
-\addcontentsline{toc}{chapter}{Metodologia ou Material e Métodos}
+\newpage
+\chapter{Material e Métodos}
+\addcontentsline{toc}{chapter}{Material e Métodos}
 
 Este estudo possui uma abordagem qualitativa e quantitativa, e
 objetivo exploratório, uma vez que busca investigar a viabilidade
@@ -14,8 +15,8 @@ comparáveis ao longo do tempo.
 
 \section{Coleta dos documentos}
 
-O conjunto textual utilizado é composto por documentos oficiais publicados pelo Federal Reserve,
-incluindo comunicados das reuniões do Federal Open Market Committee (FOMC), atas,
+O conjunto textual utilizado é composto por documentos oficiais publicados pelo FED,
+incluindo comunicados das reuniões do FOMC, atas,
 discursos de dirigentes, testemunhos e comunicados de imprensa. Os documentos foram
 coletados a partir do site oficial da instituição. Para cada publicação, foram
 armazenadas informações de identificação, como o endereço eletrônico, a data e o
@@ -27,15 +28,15 @@ correspondente.
 Após a coleta dos documentos, modelos de linguagem de grande porte
 (LLMs) foram utilizados para identificar sinais relacionados à política monetária e
 organizar as informações extraídas. Cada sinal recebeu uma classificação de postura
-monetária, podendo ser hawkish, mostly hawkish, neutral,
-mostly dovish ou dovish, além de uma pontuação numérica, uma
+monetária, podendo ser \textit{hawkish}, \textit{mostly hawkish}, \textit{neutral},
+\textit{mostly dovish} ou \textit{dovish}, além de uma pontuação numérica, uma
 justificativa e o trecho de evidência correspondente.
 
 \section{Representação vetorial e construção da rede}
 
 Para representar o conteúdo semântico dos sinais, cada um foi associado a um vetor
-de embedding. A partir desses vetores, foi calculada a similaridade do
-cosseno entre os sinais. O algoritmo k-nearest neighbors (KNN) foi então
+de \textit{embedding}. A partir desses vetores, foi calculada a similaridade do
+cosseno entre os sinais. O algoritmo \textit{k-nearest neighbors} (KNN) foi então
 aplicado para selecionar, para cada sinal, os vizinhos semanticamente mais próximos,
 respeitando um número máximo de vizinhos e um limiar mínimo de similaridade.
 
@@ -48,21 +49,35 @@ essa relação não está explicitamente indicada no texto original. As informa�
 publicação, data, classificação, pontuação e evidência são mantidas como atributos
 dos sinais, permitindo análises posteriores por período.
 
-\section{Análise da rede - REFINAR}
+\section{Análise da estrutura da rede de similaridade semântica}
 
-Após a construção da rede, foram aplicados algoritmos de análise de grafos para
-investigar sua organização estrutural. O algoritmo de Louvain foi utilizado para
-detectar comunidades, isto é, agrupamentos de sinais que apresentam maior
-proximidade entre si. A modularidade foi considerada na avaliação da separação entre
-essas comunidades e o tamanho dos agrupamentos foi utilizado para caracterizar sua
-representatividade na rede.
+As análises foram realizadas separadamente para cada período de interesse. Antes da
+identificação das comunidades, foi aplicado o algoritmo de componentes fracamente
+conectados (\textit{weakly connected components} -- WCC) para avaliar a conectividade
+da rede. O limiar mínimo de similaridade foi reduzido em etapas sucessivas até que
+os sinais do período formassem uma única componente conexa. Esse procedimento buscou
+evitar que a análise fosse realizada sobre grupos isolados e definiu a rede utilizada
+nas etapas seguintes.
 
-O PageRank foi empregado como medida de centralidade. Diferentemente de uma simples
-contagem de conexões, essa métrica considera também a importância dos nós vizinhos,
-permitindo destacar sinais que ocupam posições relevantes na estrutura da rede. As
-medidas de centralidade, os agrupamentos identificados e as classificações de postura
-monetária foram combinados para produzir um indicador experimental da orientação
-presente nas comunicações analisadas.
+Sobre essa rede, o algoritmo de Leiden foi executado utilizando o escore de
+similaridade como peso das relações, permitindo identificar comunidades de sinais
+semanticamente próximos. Para caracterizar sua estrutura, foram registrados o número
+de comunidades, o tamanho da maior comunidade e a pontuação média dos sinais em cada
+grupo. A modularidade não foi utilizada como critério de seleção no procedimento
+implementado; a interpretação das comunidades baseou-se em sua composição, tamanho
+e orientação média.
+
+A relevância estrutural dos sinais foi avaliada por três medidas ponderadas pelo
+escore de similaridade: centralidade de intermediação, centralidade de grau e
+PageRank. A primeira destaca nós situados nos caminhos entre diferentes regiões da
+rede; a segunda mensura a intensidade total de suas conexões; e o PageRank considera
+também a relevância dos nós vizinhos. Para cada medida, foi calculada uma média
+ponderada da pontuação de postura monetária dos sinais. Também foram obtidas a média
+simples das pontuações e medidas agregadas por comunidade, incluindo médias com pesos
+iguais e ponderadas pelo PageRank. Esses resultados compõem as versões do indicador
+experimental avaliadas na etapa de comparação temporal.
+
+
 
 \section{Comparação temporal e avaliação - REFINAR}
 
@@ -77,29 +92,4 @@ Considerando o caráter exploratório da pesquisa, os resultados devem ser
 interpretados como evidência inicial sobre a utilidade da abordagem. A análise
 privilegia a coerência entre os sinais, a estrutura da rede e os eventos observados,
 sem pressupor, nesta etapa, a obtenção de elevado poder preditivo.
-
-
-
-% \begin{table}
-% \centering
-% \caption{Estimates of libero ac erat vulputate feugiat non
-%   eu justo. Aenean blandit fermentum efficitur. Fusce faucibus turpis
-%   ac dolor sollicitudin, quis lobortis felis porttitor. Phasellus
-%   hendrerit quam sit amet erat fringilla, et bibendum ligula feugiat.
-%   Phasellus odio tortor, mollis ac cursus ut, fermentum ut orci.
-%   Vestibulum malesuada, justo vitae tincidunt posuere, nibh ipsum
-%   pellentesque mauris, et suscipit magna turpis pellentesque magna.
-%   Mauris sed dui vitae velit facilisis pharetra eu in enim.
-%   Suspendisse fringilla lobortis dolor eget sollicitudin.}
-
-% \begin{tabular}{ c p{5.5pc} c p{5.5pc} }
-% \hline
-% \multicolumn{2}{c}{Múltiplas colunas} & Aqui & Acolá \\
-% \hline
-% Um & \raggedright\arraybackslash Largura fixa em (5.5pc). & Três &
-% \raggedright\arraybackslash Coluna 4, largura fixa.\\
-% \hline
-% \label{Tab:estim}
-% \end{tabular}
-% \end{table}
 

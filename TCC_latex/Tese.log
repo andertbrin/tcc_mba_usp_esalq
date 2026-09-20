@@ -1,4 +1,4 @@
-This is LuaHBTeX, Version 1.25.7 (MiKTeX 26.5) (format=lualatex 2026.9.12)  19 SEP 2026 17:07
+This is LuaHBTeX, Version 1.25.7 (MiKTeX 26.5) (format=lualatex 2026.9.12)  19 SEP 2026 21:12
  restricted system commands enabled.
  file:line:error style messages enabled.
 **"c:/Users/ander/OneDrive/Cursos/MBA ciencia de dados EsalqUSP/tcc/TCC_latex/T
@@ -1031,136 +1031,137 @@ Cap\'{\i }tulo 1.
 
 Class memoir Warning: The \rm font command is deprecated. 
 (memoir)              Use \textrm{...} or {\rmfamily... } instead on input line
- 27.
+ 20.
 
 
-Underfull \hbox (badness 1533) in paragraph at lines 32--40
-\TU/Arial(1)/m/n/10.95 mo-de-los de lin-gua-gem de grande porte (Large Lan-guage
- Mo-dels - LLMs), am-pli-a-ram
- []
-
-
-Underfull \hbox (badness 2057) in paragraph at lines 41--50
-\TU/Arial(1)/m/n/10.95 hu-ma-nas, in-di-cando que os mo-de-los GPT apre-sen-tam me-lhora re-le-vante em re-la-
-ção
+Underfull \hbox (badness 2318) in paragraph at lines 17--23
+[]\TU/Arial(1)/m/n/10.95 A in-ter-pre-ta-ção des-sas co-mu-ni-ca-ções, con-t
+udo, é di-fi-cul-tada pelo vo-lume de
  []
 
 File: ./figuras/logo_mba.png Graphic file (type png)
 <use ./figuras/logo_mba.png>
-Package luatex.def Info: ./figuras/logo_mba.png  used on input line 60.
+Package luatex.def Info: ./figuras/logo_mba.png  used on input line 56.
 (luatex.def)             Requested size: 69.4351pt x 28.45274pt.
 [3
 
 ]
-Underfull \hbox (badness 2205) in paragraph at lines 61--67
-[]\TU/Arial(1)/m/n/10.95 Pa-ra-le-la-mente, téc-ni-cas ba-se-a-das em gra-fos 
-per-mi-tem re-pre-sen-tar e ana-li-sar
- []
-
-
-Underfull \hbox (badness 3364) in paragraph at lines 68--75
-[]\TU/Arial(1)/m/n/10.95 No con-texto deste es-tudo, os si-nais de po-lí-tica 
-mo-ne-tá-ria iden-ti-fi-ca-dos nas
- []
-
-
-Underfull \hbox (badness 1484) in paragraph at lines 76--87
-[]\TU/Arial(1)/m/n/10.95 Pa-ra-le-la-mente, téc-ni-cas de aná-lise de gra-fos per-mi-tem re-pre-sen-tar e ex-plo-rar
+Underfull \hbox (badness 1173) in paragraph at lines 65--71
+\TU/Arial(1)/m/n/10.95 se-pa-rar con-jun-tos de si-nais com maior si-mi-la-ri-da
+de se-mân-tica en-tre si, fa-vo-re-cendo a
  []
 
 ) (./textual/MatMet.tex
+File: ./figuras/logo_mba.png Graphic file (type png)
+<use ./figuras/logo_mba.png>
+Package luatex.def Info: ./figuras/logo_mba.png  used on input line 1.
+(luatex.def)             Requested size: 69.4351pt x 28.45274pt.
+ [4]
 Cap\'{\i }tulo 2.
 File: ./figuras/logo_mba.png Graphic file (type png)
 <use ./figuras/logo_mba.png>
-Package luatex.def Info: ./figuras/logo_mba.png  used on input line 14.
+Package luatex.def Info: ./figuras/logo_mba.png  used on input line 61.
 (luatex.def)             Requested size: 69.4351pt x 28.45274pt.
-[4]
-File: ./figuras/logo_mba.png Graphic file (type png)
-<use ./figuras/logo_mba.png>
-Package luatex.def Info: ./figuras/logo_mba.png  used on input line 59.
-(luatex.def)             Requested size: 69.4351pt x 28.45274pt.
- [5]
-Underfull \hbox (badness 4582) in paragraph at lines 76--80
+[5]
+Underfull \hbox (badness 1231) in paragraph at lines 62--69
+[]\TU/Arial(1)/m/n/10.95 So-bre essa rede, o al-go-ritmo de Lei-den foi exe-cu-t
+ado uti-li-zando o es-core de
+ []
+
+
+Underfull \hbox (badness 5504) in paragraph at lines 62--69
+\TU/Arial(1)/m/n/10.95 si-mi-la-ri-dade como peso das re-la-ções, per-mi-tindo
+ iden-ti-fi-car co-mu-ni-da-des de si-nais
+ []
+
+
+Underfull \hbox (badness 4582) in paragraph at lines 91--95
 []\TU/Arial(1)/m/n/10.95 Con-si-de-rando o ca-rá-ter ex-plo-ra-tó-rio da pes-q
 uisa, os re-sul-ta-dos de-vem ser
  []
 
 ) (./textual/Resultados.tex
+File: ./figuras/logo_mba.png Graphic file (type png)
+<use ./figuras/logo_mba.png>
+Package luatex.def Info: ./figuras/logo_mba.png  used on input line 1.
+(luatex.def)             Requested size: 69.4351pt x 28.45274pt.
+ [6]
 Cap\'{\i }tulo 3.
+(./generated/link_count.tex)
+Underfull \hbox (badness 1546) in paragraph at lines 27--36
+[]\TU/Arial(1)/m/n/10.95 Fo-ram con-si-de-ra-das pá-gi-nas re-la-ci-o-na-das ao
+s ma-te-ri-ais de po-lí-tica mo-ne-tá-ria,
+ []
+
 File: ./figuras/logo_mba.png Graphic file (type png)
 <use ./figuras/logo_mba.png>
-Package luatex.def Info: ./figuras/logo_mba.png  used on input line 30.
+Package luatex.def Info: ./figuras/logo_mba.png  used on input line 76.
 (luatex.def)             Requested size: 69.4351pt x 28.45274pt.
-[6]
-File: ./figuras/logo_mba.png Graphic file (type png)
-<use ./figuras/logo_mba.png>
-Package luatex.def Info: ./figuras/logo_mba.png  used on input line 88.
-(luatex.def)             Requested size: 69.4351pt x 28.45274pt.
- [7]
-Underfull \hbox (badness 2269) in paragraph at lines 107--111
-\TU/Arial(1)/m/n/10.95 em uma es-tru-tura pa-dro-ni-zada, con-tendo qua-tro cam-
-pos prin-ci-pais: url, ti-tle, text e
+[7]
+Underfull \hbox (badness 1072) in paragraph at lines 83--91
+[]\TU/Arial(1)/m/n/10.95 An-tes da ob-ten-ção do texto, fo-ram re-mo-vi-dos el
+e-men-tos HTML sem in-te-resse
  []
 
 <figuras/resultado_extracao_texto.png, id=29, 455.45157pt x 166.37157pt>
 File: figuras/resultado_extracao_texto.png Graphic file (type png)
 <use figuras/resultado_extracao_texto.png>
 Package luatex.def Info: figuras/resultado_extracao_texto.png  used on input li
-ne 114.
+ne 129.
 (luatex.def)             Requested size: 455.24411pt x 166.30005pt.
 
-Underfull \hbox (badness 1377) in paragraph at lines 124--128
+Underfull \hbox (badness 1377) in paragraph at lines 139--143
 \TU/Arial(1)/m/n/10.95 clas-si-fi-ca-ção dos si-nais de po-lí-tica mo-ne-t
 á-ria pre-sen-tes nas co-mu-ni-ca-ções do Fe-de-ral
  []
 
 File: ./figuras/logo_mba.png Graphic file (type png)
 <use ./figuras/logo_mba.png>
-Package luatex.def Info: ./figuras/logo_mba.png  used on input line 138.
+Package luatex.def Info: ./figuras/logo_mba.png  used on input line 143.
 (luatex.def)             Requested size: 69.4351pt x 28.45274pt.
-[8<./figuras/resultado_extracao_texto.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 147--148
+[8]
+Underfull \hbox (badness 10000) in paragraph at lines 162--163
 []|\TU/Arial(1)/m/n/10.95 Cle-arly sup-ports mo-ne-tary ea-sing or main-tai-ning
  an
  []
 
 
-Underfull \hbox (badness 1448) in paragraph at lines 147--148
+Underfull \hbox (badness 1448) in paragraph at lines 162--163
 \TU/Arial(1)/m/n/10.95 ac-com-mo-da-tive stance. Use when the sig-nal in-di-ca-t
 es that
  []
 
 
-Underfull \hbox (badness 1655) in paragraph at lines 155--156
+Underfull \hbox (badness 1655) in paragraph at lines 170--171
 \TU/Arial(1)/m/n/10.95 per-sis-tent, broad-based, or ri-sing; eco-no-mic ac-ti-v
 ity re-mains
  []
 
 File: ./figuras/logo_mba.png Graphic file (type png)
 <use ./figuras/logo_mba.png>
-Package luatex.def Info: ./figuras/logo_mba.png  used on input line 189.
+Package luatex.def Info: ./figuras/logo_mba.png  used on input line 204.
 (luatex.def)             Requested size: 69.4351pt x 28.45274pt.
-[9]
-Underfull \hbox (badness 1342) in paragraph at lines 211--219
+[9<./figuras/resultado_extracao_texto.png>]
+Underfull \hbox (badness 1342) in paragraph at lines 226--234
 []\TU/Arial(1)/m/n/10.95 Após a es-tru-tu-ra-ção dos si-nais mo-ne-tá-rios, os da-dos fo-ram in-se-ri-dos em um
  []
 
-<figuras/graph_schema.png, id=37, 1242.6425pt x 499.8675pt>
+File: ./figuras/logo_mba.png Graphic file (type png)
+<use ./figuras/logo_mba.png>
+Package luatex.def Info: ./figuras/logo_mba.png  used on input line 235.
+(luatex.def)             Requested size: 69.4351pt x 28.45274pt.
+[10]
+<figuras/graph_schema.png, id=40, 1242.6425pt x 499.8675pt>
 File: figuras/graph_schema.png Graphic file (type png)
 <use figuras/graph_schema.png>
-Package luatex.def Info: figuras/graph_schema.png  used on input line 240.
+Package luatex.def Info: figuras/graph_schema.png  used on input line 255.
 (luatex.def)             Requested size: 386.96027pt x 155.65903pt.
 File: ./figuras/logo_mba.png Graphic file (type png)
 <use ./figuras/logo_mba.png>
-Package luatex.def Info: ./figuras/logo_mba.png  used on input line 261.
-(luatex.def)             Requested size: 69.4351pt x 28.45274pt.
-[10]
-File: ./figuras/logo_mba.png Graphic file (type png)
-<use ./figuras/logo_mba.png>
-Package luatex.def Info: ./figuras/logo_mba.png  used on input line 300.
+Package luatex.def Info: ./figuras/logo_mba.png  used on input line 289.
 (luatex.def)             Requested size: 69.4351pt x 28.45274pt.
  [11<./figuras/graph_schema.png>]
-Underfull \hbox (badness 5050) in paragraph at lines 300--306
+Underfull \hbox (badness 5050) in paragraph at lines 315--321
 []\TU/Arial(1)/m/n/10.95 Os pa-res iden-ti-fi-ca-dos fo-ram ar-ma-ze-na-dos como
  re-la-ções \TU/Consolas(0)/m/n/10.95 SIMILAR_TO \TU/Arial(1)/m/n/10.95 não
  []
@@ -1170,7 +1171,7 @@ Cap\'{\i }tulo 4.
 ) (./Tese.bbl
 File: ./figuras/logo_mba.png Graphic file (type png)
 <use ./figuras/logo_mba.png>
-Package luatex.def Info: ./figuras/logo_mba.png  used on input line 57.
+Package luatex.def Info: ./figuras/logo_mba.png  used on input line 8.
 (luatex.def)             Requested size: 69.4351pt x 28.45274pt.
  [12])
 File: ./figuras/logo_mba.png Graphic file (type png)
@@ -1190,18 +1191,18 @@ LaTeX Font Warning: Size substitutions with differences
 )
 
 Here is how much of LuaTeX's memory you used:
- 12281 strings out of 475635
+ 12303 strings out of 475635
  125061,953878 words of node,token memory allocated
  1312 words of node memory still in use:
    7 hlist, 2 vlist, 2 rule, 5 glue, 4 kern, 1 glyph, 19 attribute, 203 glue_spe
 c, 10 attribute_list, 4 write nodes
-   avail lists: 1:4,2:681,3:171,4:56,5:102,6:66,7:9198,9:443,10:16,11:1334
- 34835 multiletter control sequences out of 65536+600000
+   avail lists: 1:4,2:826,3:186,4:72,5:99,6:85,7:8635,9:602,10:16,11:1229
+ 34851 multiletter control sequences out of 65536+600000
  79 fonts using 22123695 bytes
- 85i,16n,105p,585b,580s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 85i,16n,105p,585b,562s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <C:/WINDOWS/Fonts/arialnbi.ttf><C:/WINDOWS/Fonts/consola.ttf><C:/WINDOWS/Fonts/a
 riali.ttf><C:/WINDOWS/Fonts/arialbd.ttf><C:/WINDOWS/Fonts/arial.ttf>
-Output written on Tese.pdf (13 pages, 275498 bytes).
+Output written on Tese.pdf (13 pages, 280564 bytes).
 
 PDF statistics: 85 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 1048576)

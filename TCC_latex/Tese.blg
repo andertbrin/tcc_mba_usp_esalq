@@ -5,46 +5,44 @@ Reallocating 'name_of_file' (item size: 1) to 23 items.
 The style file: ./referencias/genetics.bst
 Reallocating 'name_of_file' (item size: 1) to 27 items.
 Database file #1: ./referencias/bibliografia.bib
-Warning--empty journal in gurkaynak2005actions
-You've used 10 entries,
+You've used 14 entries,
             2714 wiz_defined-function locations,
-            663 strings with 6343 characters,
-and the built_in function-call counts, 4766 in all, are:
-= -- 419
-> -- 311
-< -- 6
-+ -- 112
-- -- 102
-* -- 459
-:= -- 897
-add.period$ -- 19
-call.type$ -- 10
-change.case$ -- 82
-chr.to.int$ -- 13
-cite$ -- 11
-duplicate$ -- 191
-empty$ -- 288
-format.name$ -- 118
-if$ -- 898
+            693 strings with 7022 characters,
+and the built_in function-call counts, 6706 in all, are:
+= -- 611
+> -- 414
+< -- 10
++ -- 155
+- -- 135
+* -- 653
+:= -- 1253
+add.period$ -- 28
+call.type$ -- 14
+change.case$ -- 114
+chr.to.int$ -- 17
+cite$ -- 14
+duplicate$ -- 266
+empty$ -- 409
+format.name$ -- 155
+if$ -- 1267
 int.to.chr$ -- 1
 int.to.str$ -- 1
 missing$ -- 12
-newline$ -- 33
-num.names$ -- 40
-pop$ -- 77
+newline$ -- 45
+num.names$ -- 56
+pop$ -- 92
 preamble$ -- 1
-purify$ -- 73
+purify$ -- 100
 quote$ -- 0
-skip$ -- 121
+skip$ -- 162
 stack$ -- 0
-substring$ -- 212
-swap$ -- 28
-text.length$ -- 0
+substring$ -- 343
+swap$ -- 40
+text.length$ -- 3
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 81
-warning$ -- 1
-while$ -- 39
+type$ -- 120
+warning$ -- 0
+while$ -- 58
 width$ -- 0
-write$ -- 110
-(There was 1 warning)
+write$ -- 157

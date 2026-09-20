@@ -301,6 +301,8 @@ INPUT .\textual\Resultados.tex
 INPUT .\textual\Resultados.tex
 INPUT .\figuras\logo_mba.png
 INPUT .\figuras\logo_mba.png
+INPUT .\generated\link_count.tex
+INPUT .\generated\link_count.tex
 INPUT C:\Users\ander\AppData\Local\Programs\MiKTeX\fonts\tfm\public\amsfonts\cmextra\cmex8.tfm
 INPUT C:\Users\ander\AppData\Local\Programs\MiKTeX\fonts\tfm\public\amsfonts\cmextra\cmex8.tfm
 INPUT .\figuras\logo_mba.png
@@ -311,6 +313,8 @@ INPUT .\figuras\resultado_extracao_texto.png
 INPUT .\figuras\resultado_extracao_texto.png
 INPUT .\figuras\logo_mba.png
 INPUT .\figuras\logo_mba.png
+INPUT .\figuras\logo_mba.png
+INPUT .\figuras\logo_mba.png
 INPUT .\figuras\resultado_extracao_texto.png
 INPUT .\figuras\logo_mba.png
 INPUT .\figuras\logo_mba.png
@@ -318,8 +322,6 @@ INPUT .\figuras\graph_schema.png
 INPUT .\figuras\graph_schema.png
 INPUT .\figuras\graph_schema.png
 INPUT .\figuras\graph_schema.png
-INPUT .\figuras\logo_mba.png
-INPUT .\figuras\logo_mba.png
 INPUT .\figuras\logo_mba.png
 INPUT .\figuras\logo_mba.png
 INPUT .\figuras\graph_schema.png
