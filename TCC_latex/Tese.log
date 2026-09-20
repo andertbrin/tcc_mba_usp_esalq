@@ -1,4 +1,4 @@
-This is LuaHBTeX, Version 1.25.7 (MiKTeX 26.5) (format=lualatex 2026.9.12)  19 SEP 2026 23:02
+This is LuaHBTeX, Version 1.25.7 (MiKTeX 26.5) (format=lualatex 2026.9.12)  19 SEP 2026 23:39
  restricted system commands enabled.
  file:line:error style messages enabled.
 **"c:/Users/ander/OneDrive/Cursos/MBA ciencia de dados EsalqUSP/tcc/TCC_latex/T
@@ -1194,12 +1194,12 @@ File: ./figuras/logo_mba.png Graphic file (type png)
 Package luatex.def Info: ./figuras/logo_mba.png  used on input line 372.
 (luatex.def)             Requested size: 69.4351pt x 28.45274pt.
  [12<./figuras/graph_schema.png>]
-<figuras/node_count_by_fomc_period.png, id=54, 787.9839pt x 390.4989pt>
+<figuras/node_count_by_fomc_period.png, id=54, 715.7139pt x 209.8239pt>
 File: figuras/node_count_by_fomc_period.png Graphic file (type png)
 <use figuras/node_count_by_fomc_period.png>
 Package luatex.def Info: figuras/node_count_by_fomc_period.png  used on input l
 ine 375.
-(luatex.def)             Requested size: 455.24411pt x 225.60765pt.
+(luatex.def)             Requested size: 455.24411pt x 133.46721pt.
 
 Underfull \hbox (badness 1603) in paragraph at lines 386--393
 \TU/Consolas(0)/m/n/10.95 signal-cypher\TU/Arial(1)/m/n/10.95 , fo-ram in-clu-
@@ -1227,7 +1227,7 @@ imo de
 
 File: ./figuras/logo_mba.png Graphic file (type png)
 <use ./figuras/logo_mba.png>
-Package luatex.def Info: ./figuras/logo_mba.png  used on input line 419.
+Package luatex.def Info: ./figuras/logo_mba.png  used on input line 427.
 (luatex.def)             Requested size: 69.4351pt x 28.45274pt.
 [13<./figuras/node_count_by_fomc_period.png>]
 Underfull \hbox (badness 2302) in paragraph at lines 435--444
@@ -1235,42 +1235,29 @@ Underfull \hbox (badness 2302) in paragraph at lines 435--444
 co-mu-ni-ca-dos con-se-cu-ti-vos do
  []
 
-<figuras/similarity_cutoff_by_fomc_period.png, id=59, 787.743pt x 390.4989pt>
+<figuras/similarity_cutoff_by_fomc_period.png, id=59, 715.473pt x 209.8239pt>
 File: figuras/similarity_cutoff_by_fomc_period.png Graphic file (type png)
 <use figuras/similarity_cutoff_by_fomc_period.png>
 Package luatex.def Info: figuras/similarity_cutoff_by_fomc_period.png  used on 
 input line 454.
-(luatex.def)             Requested size: 455.24411pt x 225.67915pt.
-<figuras/relationship_count_by_fomc_period.png, id=60, 787.9839pt x 390.4989pt>
-
-File: figuras/relationship_count_by_fomc_period.png Graphic file (type png)
-<use figuras/relationship_count_by_fomc_period.png>
-Package luatex.def Info: figuras/relationship_count_by_fomc_period.png  used on
- input line 475.
-(luatex.def)             Requested size: 455.24411pt x 225.60765pt.
+(luatex.def)             Requested size: 455.24411pt x 133.50563pt.
 File: ./figuras/logo_mba.png Graphic file (type png)
 <use ./figuras/logo_mba.png>
-Package luatex.def Info: ./figuras/logo_mba.png  used on input line 499.
+Package luatex.def Info: ./figuras/logo_mba.png  used on input line 486.
 (luatex.def)             Requested size: 69.4351pt x 28.45274pt.
-[14]) (./textual/Conclusao.tex
+[14<./figuras/similarity_cutoff_by_fomc_period.png>]) (./textual/Conclusao.tex
 Cap\'{\i }tulo 4.
-)
+) (./Tese.bbl
 File: ./figuras/logo_mba.png Graphic file (type png)
 <use ./figuras/logo_mba.png>
-Package luatex.def Info: ./figuras/logo_mba.png  used on input line 146.
+Package luatex.def Info: ./figuras/logo_mba.png  used on input line 52.
 (luatex.def)             Requested size: 69.4351pt x 28.45274pt.
- [15<./figuras/similarity_cutoff_by_fomc_period.png><./figuras/relationship_coun
-t_by_fomc_period.png>] (./Tese.bbl
-File: ./figuras/logo_mba.png Graphic file (type png)
-<use ./figuras/logo_mba.png>
-Package luatex.def Info: ./figuras/logo_mba.png  used on input line 72.
-(luatex.def)             Requested size: 69.4351pt x 28.45274pt.
- [16])
+ [15])
 File: ./figuras/logo_mba.png Graphic file (type png)
 <use ./figuras/logo_mba.png>
 Package luatex.def Info: ./figuras/logo_mba.png  used on input line 162.
 (luatex.def)             Requested size: 69.4351pt x 28.45274pt.
- [17] (./Tese.aux)
+ [16] (./Tese.aux)
  ***********
 LaTeX2e <2026-06-01>
 L3 programming layer <2020/03/25>
@@ -1283,15 +1270,15 @@ LaTeX Font Warning: Size substitutions with differences
 )
 
 Here is how much of LuaTeX's memory you used:
- 12295 strings out of 475635
+ 12282 strings out of 475635
  125061,953878 words of node,token memory allocated
  1318 words of node memory still in use:
    7 hlist, 2 vlist, 2 rule, 5 glue, 4 kern, 1 glyph, 21 attribute, 203 glue_spe
 c, 11 attribute_list, 4 write nodes
-   avail lists: 1:4,2:823,3:186,4:68,5:111,6:85,7:9042,8:14,9:607,10:16,11:1229
- 34835 multiletter control sequences out of 65536+600000
+   avail lists: 1:4,2:823,3:186,4:52,5:111,6:85,7:8793,8:14,9:607,10:16,11:1229
+ 34828 multiletter control sequences out of 65536+600000
  78 fonts using 22016647 bytes
- 85i,16n,105p,585b,584s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 85i,16n,105p,585b,576s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <C:/WINDOWS/Fonts/consola.ttf><C:/WINDOWS/Fonts/ariali.ttf><C:/WINDOWS/Fonts/ari
 albd.ttf><C:/WINDOWS/Fonts/arial.ttf><C:/Users/ander/AppData/Local/Programs/MiKT
 eX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/ander/AppData/Local/Progr
@@ -1299,9 +1286,9 @@ ams/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Users/ander/AppData/Loca
 l/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/ander/AppDa
 ta/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Users/ander
 /AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
-Output written on Tese.pdf (17 pages, 1088516 bytes).
+Output written on Tese.pdf (16 pages, 592285 bytes).
 
-PDF statistics: 121 PDF objects out of 1000 (max. 8388607)
+PDF statistics: 116 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 1048576)
  1 words of extra memory for PDF output out of 10000 (max. 100000000)
 

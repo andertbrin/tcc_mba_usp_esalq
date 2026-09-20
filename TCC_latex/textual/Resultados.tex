@@ -370,9 +370,9 @@ em cada intervalo. Cada nó corresponde a um sinal monetário extraído das
 comunicações publicadas entre a data inicial do período, inclusive, 
 e a data do comunicado subsequente, exclusive.
 
-\begin{figure}[htb]
+\begin{figure}[H]
 \centering
-\includegraphics[width=\textwidth]{figuras/node_count_by_fomc_period.png}
+\includegraphics[width=1\textwidth]{figuras/node_count_by_fomc_period.png}
 \caption{Número de sinais monetários utilizados na construção da rede em cada período entre comunicados consecutivos do FOMC.
 \newline Fonte: Autoria própria.}
 \label{fig:node_count_by_fomc_period}
@@ -449,7 +449,7 @@ cada intervalo. A Figura~\ref{fig:similarity_cutoff} apresenta
 o valor do limiar necessário para que a rede correspondente 
 a cada período formasse uma única componente conexa.
 
-\begin{figure}[htb]
+\begin{figure}[H]
 \centering
 \includegraphics[width=\textwidth]{figuras/similarity_cutoff_by_fomc_period.png}
 \caption{Limiar de similaridade utilizado na construção da rede em cada período entre comunicados consecutivos do FOMC.
@@ -459,31 +459,18 @@ a cada período formasse uma única componente conexa.
 
 Os resultados mostram que não foi necessário utilizar o 
 mesmo nível mínimo de similaridade em todos os períodos 
-para obter uma rede conectada. Valores mais elevados indicam 
-que a conectividade foi alcançada preservando relações 
-entre sinais com maior proximidade semântica, enquanto 
-valores menores indicam a necessidade de incorporar 
-relações entre sinais progressivamente menos semelhantes.
-
-A aplicação desses limiares resultou também em 
-diferentes números de relações \texttt{SIMILAR\_TO} entre os períodos. 
-A Figura~\ref{fig:relationship_count_by_fomc_period} apresenta a quantidade de conexões 
-existentes nas redes após a seleção do limiar correspondente a cada intervalo.
-
-\begin{figure}[htb]
-\centering
-\includegraphics[width=\textwidth]{figuras/relationship_count_by_fomc_period.png}
-\caption{Número de relações \texttt{SIMILAR\_TO} na rede de cada período entre comunicados consecutivos do FOMC.
-\newline Fonte: Autoria própria.}
-\label{fig:relationship_count_by_fomc_period}
-\end{figure}
-
-A quantidade de relações formada em cada período depende tanto 
-do número de sinais disponíveis quanto do limiar de similaridade utilizado. 
-Assim, períodos com maior número de nós não necessariamente apresentam 
-proporcionalmente o mesmo número de conexões, uma vez que a estrutura 
-final também depende da proximidade semântica entre os sinais.
-
+para obter uma rede conectada. Um limiar mais elevado indica 
+que os diferentes documentos apresentam pontos de vista mais 
+próximos entre si, permitindo conectar os sinais com relações 
+de maior proximidade semântica e preservando uma rede mais 
+coesa quanto ao conteúdo abordado. Em contraste, um limiar 
+mais baixo indica maior dispersão entre os pontos de vista 
+expressos nos documentos: para formar uma única rede, foi 
+necessário incorporar relações entre sinais progressivamente 
+menos semelhantes. Assim, o limiar sintetiza o grau de 
+convergência semântica necessário para conectar os sinais 
+produzidos no período, sem representar diretamente a 
+orientação favorável ou contrária da política monetária.
 
 Além da abordagem com limiar de similaridade adaptativo, 
 foi avaliada uma segunda configuração utilizando um limiar 
@@ -491,7 +478,7 @@ constante para todos os períodos. Para definir esse valor,
 foi calculada a mediana dos limiares de similaridade 
 obtidos individualmente pelo procedimento adaptativo ao 
 longo dos intervalos analisados. A mediana resultante foi 
-igual a 0,72, valor adotado como limiar fixo no segundo cenário. 
+igual a 0,72. Valor adotado como limiar fixo no segundo cenário. 
 Essa escolha permite utilizar um valor representativo dos 
 limiares requeridos para a formação das redes no procedimento adaptativo, 
 ao mesmo tempo em que mantém constante o critério de conexão entre os sinais 
