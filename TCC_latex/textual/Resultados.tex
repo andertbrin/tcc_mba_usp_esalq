@@ -64,7 +64,7 @@ que continham os links das publicações. Já no calendário do FOMC, foram real
 requisições HTTP com a biblioteca Requests, seguidas da análise do código HTML com
 Beautiful Soup. 
 
-\section{extração e padronização dos textos}
+\section{Extração e padronização dos textos}
 
 Após a obtenção dos endereços eletrônicos das publicações, foi realizada a 
 etapa de extração e padronização de seu conteúdo textual. Os resultados foram 
@@ -136,20 +136,29 @@ na Figura~\ref{fig:resultado-extracao-texto}.
 
 \section{Extração e classificação dos sinais monetários}
 
-Após a estruturação da base textual, foi implementada a etapa de extração e
-classificação dos sinais de política monetária presentes nas comunicações do
-Federal Reserve. Essa etapa foi realizada por meio de um prompt estruturado,
-utilizado como entrada para o modelo de linguagem gpt-5.6-terra.
+Após a estruturação da base textual, foi realizada a etapa de identificação e 
+classificação dos sinais de política monetária presentes nas comunicações do 
+Federal Reserve. Para essa finalidade, foi utilizado um modelo de linguagem de 
+grande porte, instruído por meio de um prompt estruturado a atuar como um 
+economista especializado na análise de comunicações de bancos centrais e de 
+sinais relacionados à política monetária.
 
-O prompt recebeu, para cada documento, três informações principais: título,
-data de publicação e texto integral da comunicação. A tarefa consistiu em
-identificar trechos que expressassem sinais relevantes para a condução da
-política monetária e classificá-los como \textit{dovish}, \textit{mostly
-dovish}, \textit{neutral}, \textit{mostly hawkish} ou \textit{hawkish}. Para
-reduzir ambiguidades, cada classe foi definida a partir de critérios relacionados
-ao comportamento da inflação, da atividade econômica, do mercado de trabalho e
-da orientação esperada da política monetária, conforme apresentado na
-Tabela~\ref{tab:classes-sinais}.
+Para cada documento, o prompt recebeu como contexto três informações 
+provenientes da etapa anterior: o título da publicação, a data de 
+publicação e o conteúdo textual da comunicação. A partir dessas 
+informações, o modelo \texttt{gpt-5.6-terra} foi instruído a identificar 
+somente sinais relacionados à política monetária e a classificar 
+cada sinal de acordo com a orientação monetária implícita. A execução 
+foi configurada para produzir respostas estruturadas em formato JSON, 
+com temperatura igual a zero e sem esforço adicional de raciocínio.
+
+Foram definidas cinco categorias de orientação monetária: 
+\textit{dovish}, \textit{mostly dovish}, \textit{neutral}, 
+\textit{mostly hawkish} e \textit{hawkish}. As definições 
+incorporadas ao prompt consideraram principalmente informações 
+relacionadas à inflação, à atividade econômica, ao mercado de 
+trabalho e à orientação esperada da política monetária. 
+Os critérios utilizados são apresentados na Tabela~\ref{tab:classes-sinais}.
 
 \begin{table}[htb]
 \centering
@@ -159,47 +168,64 @@ Tabela~\ref{tab:classes-sinais}.
 \hline
 \textbf{Classe} & \textbf{Descrição} \\
 \hline
-\textit{dovish} & Clearly supports monetary easing or maintaining an accommodative stance. Use when the signal indicates that inflation is at target, below target, or moving sustainably toward target; economic activity is weakening; or labor market conditions are softening in a way that reduces the need for restrictive policy. \\
+\textit{dovish} & Clearly supports monetary easing or maintaining an 
+accommodative stance. Use when the signal indicates that inflation is 
+at target, below target, or moving sustainably toward target; economic 
+activity is weakening; or labor market conditions are softening in a 
+way that reduces the need for restrictive policy. \\
 \hline
-\textit{mostly dovish} & Leans toward monetary easing or delaying further tightening, but it is not definitive. Use when the signal reports progress on inflation, slower growth, or softer labor market conditions, while also mentioning uncertainty. \\
+\textit{mostly dovish} & Leans toward monetary easing or delaying 
+further tightening, but it is not definitive. Use when the signal 
+reports progress on inflation, slower growth, or softer labor market 
+conditions, while also mentioning uncertainty. \\
 \hline
-\textit{neutral} & The signal does not clearly imply either easing or tightening. Use when it does not indicate a dominant direction for policy. Do not classify as neutral merely because it is factual or descriptive. \\
+\textit{neutral} & The signal does not clearly imply either easing 
+or tightening. Use when it does not indicate a dominant direction 
+for policy. Do not classify as neutral merely because it is factual 
+or descriptive. \\
 \hline
-\textit{mostly hawkish} & Leans toward monetary tightening or delaying easing, but it is not definitive. Use when the signal reports elevated inflation, upside inflation risks, resilient demand, or strong labor market conditions, while also mentioning uncertainty. \\
+\textit{mostly hawkish} & Leans toward monetary tightening or 
+delaying easing, but it is not definitive. Use when the signal 
+reports elevated inflation, upside inflation risks, resilient demand, 
+or strong labor market conditions, while also mentioning uncertainty. \\
 \hline
-\textit{hawkish} & Clearly supports monetary tightening or maintaining a restrictive stance. Use when the signal indicates that inflation is above target, persistent, broad-based, or rising; economic activity remains strong; or labor market conditions remain tight in a way that justifies restrictive policy. \\
+\textit{hawkish} & Clearly supports monetary tightening or 
+maintaining a restrictive stance. Use when the signal indicates 
+that inflation is above target, persistent, broad-based, or rising; 
+economic activity remains strong; or labor market conditions remain 
+tight in a way that justifies restrictive policy. \\
 \hline
 \end{tabular}
 \\
-{Fonte: Autoria própria.}
+{\justifying Fonte: Autoria própria.\par}
 \end{table}
 
-A saída esperada do modelo foi definida em formato JSON, contendo, para cada
-categoria, uma lista de sinais extraídos. Cada sinal foi estruturado nos
-seguintes campos principais:
+
+Além das definições das classes, o prompt estabeleceu regras para 
+tornar a extração mais consistente. Foram considerados apenas sinais 
+relacionados à política monetária, e cada sinal deveria representar uma 
+única ideia principal. Para cada classificação, o modelo deveria retornar 
+uma lista de sinais identificados, sendo utilizada uma lista vazia 
+quando nenhum sinal correspondente fosse encontrado no documento.
+
+A saída esperada foi definida como um objeto JSON organizado pelas 
+cinco categorias de classificação. Para cada sinal identificado, 
+foram retornados três campos:
+
 \begin{itemize}
-	\item \texttt{Signal}: ideia principal identificada;
-	\item \texttt{Justification}: breve explicação para a classificação
-	atribuída;
-	\item \texttt{Evidence}: trecho curto extraído diretamente do texto
-	original.
+\item \textit{signal}: síntese da principal informação ou sinal de 
+política monetária identificado;
+\item \textit{justification}: breve justificativa para a 
+classificação atribuída;
+\item \textit{evidence}: trecho curto, reproduzido diretamente da 
+comunicação original, utilizado como evidência para o sinal identificado.
 \end{itemize}
 
-Essa estrutura aumenta a rastreabilidade das classificações e permite a
-transformação posterior dos resultados em uma base tabular.
-
-Além da classificação textual, foi gerado um vetor de \textit{embedding} para
-cada sinal extraído, utilizando o conteúdo do campo \texttt{signal}. Os vetores foram
-gerados pelo modelo \texttt{text-embedding-3-large}, com dimensão de 3.072
-componentes. Cada vetor foi armazenado no campo \texttt{embedding\_signal} e
-será utilizado para o cálculo da similaridade semântica
-entre os sinais monetários.
-
-A tabela final contém as colunas \texttt{url}, \texttt{title},
-\texttt{publication\_date}, \texttt{classification}, \texttt{score},
-\texttt{signal}, \texttt{justification}, \texttt{evidence} e
-\texttt{embedding\_signal}. A coluna \texttt{score} contém uma pontuação
-numérica associada à classificação, de acordo com o mapa apresentado na
+Na próxima etapa, cada sinal foi convertido em um registro individual. 
+A classificação textual foi então associada a um escore numérico por 
+meio de um mapeamento determinístico, independente do modelo de linguagem. 
+Os valores variam de $-1$, correspondente à orientação mais \textit{dovish}, 
+a $1$, correspondente à orientação mais \textit{hawkish}, conforme apresentado na
 Tabela~\ref{tab:score-sinais}.
 
 \begin{table}[htb]
@@ -218,35 +244,80 @@ Tabela~\ref{tab:score-sinais}.
 \hline
 \end{tabular}
 \\
-{Fonte: Autoria própria.}
+{\justifying Fonte: Autoria própria.\par}
 \end{table}
+
+Além da classificação e do escore, foi gerada uma representação vetorial 
+para cada sinal extraído. Para isso, somente o conteúdo do campo 
+\texttt{signal} foi fornecido ao modelo de embeddings \texttt{text-embedding-3-large}. 
+Cada sinal foi representado por um vetor com 3.072 componentes, 
+armazenado no campo \texttt{embedding\_signal}. Esses vetores foram posteriormente 
+utilizados para representar a proximidade semântica entre os sinais 
+monetários e constituir as relações de similaridade empregadas na construção do grafo.
+
+Ao final do processamento, cada sinal monetário passou a corresponder 
+a uma linha da base tabular, contendo os campos 
+\texttt{url}, \texttt{title}, \texttt{publication\_date}, 
+\texttt{classification}, \texttt{score}, \texttt{signal}, 
+\texttt{justification}, \texttt{evidence} e \texttt{embedding\_signal}. 
+Os novos registros eram concatenados aos resultados já existentes e 
+armazenados incrementalmente em arquivo CSV, permitindo preservar os 
+sinais previamente processados e retomar a execução sem duplicação de documentos.
 
 \section{Construção do grafo}
 
-Após a estruturação dos sinais monetários, os dados foram inseridos em um banco
-de dados orientado a grafos, Neo4j. A modelagem adotada contém dois tipos de nós:
-\texttt{Publication}, que representa cada comunicação do Federal Reserve, e
-\texttt{Signal}, que representa cada sinal monetário extraído. Os nós de
-publicação foram identificados pela URL do documento e armazenaram os atributos
-de título e data de publicação. Os nós de sinal foram identificados pela
-combinação entre o texto do sinal e a URL do documento de origem, permitindo
-distinguir sinais com conteúdo semelhante extraídos de publicações diferentes.
+Após a estruturação e classificação dos sinais monetários, os dados foram 
+inseridos em um banco de dados orientado a grafos utilizando o Neo4j. 
+A modelagem adotada foi composta por dois tipos de nós: 
+\texttt{Publication}, utilizado para representar cada comunicação do 
+Federal Reserve, e \texttt{Signal}, utilizado para representar 
+individualmente os sinais de política monetária extraídos dessas comunicações.
 
-Cada nó \texttt{Signal} recebeu os atributos \texttt{classification},
-\texttt{score}, \texttt{embedding\_signal} e \texttt{date}. A relação \texttt{HAS\_SIGNAL}
-foi criada entre cada nó \texttt{Publication} e os respectivos nós
-\texttt{Signal}, preservando a vinculação entre o sinal, sua evidência e a
-comunicação que o originou.
+Os nós \texttt{Publication} foram identificados de forma única pela 
+URL da publicação. Para cada nó, foram armazenadas as 
+propriedades \texttt{title} e \texttt{publication\_date}, correspondentes, 
+respectivamente, ao título e à data de publicação do documento. 
+O uso da URL como identificador permitiu que diferentes sinais extraídos 
+de uma mesma comunicação fossem associados a um único nó de publicação.
 
-Além da relação \texttt{HAS\_SIGNAL}, foram criadas relações \texttt{SIMILAR\_TO}
-entre pares de nós \texttt{Signal} semanticamente semelhantes. Essa relação
-conecta sinais que apresentam proximidade de conteúdo, independentemente de
-terem sido extraídos da mesma publicação ou de documentos distintos. Por ser
-não direcionada, a relação representa uma associação mútua entre os sinais, e
-seu atributo \texttt{score\_similarity} registra a intensidade da similaridade
-calculada entre os respectivos vetores de \textit{embedding}. A definição dos
-períodos, o cálculo da similaridade e os critérios utilizados para selecionar
-essas conexões são apresentados na seção seguinte.
+Os nós \texttt{Signal}, por sua vez, foram identificados pela 
+combinação entre o conteúdo textual do sinal e a URL da publicação 
+de origem. Dessa forma, sinais com conteúdos semelhantes ou mesmo 
+idênticos, mas provenientes de documentos distintos, puderam ser 
+mantidos como entidades independentes no grafo. 
+Cada nó recebeu as propriedades \texttt{classification}, 
+\texttt{score}, \texttt{justification}, \texttt{evidence}, 
+\texttt{embedding\_signal} e \texttt{date}. A propriedade 
+\texttt{date} corresponde à data de publicação do documento 
+do qual o sinal foi extraído.
+
+A vinculação entre as publicações e os sinais foi representada 
+pela relação \texttt{HAS\_SIGNAL}, criada entre cada 
+nó \texttt{Publication} e os respectivos nós \texttt{Signal}. 
+Essa estrutura preserva a origem documental de cada sinal e, 
+em conjunto com as propriedades \texttt{justification} e 
+\texttt{evidence}, permite rastrear a classificação até o 
+conteúdo da comunicação utilizada pelo modelo de linguagem.
+
+Além das relações entre publicações e sinais, foram construídas 
+relações \texttt{SIMILAR\_TO} entre sinais semanticamente próximos. 
+Essas conexões foram obtidas a partir da comparação dos vetores 
+armazenados em \texttt{embedding\_signal} e receberam a propriedade 
+\texttt{score\_similarity}, correspondente à similaridade entre os 
+respectivos vetores. Como a proximidade semântica representa uma 
+associação simétrica, a direção das relações foi desconsiderada 
+nas projeções utilizadas nas análises de rede.
+
+Diferentemente dos nós e das relações \texttt{HAS\_SIGNAL}, 
+que constituem a estrutura permanente do grafo, as relações 
+\texttt{SIMILAR\_TO} foram reconstruídas separadamente para cada 
+período de análise. Antes do processamento de um novo período, 
+as relações desse tipo existentes eram removidas e uma nova 
+rede de similaridade era criada contendo apenas os sinais 
+pertencentes ao intervalo temporal considerado. 
+A definição desses períodos e o procedimento utilizado para estabelecer 
+as conexões semânticas são apresentados na seção seguinte.
+
 
 Essa estrutura é ilustrada na Figura~\ref{fig:esquema-grafo}.
 
@@ -258,67 +329,138 @@ Essa estrutura é ilustrada na Figura~\ref{fig:esquema-grafo}.
 	\label{fig:esquema-grafo}
 \end{figure}
 
-\section{Conexões \textit{SIMILAR\_TO}}
+\section{Conexões \texttt{SIMILAR\_TO}}
 
-As conexões \texttt{SIMILAR\_TO} não foram criadas considerando todos os nós
-\texttt{Signal} existentes no grafo. Para evitar comparações entre sinais
-pertencentes a períodos distintos, as conexões foram construídas separadamente
-dentro de cada período de análise, utilizando apenas os nós selecionados para
-esse intervalo.
+A construção das relações \texttt{SIMILAR\_TO} foi realizada separadamente 
+para cada intervalo de análise. Essa estratégia restringiu as comparações 
+semânticas aos sinais associados ao mesmo período entre reuniões 
+consecutivas do FOMC, evitando a formação de relações entre sinais 
+pertencentes a contextos temporais distintos.
 
-Para definir esses períodos, foram utilizadas as datas dos comunicados do
-FOMC, obtidas a partir da base textual estruturada na etapa de extração. Foram
-selecionados os registros cujo título correspondia a \textit{Federal Reserve issues
-FOMC statement}, referentes aos comunicados oficiais divulgados após as reuniões
-do comitê. As datas de publicação desses registros foram reunidas em um conjunto,
-com a eliminação de eventuais repetições, e posteriormente ordenadas
-cronologicamente.
+As datas que delimitam os períodos foram obtidas da base textual 
+produzida nas etapas anteriores. Foram selecionadas as publicações 
+cujo título correspondia exatamente a \textit{Federal Reserve issues FOMC statement}, 
+referentes aos comunicados oficiais divulgados após as reuniões do FOMC. 
+As respectivas datas de publicação foram reunidas, eventuais duplicidades 
+foram eliminadas e os valores foram ordenados cronologicamente.
 
-Cada período foi delimitado por duas datas consecutivas dessa sequência. Em cada
-intervalo, foram selecionados apenas os nós \texttt{Signal} que possuíam vetor de
-\textit{embedding} e cuja data de publicação estivesse compreendida entre o
-início do período, inclusive, e a data do comunicado subsequente, exclusive.
-Em cada período, foram considerados os sinais publicados entre duas datas 
-consecutivas do FOMC, incluindo a data inicial e excluindo a data final.
-Portanto, embora as comunicações divulgadas na data inicial integrem o
-período, todas as comunicações
-publicadas na data de divulgação do \textit{statement} que encerra o intervalo
-são excluídas da construção do indicador desse período. Essa regra evita que o
-indicador incorpore informações divulgadas juntamente com a decisão do FOMC que
-ele busca avaliar e preserva seu caráter prospectivo.
+A partir dessa sequência, cada intervalo foi definido por duas datas consecutivas 
+de divulgação dos comunicados do FOMC. Para um período iniciado em $t_i$ e 
+encerrado em $t_{i+1}$, foram selecionados os nós \texttt{Signal} 
+que possuíam a propriedade \texttt{embedding\_signal} e 
+cuja data satisfazia a condição 
 
-Os nós selecionados foram projetados no Neo4j Graph Data Science (GDS), isto é,
-foram organizados em uma representação temporária em memória contendo somente
-os nós do período e a propriedade vetorial \texttt{embedding\_signal}. Essa
-projeção é independente do grafo armazenado permanentemente no banco de dados e
-serve como estrutura de entrada para a execução dos algoritmos do GDS. Sobre
-ela, foi aplicado o algoritmo \textit{k}-nearest neighbors (KNN), utilizando a
-similaridade do cosseno para comparar os vetores. Para cada sinal, foram
-considerados até 50 vizinhos semanticamente mais próximos, o que restringe a
-rede às relações mais relevantes e evita a formação de um grafo excessivamente
-denso.
+\[
+t_i \leq \text{data de publicação} < t_{i+1}.
+\]
 
-No Neo4j GDS, o procedimento \texttt{gds.knn.stream} opera sobre a projeção em
-memória e retorna, para cada comparação selecionada, os identificadores dos dois
-nós e o respectivo escore de similaridade. Esses identificadores foram então
-convertidos novamente em nós \texttt{Signal} e os pares duplicados foram
-eliminados antes de sua persistência no banco. 
+Consequentemente, as comunicações publicadas na data inicial foram incluídas no 
+período, enquanto aquelas divulgadas na data do comunicado subsequente 
+foram excluídas. Essa definição evita que o indicador referente ao 
+intervalo incorpore informações publicadas simultaneamente à decisão do 
+FOMC utilizada posteriormente como referência para sua avaliação, 
+preservando o caráter prospectivo da análise.
 
-Foram mantidos somente os pares cuja similaridade excedesse um limiar mínimo.
-O procedimento foi iniciado com limiar de 0,80 e, quando a rede resultante ainda
-apresentava mais de uma componente conexa, o valor foi reduzido em incrementos
-de 0,01 até o mínimo de 0,10. A cada iteração, a conectividade foi verificada
-por meio do algoritmo de componentes fracamente conectadas. O limiar selecionado
-para cada período foi, portanto, o maior valor que produziu uma única componente
-conexa dentro dos limites definidos pelo procedimento.
+A quantidade de sinais monetários disponíveis para a construção da 
+rede variou entre os períodos analisados, em função do número e do 
+conteúdo das comunicações publicadas entre reuniões consecutivas do FOMC. 
+A Figura~\ref{fig:node_count_by_fomc_period} apresenta o número de 
+nós \texttt{Signal} selecionados 
+em cada intervalo. Cada nó corresponde a um sinal monetário extraído das 
+comunicações publicadas entre a data inicial do período, inclusive, 
+e a data do comunicado subsequente, exclusive.
 
-Os pares identificados foram armazenados como relações \texttt{SIMILAR\_TO} não
-direcionadas. Cada relação recebeu o atributo \texttt{score\_similarity}, que
-corresponde ao valor da similaridade do cosseno entre os respectivos sinais.
-Assim, cada período é representado por uma rede ponderada, na qual os nós são
-sinais monetários e as arestas expressam a intensidade de sua proximidade
-semântica, inclusive quando os sinais são provenientes de documentos distintos.
+\begin{figure}[htb]
+\centering
+\includegraphics[width=\textwidth]{figuras/node_count_by_fomc_period.png}
+\caption{Número de sinais monetários utilizados na construção da rede em cada período entre comunicados consecutivos do FOMC.
+\newline Fonte: Autoria própria.}
+\label{fig:node_count_by_fomc_period}
+\end{figure}
 
-Teste wq a
+A variação no número de nós evidencia que a quantidade de 
+informações disponíveis para a construção das redes não é constante 
+ao longo do tempo. Sendo que o mínimo de sinais disponíveis ocorre nas reuniões
+de realizadas no começo da pandemia de COVID-19.
+
+Para cada intervalo, os sinais selecionados foram projetados temporariamente 
+em memória por meio do Neo4j Graph Data Science (GDS). Na primeira projeção, 
+denominada \texttt{signal-cypher}, foram incluídos apenas os nós 
+\texttt{Signal} pertencentes ao período e a propriedade vetorial 
+\texttt{embedding\_signal}. Essa projeção não altera a estrutura persistida 
+no banco de dados e foi utilizada exclusivamente como entrada para o 
+cálculo das relações de similaridade.
+
+Sobre essa projeção foi executado o algoritmo \textit{k}-nearest neighbors (KNN). 
+A comparação entre os 
+sinais foi realizada utilizando a similaridade do cosseno 
+aplicada aos vetores de \textit{embedding}. Para cada nó, foram 
+considerados no máximo 50 vizinhos semanticamente mais 
+próximos (\texttt{topK = 50}), sujeitos também a um limiar 
+mínimo de similaridade.
+
+O procedimento retornou, para cada conexão selecionada, os identificadores 
+dos dois nós e o respectivo valor de similaridade. Esses identificadores 
+foram convertidos novamente nos nós \texttt{Signal} armazenados no Neo4j. 
+Para impedir a criação duplicada de uma mesma associação, os pares 
+foram filtrados de acordo com seus identificadores internos antes 
+da persistência da relação. Para cada par mantido, foi criada 
+uma relação \texttt{SIMILAR\_TO}, e o valor calculado pelo KNN 
+foi armazenado na propriedade \texttt{score\_similarity}.
+
+O limiar mínimo de similaridade foi determinado de forma adaptativa 
+para cada período. O procedimento foi iniciado com valor igual a 0,80. 
+Após a construção das relações, uma nova projeção, 
+denominada \texttt{signal-wcc}, foi formada com os nós e as conexões 
+daquele intervalo, considerando as relações como não direcionadas. 
+Em seguida, foi aplicado o algoritmo de componentes 
+fracamente conectadas (\textit{Weakly Connected Components} - WCC) 
+para determinar o número de componentes conexas existentes na rede.
+
+Quando mais de uma componente era identificada, o limiar de 
+similaridade era reduzido em 0,01 e as relações \texttt{SIMILAR\_TO} 
+eram reconstruídas. O procedimento era repetido até que todos os nós 
+do período pertencessem a uma única componente conexa ou até que 
+fosse atingido o limite mínimo de 0,10. Dessa forma, para cada 
+período foi selecionado o maior limiar, dentro da sequência 
+testada, capaz de produzir uma rede conectada.
+
+Esse procedimento procurou estabelecer um equilíbrio entre duas 
+características da rede. Limiares elevados preservam apenas 
+relações de maior proximidade semântica, porém podem produzir 
+grupos isolados de sinais. A redução progressiva do limiar adiciona 
+conexões menos semelhantes até que seja obtida uma estrutura 
+conectada.
+
+Ao final do procedimento, cada intervalo entre comunicados 
+consecutivos do FOMC foi representado por uma rede semântica 
+ponderada. Os nós correspondem aos sinais monetários 
+identificados nas comunicações publicadas durante o período, 
+enquanto as relações representam sua proximidade semântica e 
+são ponderadas pela propriedade \texttt{score\_similarity}. 
+Essa representação constitui a entrada para os algoritmos de 
+detecção de comunidades e de centralidade empregados na construção 
+dos indicadores de orientação monetária.
+
+\textbf{Grafico com limiar de similaridade e numero de conexões na rede para 
+quando wcc é 1. isso para cada período.}
+
+Além da estratégia de limiar adaptativo, foi considerada 
+uma segunda configuração para a construção das redes de 
+similaridade. Nesse cenário, foi utilizado um limiar fixo 
+de similaridade do cosseno igual a 0,72 para todos os 
+períodos analisados. Diferentemente do procedimento 
+adaptativo, no qual o valor do limiar pode variar entre 
+períodos em função da conectividade da rede, a utilização 
+de um valor constante mantém inalterado o critério mínimo 
+para a formação das relações \texttt{SIMILAR\_TO} ao 
+longo de toda a série temporal.
+
+Dessa forma, foram construídas duas versões da rede 
+para cada intervalo entre comunicados consecutivos do FOMC. 
+Na primeira, denominada neste trabalho de abordagem com limiar 
+adaptativo e outra limitada por um limiar fixo para todos os períodos, 
+independentemente do número de componentes resultantes.
+
 
 
