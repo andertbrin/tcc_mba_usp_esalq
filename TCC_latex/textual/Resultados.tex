@@ -52,7 +52,7 @@ https://www.federalreserve.gov/ \newline{newsevents/speeches-testimony.htm} \\
 \hline
 \end{tabular}
 \\
-{\justifying Fonte: Autoria própria.\par}
+\makebox[\textwidth][l]{Fonte: Autoria própria.}
 \end{table}
 
 O procedimento de coleta dos links combinou ferramentas distintas de acordo com a estrutura
@@ -160,7 +160,7 @@ relacionadas à inflação, à atividade econômica, ao mercado de
 trabalho e à orientação esperada da política monetária. 
 Os critérios utilizados são apresentados na Tabela~\ref{tab:classes-sinais}.
 
-\begin{table}[htb]
+\begin{table}[H]
 \centering
 \caption{Descrição das classes para classificação dos sinais monetários.}
 \label{tab:classes-sinais}
@@ -197,7 +197,7 @@ tight in a way that justifies restrictive policy. \\
 \hline
 \end{tabular}
 \\
-{\justifying Fonte: Autoria própria.\par}
+\makebox[\textwidth][l]{Fonte: Autoria própria.}
 \end{table}
 
 
@@ -220,6 +220,10 @@ classificação atribuída;
 \item \textit{evidence}: trecho curto, reproduzido diretamente da 
 comunicação original, utilizado como evidência para o sinal identificado.
 \end{itemize}
+
+O prompt completo utilizado nessa etapa é apresentado no 
+Apêndice~\ref{ap:prompt-extracao}.
+
 
 Na próxima etapa, cada sinal foi convertido em um registro individual. 
 A classificação textual foi então associada a um escore numérico por 
@@ -244,7 +248,7 @@ Tabela~\ref{tab:score-sinais}.
 \hline
 \end{tabular}
 \\
-{\justifying Fonte: Autoria própria.\par}
+\makebox[\textwidth][l]{Fonte: Autoria própria.}
 \end{table}
 
 Além da classificação e do escore, foi gerada uma representação vetorial 
@@ -553,6 +557,44 @@ Os valores calculados pelo algoritmo foram utilizados como pesos
 das pontuações monetárias, resultando no indicador 
 \texttt{pagerank\_weighted\_sentiment}.
 
+
+As Figuras~\ref{fig:variable_cutoff} e
+\ref{fig:fixed_cutoff} apresentam a evolução temporal para Leiden e dos 
+três indicadores ponderados por centralidade. A primeira 
+corresponde às redes construídas com limiar de similaridade 
+variável entre os períodos, enquanto a segunda utiliza o l
+imiar fixo de \ConstantSimilarityCutoff.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=1\textwidth]{figuras/sentiment_indicators_centrality_by_fomc_period.png}
+\caption{Indicadores de orientação monetária obtidos usando Leiden 
+e medidas de centralidade de intermediação, grau e 
+PageRank para as redes construídas com limiar de 
+similaridade variável.
+\newline Fonte: Autoria própria.}
+\label{fig:variable_cutoff}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=1\textwidth]{figuras/sentiment_indicators_centrality_by_fomc_period_fixed.png}
+\caption{Indicadores de orientação monetária obtidos pela média 
+simples e pelas medidas de centralidade de intermediação, grau e 
+PageRank para as redes construídas com limiar fixo de 
+similaridade igual a \ConstantSimilarityCutoff.
+\newline Fonte: Autoria própria.}
+\label{fig:fixed_cutoff}
+\end{figure}
+
+Além dos indicadores calculados diretamente sobre todos os nós da rede, 
+o algoritmo de Leiden foi utilizado para incorporar a estrutura 
+de comunidades à agregação dos sinais. Para cada período, o 
+algoritmo associou cada nó a uma comunidade, permitindo 
+separar a rede em grupos de sinais semanticamente 
+relacionados.
+
+
 A primeira medida baseada em Leiden foi construída 
 calculando-se, inicialmente, a média simples da pontuação dos 
 sinais pertencentes a cada comunidade. Posteriormente, 
@@ -608,6 +650,34 @@ por meio de uma média simples, de modo que todas recebam o mesmo peso no
 indicador final. Essa abordagem diferencia esses indicadores daqueles
 calculados diretamente sobre toda a rede.
 
+
+As Figuras~\ref{fig:sentiment_indicators_centrality_community_by_fomc_period} e
+\ref{fig:sentiment_indicators_centrality_community_by_fomc_period_fixed} 
+apresentam os indicadores resultantes da incorporação das 
+comunidades de Leiden ao processo de agregação. Novamente, são 
+apresentados separadamente os resultados produzidos pelas redes 
+construídas com limiar variável e com limiar fixo de similaridade.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=1\textwidth]{figuras/sentiment_indicators_centrality_community_by_fomc_period.png}
+\caption{Indicadores construídos a partir das comunidades identificadas 
+pelo algoritmo de Leiden combinadas com as medidas de centralidade para as
+redes com limiar de similaridade variável.
+\newline Fonte: Autoria própria.}
+\label{fig:sentiment_indicators_centrality_community_by_fomc_period}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=1\textwidth]{figuras/sentiment_indicators_centrality_community_by_fomc_period_fixed.png}
+\caption{Indicadores construídos a partir das comunidades identificadas 
+pelo algoritmo de Leiden combinadas com as medidas de centralidade para as 
+redes com limiar fixo de similaridade igual a \ConstantSimilarityCutoff.
+\newline Fonte: Autoria própria.}
+\label{fig:sentiment_indicators_centrality_community_by_fomc_period_fixed}
+\end{figure}
+
 Ao todo, foram obtidas oito formas de agregação da 
 orientação monetária em cada período: a média simples; 
 três indicadores ponderados diretamente pelas centralidades 
@@ -617,18 +687,397 @@ e três indicadores que combinam Leiden com as respectivas
 medidas de centralidade. Essa estrutura permite comparar 
 uma agregação que utiliza exclusivamente as classificações 
 individuais com diferentes formas de incorporação da 
-organização estrutural e semântica da rede.
-
-Os mesmos algoritmos e procedimentos de cálculo foram 
+organização estrutural e semântica da rede. Além disso, 
+os mesmos algoritmos e procedimentos de cálculo foram 
 utilizados nas duas estratégias de construção das redes 
-consideradas neste trabalho. Na primeira abordagem, 
-o limiar mínimo de similaridade foi determinado de forma 
-variável para cada período, de acordo com o procedimento 
-de conectividade descrito anteriormente. 
-Na segunda, foi utilizado o limiar fixo de 0,72. 
-Dessa forma, tanto o algoritmo de Leiden quanto 
-as três medidas de centralidade e as oito formas de 
-agregação dos indicadores foram mantidos constantes 
-nas duas abordagens, permitindo avaliar os efeitos 
-decorrentes exclusivamente da alteração do critério 
-utilizado para a formação das relações de similaridade.
+consideradas neste trabalho. 
+
+
+\section{Obtenção da \textit{Federal Funds Rate}}
+
+Para avaliar a relação entre os indicadores de orientação 
+monetária e as decisões 
+posteriores do Federal Open Market Committee (FOMC), 
+foram obtidas informações 
+referentes à faixa-alvo da Federal Funds Rate. 
+Os dados foram consultados por meio 
+da API do Federal Reserve Economic Data (FRED), 
+utilizando duas séries temporais: 
+\texttt{DFEDTARL}, correspondente ao limite 
+inferior da faixa-alvo, e 
+\texttt{DFEDTARU}, correspondente ao limite superior.
+
+Como a análise deste trabalho é organizada de acordo 
+com os períodos delimitados 
+pelos comunicados das reuniões do FOMC, foram mantidas 
+apenas as observações da 
+taxa de juros cujas datas coincidiam com as datas de 
+publicação dos comunicados 
+\textit{Federal Reserve issues FOMC statement}. 
+Dessa forma, a série diária 
+original foi reduzida às observações correspondentes 
+às decisões de política 
+monetária utilizadas como referência na análise.
+
+Para representar a mudança na política de juros entre 
+reuniões consecutivas, foi 
+utilizado o limite superior da faixa-alvo. 
+Para uma reunião ocorrida na data $t$, 
+a variação foi calculada pela diferença entre o 
+limite superior observado nessa 
+data e o limite superior correspondente à reunião anterior:
+
+\[
+\Delta r_t = r_t^{U} - r_{t-1}^{U},
+\]
+
+em que $r_t^{U}$ representa o limite superior da 
+faixa-alvo da Federal Funds Rate 
+na data $t$ e $r_{t-1}^{U}$ representa o limite 
+superior observado na reunião 
+anterior.
+
+
+Assim, valores positivos de $\Delta r_t$ representam 
+elevação do limite superior 
+da faixa-alvo entre duas reuniões consecutivas, 
+valores negativos representam 
+redução e valores iguais a zero indicam manutenção. 
+Para a primeira observação da 
+série, para a qual não existe uma reunião anterior 
+disponível para o cálculo da 
+diferença, o valor foi preenchido com zero.
+
+A evolução da variação do limite superior da faixa-alvo 
+ao longo das reuniões
+do FOMC é apresentada na Figura~\ref{fig:upper_rate_change}. 
+Os valores
+positivos indicam elevações da taxa, enquanto 
+os valores negativos representam
+reduções entre reuniões consecutivas.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=1\textwidth]{figuras/upper_rate_change_by_fomc_period.png}
+\caption{Variação do limite superior da faixa-alvo 
+da Federal Funds Rate entre reuniões 
+consecutivas do FOMC.
+\newline Fonte: Autoria própria.}
+\label{fig:upper_rate_change}
+\end{figure}
+
+
+\section{Correlação entre os Indicadores e a Variação da \textit{Federal Funds Rate}}
+
+Para avaliar a associação entre a orientação monetária identificada nas 
+comunicações do Federal Reserve e a variação do limite superior da faixa-alvo da 
+\textit{Federal Funds Rate}, representada por $\Delta r_t$, foram calculados os 
+coeficientes de correlação de Pearson e de Spearman. A correlação de Pearson 
+mede a associação linear entre as variáveis, enquanto a correlação de Spearman 
+avalia a relação monotônica a partir das posições relativas das observações. 
+Foram considerados os indicadores construídos com limiar de similaridade variável 
+e com limiar fixo de $0,72$. Os resultados são apresentados na 
+Tabela~\ref{tab:correlacoes-upper-rate-change}.
+
+\begin{table}[htbp]
+\centering
+\caption{Correlações entre os indicadores de orientação monetária e a variação do 
+limite superior da \textit{Federal Funds Rate}.}
+\label{tab:correlacoes-upper-rate-change}
+
+\begin{tabular}{lcccc}
+\hline
+& \multicolumn{2}{c}{\textbf{Limiar variável}} & \multicolumn{2}{c}{\textbf{Limiar fixo}} \\
+\textbf{ } & \textbf{Pearson} & \textbf{Spearman} & \textbf{Pearson} & \textbf{Spearman} \\
+\hline
+Betweenness & 0,460 & 0,460 & 0,503 & 0,483 \\
+Grau & 0,475 & 0,495 & 0,477 & 0,501 \\
+PageRank & 0,477 & 0,495 & 0,480 & 0,497 \\
+Comunidades Leiden & 0,495 & 0,468 & 0,451 & 0,436 \\
+Leiden + Betweenness & 0,458 & 0,438 & 0,476 & 0,460 \\
+Leiden + Grau & 0,486 & 0,477 & 0,448 & 0,451 \\
+Leiden + PageRank & 0,486 & 0,473 & 0,449 & 0,440 \\
+Média simples & 0,485 & 0,497 & 0,485 & 0,497 \\
+\hline
+\end{tabular}
+
+\medskip
+\makebox[\textwidth][l]{Fonte: Autoria própria.}
+\end{table}
+
+Todos os coeficientes apresentados são positivos. Esse resultado indica que 
+valores mais elevados dos indicadores, associados a uma orientação relativamente 
+mais \textit{hawkish} nas comunicações, estiveram associados a variações maiores 
+do limite superior da taxa. De forma análoga, valores mais baixos dos indicadores, 
+associados a uma orientação relativamente mais \textit{dovish}, estiveram 
+associados a variações menores ou negativas da taxa.
+
+Com limiar variável, as correlações de Pearson variaram entre 0,458 e 0,495, e as 
+de Spearman entre 0,438 e 0,497. O maior valor de Pearson foi observado para o 
+indicador baseado nas comunidades identificadas pelo algoritmo de Leiden (0,495), 
+enquanto o maior valor de Spearman foi obtido pela média simples (0,497). Os 
+indicadores Grau e PageRank também apresentaram valores elevados de Spearman, 
+ambos iguais a 0,495.
+
+Com limiar fixo de $0,72$, os coeficientes de Pearson variaram entre 0,448 e 0,503, 
+e os de Spearman entre 0,436 e 0,501. O maior valor de Pearson foi obtido pelo 
+indicador ponderado pela centralidade de intermediação (\textit{Betweenness}), com 
+0,503. Para Spearman, o maior coeficiente foi observado no indicador ponderado por 
+Grau, com 0,501, seguido pelos indicadores de média simples e PageRank, ambos com 
+0,497.
+
+A comparação entre as duas medidas mostra que os resultados permanecem positivos, 
+mas a magnitude varia conforme o indicador e o critério de construção da rede. A 
+proximidade entre os coeficientes de Pearson e Spearman para vários indicadores 
+sugere que parte da associação observada também é monotônica, embora não permita 
+concluir que a relação seja estritamente linear. A escolha entre limiar variável e 
+fixo também não produziu uma alteração uniforme: o limiar fixo favoreceu, por 
+exemplo, os indicadores Betweenness e Leiden + Betweenness, enquanto o limiar 
+variável apresentou valores maiores para os indicadores baseados nas comunidades 
+de Leiden.
+
+Por fim, esses resultados devem ser interpretados como evidência de associação 
+entre as variáveis. Nenhum dos coeficientes permite estabelecer causalidade e, 
+isoladamente, as correlações não demonstram capacidade preditiva dos indicadores.
+
+
+
+
+\section{Avaliação da utilidade e da capacidade preditiva dos indicadores}
+
+A correlação apresentada na seção anterior indica a existência de associação
+positiva entre os indicadores de orientação monetária e a variação subsequente da
+faixa-alvo da \textit{Federal Funds Rate}. Entretanto, a existência de correlação,
+isoladamente, não permite determinar se os indicadores apresentam utilidade para
+antecipar as decisões do FOMC ou se a incorporação da estrutura do grafo acrescenta
+informação em relação à média simples das classificações. Para investigar essas
+questões, foram realizadas três análises complementares: regressões com erros-padrão
+robustos, avaliação do valor incremental dos indicadores de grafo e validação temporal
+fora da amostra.
+
+
+
+
+
+\subsection{Relação dos indicadores com a decisão subsequente}
+
+Inicialmente, foram estimados modelos de regressão linear relacionando cada indicador
+calculado no período entre duas reuniões consecutivas do FOMC com a variação da taxa
+observada na reunião seguinte. Para um indicador $I_t$, o modelo pode ser representado
+por
+
+\[
+\Delta r_{t+1} = \alpha + \beta I_t + \varepsilon_t,
+\]
+
+em que $\Delta r_{t+1}$ corresponde à variação do limite superior da faixa-alvo
+observada ao final do período. As regressões foram estimadas utilizando erros-padrão
+robustos à heterocedasticidade e à autocorrelação pelo procedimento HAC de
+Newey-West, considerando uma defasagem.
+
+A mesma análise foi realizada para as redes construídas com limiar de similaridade
+variável e com limiar fixo de 0,72. Foram utilizadas 95 observações em cada
+configuração. Os principais resultados são apresentados na
+Tabela~\ref{tab:regressao-decisao-seguinte}.
+
+\begin{table}[H]
+\centering
+\caption{Regressões entre os indicadores de orientação monetária e a variação da
+taxa na reunião subsequente do FOMC.}
+\label{tab:regressao-decisao-seguinte}
+\begin{tabular}{lcccc}
+\hline
+& \multicolumn{2}{c}{\textbf{Limiar variável}} &
+\multicolumn{2}{c}{\textbf{Limiar fixo}} \\
+\cline{2-5}
+\textbf{Indicador} &
+$\boldsymbol{\beta}$ & $\boldsymbol{R^2}$ &
+$\boldsymbol{\beta}$ & $\boldsymbol{R^2}$ \\
+\hline
+Betweenness            & 0,313 & 0,211 & 0,337 & 0,253 \\
+Grau                   & 0,300 & 0,225 & 0,299 & 0,228 \\
+PageRank               & 0,313 & 0,228 & 0,314 & 0,231 \\
+Comunidades Leiden     & 0,385 & 0,245 & 0,372 & 0,204 \\
+Leiden + Betweenness   & 0,325 & 0,210 & 0,337 & 0,227 \\
+Leiden + Grau          & 0,339 & 0,236 & 0,318 & 0,200 \\
+Leiden + PageRank      & 0,348 & 0,236 & 0,342 & 0,202 \\
+Média simples          & 0,356 & 0,236 & 0,356 & 0,236 \\
+\hline
+\end{tabular}
+
+\medskip
+\makebox[\textwidth][l]{Fonte: Autoria própria.}
+\end{table}
+
+Todos os coeficientes estimados foram positivos e estatisticamente diferentes de
+zero, com valores de $p$ corrigidos pelo procedimento HAC inferiores ou iguais a
+0,001. Esse resultado indica que valores mais elevados dos indicadores, associados
+a uma orientação mais \textit{hawkish}, estão relacionados a variações posteriores
+mais elevadas da taxa de juros.
+
+No cenário com limiar variável, o indicador baseado nas comunidades de Leiden
+apresentou o maior coeficiente estimado ($\beta = 0,385$) e também o maior
+coeficiente de determinação entre os modelos individuais ($R^2 = 0,245$). Na
+configuração com limiar fixo, o maior $R^2$ foi observado para o indicador baseado
+na centralidade de intermediação ($R^2 = 0,253$).
+
+Como teste adicional, os mesmos indicadores foram relacionados à decisão observada
+na reunião que marca o início de cada período. Em todas as versões avaliadas, a
+associação com essa decisão anterior foi superior àquela observada para a reunião
+seguinte, tanto em magnitude do coeficiente quanto em poder explicativo. Portanto,
+embora os indicadores apresentem associação estatisticamente significativa com a
+decisão subsequente, os resultados não indicam que sua relação seja mais forte com
+a decisão futura do que com a decisão já observada no início do período.
+
+Esse comportamento sugere cautela ao interpretar os indicadores como instrumentos
+de antecipação. Parte da informação capturada ao longo de cada intervalo pode estar
+associada à continuidade da orientação monetária vigente e às comunicações
+produzidas após a reunião que inicia o período.
+
+\subsection{Valor incremental da estrutura do grafo}
+
+Uma segunda análise foi realizada para verificar se os indicadores derivados da
+estrutura do grafo acrescentam informação à média simples das classificações. Para
+isso, foram comparados dois modelos. O modelo de referência utilizou exclusivamente
+a média simples dos sinais:
+
+\[
+M_0:\quad
+\Delta r_{t+1}
+=
+\alpha + \beta_1 I^{\text{média}}_t + \varepsilon_t,
+\]
+
+enquanto o segundo modelo acrescentou um dos indicadores derivados do grafo:
+
+\[
+M_1:\quad
+\Delta r_{t+1}
+=
+\alpha + \beta_1 I^{\text{média}}_t
++
+\beta_2 I^{\text{grafo}}_t
++
+\varepsilon_t.
+\]
+
+O valor incremental foi avaliado considerando conjuntamente três critérios:
+aumento do $R^2$ ajustado, redução do RMSE fora da amostra e significância
+estatística do coeficiente associado ao indicador de grafo, utilizando novamente
+erros-padrão HAC de Newey-West.
+
+Nenhum dos indicadores avaliados satisfez simultaneamente os três critérios. Na
+configuração com limiar variável, os pequenos aumentos de $R^2$ ajustado
+observados para PageRank e Comunidades Leiden não foram acompanhados por redução
+do RMSE fora da amostra, e seus coeficientes adicionais não apresentaram
+significância estatística.
+
+Na configuração com limiar fixo, o resultado mais próximo de evidenciar ganho
+incremental foi obtido pela centralidade de intermediação. A inclusão de
+Betweenness elevou o $R^2$ ajustado de 0,228 para 0,238 e reduziu o RMSE fora da
+amostra de 0,2522 para 0,2501. Entretanto, o coeficiente adicional apresentou
+$p=0,103$, valor superior ao nível de significância de 5\%. Assim, mesmo nesse
+caso, não foi possível identificar evidência estatística suficiente de ganho
+incremental em relação à média simples.
+
+Esses resultados mostram que as medidas baseadas na estrutura do grafo modificam
+a ponderação dos sinais e, em alguns casos, apresentam resultados individuais
+ligeiramente superiores, mas a informação adicional produzida por essas medidas
+apresenta elevada sobreposição com aquela já contida na média simples das
+classificações.
+
+\subsection{Validação temporal fora da amostra}
+
+Por fim, foi realizada uma validação temporal fora da amostra utilizando uma
+janela expansiva. As primeiras 30 reuniões foram utilizadas para estimar o modelo
+inicial. Em seguida, a decisão da reunião subsequente foi prevista e incorporada
+ao conjunto de treinamento antes da estimação da previsão seguinte. Esse
+procedimento foi repetido sequencialmente, preservando a ordem temporal das
+observações.
+
+A avaliação resultou em 65 previsões fora da amostra, compreendendo o período
+entre dezembro de 2018 e setembro de 2026. O desempenho foi avaliado pelo erro
+absoluto médio (MAE), pela raiz do erro quadrático médio (RMSE) e pela capacidade
+de identificar a direção da decisão. Para essa última medida, variações superiores
+a 0,125 ponto percentual foram classificadas como alta, variações inferiores a
+$-0,125$ ponto percentual como corte e os demais casos como manutenção.
+
+Além dos indicadores de orientação monetária, foi utilizado como referência um
+modelo que prevê a decisão seguinte a partir da média histórica das variações da
+taxa observadas até aquele momento. Os resultados são apresentados na
+Tabela~\ref{tab:validacao-temporal-indicadores}.
+
+\begin{table}[H]
+\centering
+\caption{Desempenho dos indicadores na validação temporal fora da amostra.}
+\label{tab:validacao-temporal-indicadores}
+\resizebox{\textwidth}{!}{
+\begin{tabular}{lcccccc}
+\hline
+& \multicolumn{3}{c}{\textbf{Limiar variável}} &
+\multicolumn{3}{c}{\textbf{Limiar fixo}} \\
+\cline{2-7}
+\textbf{Modelo} &
+\textbf{MAE} & \textbf{RMSE} & \textbf{Acurácia} &
+\textbf{MAE} & \textbf{RMSE} & \textbf{Acurácia} \\
+\hline
+Média histórica        & 0,1721 & 0,2847 & 0,6308 & 0,1721 & 0,2847 & 0,6308 \\
+Média simples          & 0,1898 & 0,2522 & 0,4923 & 0,1898 & 0,2522 & 0,4923 \\
+Betweenness            & 0,1827 & 0,2550 & 0,5077 & 0,1854 & 0,2490 & 0,5077 \\
+Grau                   & 0,1909 & 0,2534 & 0,4769 & 0,1911 & 0,2531 & 0,4923 \\
+PageRank               & 0,1900 & 0,2531 & 0,4769 & 0,1905 & 0,2526 & 0,4769 \\
+Comunidades Leiden     & 0,1899 & 0,2520 & 0,5077 & 0,1844 & 0,2572 & 0,5385 \\
+Leiden + Betweenness   & 0,1857 & 0,2559 & 0,4923 & 0,1820 & 0,2527 & 0,5231 \\
+Leiden + Grau          & 0,1889 & 0,2526 & 0,4769 & 0,1838 & 0,2570 & 0,5231 \\
+Leiden + PageRank      & 0,1889 & 0,2526 & 0,4923 & 0,1849 & 0,2573 & 0,5538 \\
+\hline
+\end{tabular}
+}
+
+\medskip
+\makebox[\textwidth][l]{Fonte: Autoria própria.}
+\end{table}
+
+Em termos de RMSE, todas as versões dos indicadores apresentaram valores inferiores
+ao modelo baseado na média histórica, cujo RMSE foi igual a 0,2847. Na abordagem
+com limiar variável, o menor RMSE foi obtido pelo indicador de Comunidades Leiden
+(0,2520), valor muito próximo ao observado para a média simples (0,2522). Na
+abordagem com limiar fixo, o melhor resultado foi obtido por Betweenness, com
+RMSE igual a 0,2490.
+
+A redução do RMSE indica que os indicadores foram capazes de reduzir a influência
+dos maiores erros de previsão em relação ao modelo baseado apenas na média
+histórica. Entretanto, esse resultado não foi reproduzido nas demais métricas. O
+modelo de média histórica apresentou o menor MAE, igual a 0,1721, enquanto o menor
+valor entre os indicadores de grafo foi de 0,1820, obtido por Leiden +
+Betweenness na configuração com limiar fixo.
+
+Resultado semelhante foi observado na identificação da direção das decisões. A
+média histórica apresentou acurácia de 63,08\%, superior à de todas as versões
+dos indicadores. Entre os indicadores de grafo, o melhor resultado foi obtido
+por Leiden + PageRank com limiar fixo, com acurácia de 55,38\%. No cenário com
+limiar variável, a maior acurácia foi de 50,77\%, alcançada por Comunidades Leiden
+e Betweenness.
+
+Os resultados da validação fora da amostra mostram, portanto, que a avaliação da
+utilidade dos indicadores depende da métrica considerada. Os indicadores apresentam
+vantagem em RMSE em relação ao modelo baseado na média histórica, indicando menor
+ocorrência de erros de grande magnitude. Por outro lado, não apresentaram vantagem
+em MAE ou na identificação da direção das decisões.
+
+Considerando conjuntamente as análises realizadas, os resultados fornecem evidência
+de que os indicadores de orientação monetária contêm informação relacionada às
+decisões subsequentes do FOMC. Essa evidência é sustentada pelas correlações
+positivas e pelos coeficientes estatisticamente significativos das regressões.
+Entretanto, não foi encontrada evidência robusta de que a incorporação da estrutura
+do grafo produza valor preditivo incremental em relação à média simples das
+classificações. Além disso, embora os indicadores reduzam o RMSE fora da amostra
+em comparação à média histórica das decisões, essa melhora não é observada de
+forma consistente nas demais métricas.
+
+Dessa forma, os resultados sustentam a utilidade dos indicadores principalmente
+como instrumentos de síntese quantitativa da orientação presente nas comunicações
+do Federal Reserve e como medidas associadas à trajetória posterior da política
+monetária. Sua utilização como instrumento de previsão das decisões do FOMC,
+entretanto, deve ser interpretada com cautela, especialmente diante da ausência
+de ganho incremental robusto dos indicadores baseados em grafos.

@@ -1,4 +1,4 @@
-This is LuaHBTeX, Version 1.25.7 (MiKTeX 26.5) (format=lualatex 2026.9.12)  20 SEP 2026 16:22
+This is LuaHBTeX, Version 1.25.7 (MiKTeX 26.5) (format=lualatex 2026.9.12)  20 SEP 2026 21:59
  restricted system commands enabled.
  file:line:error style messages enabled.
 **"c:/Users/ander/OneDrive/Cursos/MBA ciencia de dados EsalqUSP/tcc/TCC_latex/T
@@ -504,8 +504,8 @@ X/luatex-cache/generic/names/luaotfload-lookup-cache.luc.
 Package fontspec Info: 
 (fontspec)             Font family 'Arial(0)' created for font 'Arial' with
 (fontspec)             options [Ligatures=TeX,Ligatures=TeX,UprightFont =
-(fontspec)             *,ItalicFont = * Italic,BoldFont = *
-(fontspec)             Bold,BoldItalicFont = * Bold Italic].
+(fontspec)             Arial,ItalicFont = Arial Italic,BoldFont = Arial
+(fontspec)             Bold,BoldItalicFont = Arial Bold Italic].
 (fontspec)              
 (fontspec)              This font family consists of the following NFSS
 (fontspec)             series/shapes:
@@ -533,33 +533,6 @@ Package fontspec Info:
 (fontspec)             <->"name:Arial Bold
 (fontspec)             Italic:mode=node;script=latn;language=dflt;+tlig;+smcp;"
 
-
-
-Package fontspec Info: 
-(fontspec)             Font family 'Arial(1)' created for font 'Arial' with
-(fontspec)             options [Ligatures=TeX,Ligatures=TeX].
-(fontspec)              
-(fontspec)              This font family consists of the following NFSS
-(fontspec)             series/shapes:
-(fontspec)              
-(fontspec)             - 'normal' (m/n) with NFSS spec.:
-(fontspec)             <->"name:Arial:mode=node;script=latn;language=dflt;+tlig
-;"
-(fontspec)             - 'small caps'  (m/sc) with NFSS spec.:
-(fontspec)             <->"name:Arial:mode=node;script=latn;language=dflt;+tlig
-;+smcp;"
-(fontspec)             - 'bold' (b/n) with NFSS spec.:
-(fontspec)             <->"name:Arial/B:mode=node;script=latn;language=dflt;+tl
-ig;"
-(fontspec)             - 'bold small caps'  (b/sc) with NFSS spec.:
-(fontspec)             <->"name:Arial/B:mode=node;script=latn;language=dflt;+tl
-ig;+smcp;"
-(fontspec)             - 'italic' (m/it) with NFSS spec.:
-(fontspec)             <->"name:Arial/I:mode=node;script=latn;language=dflt;+tl
-ig;"
-(fontspec)             - 'bold italic' (b/it) with NFSS spec.:
-(fontspec)             <->"name:Arial/BI:mode=node;script=latn;language=dflt;+t
-lig;"
 
 
 Package fontspec Info: 
@@ -834,50 +807,115 @@ Package: float 2001/11/08 v1.3d Float enhancements (AL)
 \@float@everytoks=\toks32
 \@floatcapt=\box61
 )
+(C:/Users/ander/AppData/Local/Programs/MiKTeX/tex/latex/fvextra/fvextra.sty
+Package: fvextra 2026/02/25 v1.14.0 fvextra - extensions and patches for fancyv
+rb
+
+(C:/Users/ander/AppData/Local/Programs/MiKTeX/tex/latex/fancyvrb/fancyvrb.sty
+Package: fancyvrb 2026/08/13 4.7 verbatim text (tvz,hv)
+\FV@CodeLineNo=\count363
+\FV@InFile=\read4
+\FV@TabBox=\box62
+\c@FancyVerbLine=\count364
+\FV@StepNumber=\count365
+\FV@OutFile=\write4
+)
+(C:/Users/ander/AppData/Local/Programs/MiKTeX/tex/latex/upquote/upquote.sty
+Package: upquote 2012/04/19 v1.3 upright-quote and grave-accent glyphs in verba
+tim
+
+(C:/Users/ander/AppData/Local/Programs/MiKTeX/tex/latex/base/textcomp.sty
+Package: textcomp 2024/04/24 v2.1b Standard LaTeX package
+))
+(C:/Users/ander/AppData/Local/Programs/MiKTeX/tex/latex/lineno/lineno.sty
+Package: lineno 2026/03/08 line numbers on paragraphs v5.9
+\linenopenalty=\count366
+\output=\toks33
+\linenoprevgraf=\count367
+\linenumbersep=\dimen273
+\linenumberwidth=\dimen274
+\c@linenumber=\count368
+\c@pagewiselinenumber=\count369
+\c@LN@truepage=\count370
+\c@internallinenumber=\count371
+\c@internallinenumbers=\count372
+\quotelinenumbersep=\dimen275
+\bframerule=\dimen276
+\bframesep=\dimen277
+\bframebox=\box63
+\@LN@amsmath@ams@eqpen=\count373
+)
+\c@FancyVerbWriteLine=\count374
+\c@FancyVerbBufferLine=\count375
+\c@FV@TrueTabGroupLevel=\count376
+\c@FV@TrueTabCounter=\count377
+\FV@TabBox@Group=\box64
+\FV@bgcolorstructbox=\box65
+\FV@TmpLength=\skip266
+\c@FV@HighlightLinesStart=\count378
+\c@FV@HighlightLinesStop=\count379
+\FV@LoopCount=\count380
+\FV@NCharsBox=\box66
+\FV@BreakIndent=\dimen278
+\FV@BreakIndentNChars=\count381
+\FV@BreakSymbolSepLeft=\dimen279
+\FV@BreakSymbolSepLeftNChars=\count382
+\FV@BreakSymbolSepRight=\dimen280
+\FV@BreakSymbolSepRightNChars=\count383
+\FV@BreakSymbolIndentLeft=\dimen281
+\FV@BreakSymbolIndentLeftNChars=\count384
+\FV@BreakSymbolIndentRight=\dimen282
+\FV@BreakSymbolIndentRightNChars=\count385
+\c@FancyVerbLineBreakLast=\count386
+\FV@LineBox=\box67
+\FV@LineIndentBox=\box68
+\c@FV@BreakBufferDepth=\count387
+\FV@LineWidth=\dimen283
+)
 (./Tese.aux
 Package babel Info: 'brazilian' activates 'portuges' shorthands.
 (babel)             Reported on input line 6.
 )
 \openout1 = Tese.aux
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 35.
-LaTeX Font Info:    ... okay on input line 35.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 35.
-LaTeX Font Info:    ... okay on input line 35.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 35.
-LaTeX Font Info:    ... okay on input line 35.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 35.
-LaTeX Font Info:    ... okay on input line 35.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 35.
-LaTeX Font Info:    ... okay on input line 35.
-LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 35.
-LaTeX Font Info:    ... okay on input line 35.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 35.
-LaTeX Font Info:    ... okay on input line 35.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 35.
-LaTeX Font Info:    ... okay on input line 35.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 36.
+LaTeX Font Info:    ... okay on input line 36.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 36.
+LaTeX Font Info:    ... okay on input line 36.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 36.
+LaTeX Font Info:    ... okay on input line 36.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 36.
+LaTeX Font Info:    ... okay on input line 36.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 36.
+LaTeX Font Info:    ... okay on input line 36.
+LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 36.
+LaTeX Font Info:    ... okay on input line 36.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 36.
+LaTeX Font Info:    ... okay on input line 36.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 36.
+LaTeX Font Info:    ... okay on input line 36.
 
 
 Class memoir Warning: \addtodef is marked deprecated and will be
 (memoir)              removed in 2026, use instead \patchcmd,
 (memoir)              \pretocmd or \apptocmd from the etoolbox package
-(memoir)              (which is autoloaded by the class) on input line 35.
+(memoir)              (which is autoloaded by the class) on input line 36.
 
 
 (C:/Users/ander/AppData/Local/Programs/MiKTeX/tex/context/base/mkii/supp-pdf.mk
 ii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count363
-\scratchdimen=\dimen273
-\scratchbox=\box62
-\nofMPsegments=\count364
-\nofMParguments=\count365
-\everyMPshowfont=\toks33
-\MPscratchCnt=\count366
-\MPscratchDim=\dimen274
-\MPnumerator=\count367
-\makeMPintoPDFobject=\count368
-\everyMPtoPDFconversion=\toks34
+\scratchcounter=\count388
+\scratchdimen=\dimen284
+\scratchbox=\box69
+\nofMPsegments=\count389
+\nofMParguments=\count390
+\everyMPshowfont=\toks34
+\MPscratchCnt=\count391
+\MPscratchDim=\dimen285
+\MPnumerator=\count392
+\makeMPintoPDFobject=\count393
+\everyMPtoPDFconversion=\toks35
 )
 (C:/Users/ander/AppData/Local/Programs/MiKTeX/tex/latex/epstopdf-pkg/epstopdf-b
 ase.sty
@@ -930,56 +968,56 @@ Package fontspec Info:
 
 \symlegacymaths=\mathgroup4
 LaTeX Font Info:    Overwriting symbol font `legacymaths' in version `bold'
-(Font)                  OT1/cmr/m/n --> OT1/cmr/bx/n on input line 35.
-LaTeX Font Info:    Redeclaring math accent \acute on input line 35.
-LaTeX Font Info:    Redeclaring math accent \grave on input line 35.
-LaTeX Font Info:    Redeclaring math accent \ddot on input line 35.
-LaTeX Font Info:    Redeclaring math accent \tilde on input line 35.
-LaTeX Font Info:    Redeclaring math accent \bar on input line 35.
-LaTeX Font Info:    Redeclaring math accent \breve on input line 35.
-LaTeX Font Info:    Redeclaring math accent \check on input line 35.
-LaTeX Font Info:    Redeclaring math accent \hat on input line 35.
-LaTeX Font Info:    Redeclaring math accent \dot on input line 35.
-LaTeX Font Info:    Redeclaring math accent \mathring on input line 35.
-LaTeX Font Info:    Redeclaring math symbol \Gamma on input line 35.
-LaTeX Font Info:    Redeclaring math symbol \Delta on input line 35.
-LaTeX Font Info:    Redeclaring math symbol \Theta on input line 35.
-LaTeX Font Info:    Redeclaring math symbol \Lambda on input line 35.
-LaTeX Font Info:    Redeclaring math symbol \Xi on input line 35.
-LaTeX Font Info:    Redeclaring math symbol \Pi on input line 35.
-LaTeX Font Info:    Redeclaring math symbol \Sigma on input line 35.
-LaTeX Font Info:    Redeclaring math symbol \Upsilon on input line 35.
-LaTeX Font Info:    Redeclaring math symbol \Phi on input line 35.
-LaTeX Font Info:    Redeclaring math symbol \Psi on input line 35.
-LaTeX Font Info:    Redeclaring math symbol \Omega on input line 35.
-LaTeX Font Info:    Redeclaring math symbol \mathdollar on input line 35.
-LaTeX Font Info:    Redeclaring symbol font `operators' on input line 35.
+(Font)                  OT1/cmr/m/n --> OT1/cmr/bx/n on input line 36.
+LaTeX Font Info:    Redeclaring math accent \acute on input line 36.
+LaTeX Font Info:    Redeclaring math accent \grave on input line 36.
+LaTeX Font Info:    Redeclaring math accent \ddot on input line 36.
+LaTeX Font Info:    Redeclaring math accent \tilde on input line 36.
+LaTeX Font Info:    Redeclaring math accent \bar on input line 36.
+LaTeX Font Info:    Redeclaring math accent \breve on input line 36.
+LaTeX Font Info:    Redeclaring math accent \check on input line 36.
+LaTeX Font Info:    Redeclaring math accent \hat on input line 36.
+LaTeX Font Info:    Redeclaring math accent \dot on input line 36.
+LaTeX Font Info:    Redeclaring math accent \mathring on input line 36.
+LaTeX Font Info:    Redeclaring math symbol \Gamma on input line 36.
+LaTeX Font Info:    Redeclaring math symbol \Delta on input line 36.
+LaTeX Font Info:    Redeclaring math symbol \Theta on input line 36.
+LaTeX Font Info:    Redeclaring math symbol \Lambda on input line 36.
+LaTeX Font Info:    Redeclaring math symbol \Xi on input line 36.
+LaTeX Font Info:    Redeclaring math symbol \Pi on input line 36.
+LaTeX Font Info:    Redeclaring math symbol \Sigma on input line 36.
+LaTeX Font Info:    Redeclaring math symbol \Upsilon on input line 36.
+LaTeX Font Info:    Redeclaring math symbol \Phi on input line 36.
+LaTeX Font Info:    Redeclaring math symbol \Psi on input line 36.
+LaTeX Font Info:    Redeclaring math symbol \Omega on input line 36.
+LaTeX Font Info:    Redeclaring math symbol \mathdollar on input line 36.
+LaTeX Font Info:    Redeclaring symbol font `operators' on input line 36.
 LaTeX Font Info:    Encoding `OT1' has changed to `TU' for symbol font
-(Font)              `operators' in the math version `normal' on input line 35.
+(Font)              `operators' in the math version `normal' on input line 36.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
-(Font)                  OT1/cmr/m/n --> TU/Arial(0)/m/n on input line 35.
+(Font)                  OT1/cmr/m/n --> TU/Arial(0)/m/n on input line 36.
 LaTeX Font Info:    Encoding `OT1' has changed to `TU' for symbol font
-(Font)              `operators' in the math version `bold' on input line 35.
+(Font)              `operators' in the math version `bold' on input line 36.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
-(Font)                  OT1/cmr/bx/n --> TU/Arial(0)/m/n on input line 35.
+(Font)                  OT1/cmr/bx/n --> TU/Arial(0)/m/n on input line 36.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
-(Font)                  TU/Arial(0)/m/n --> TU/Arial(0)/m/n on input line 35.
+(Font)                  TU/Arial(0)/m/n --> TU/Arial(0)/m/n on input line 36.
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `normal'
-(Font)                  OT1/cmr/m/it --> TU/Arial(0)/m/it on input line 35.
+(Font)                  OT1/cmr/m/it --> TU/Arial(0)/m/it on input line 36.
 LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `normal'
-(Font)                  OT1/cmr/bx/n --> TU/Arial(0)/b/n on input line 35.
+(Font)                  OT1/cmr/bx/n --> TU/Arial(0)/b/n on input line 36.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `normal'
-(Font)                  OT1/cmss/m/n --> TU/Arial(1)/m/n on input line 35.
+(Font)                  OT1/cmss/m/n --> TU/Arial(0)/m/n on input line 36.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `normal'
-(Font)                  OT1/cmtt/m/n --> TU/Consolas(0)/m/n on input line 35.
+(Font)                  OT1/cmtt/m/n --> TU/Consolas(0)/m/n on input line 36.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
-(Font)                  TU/Arial(0)/m/n --> TU/Arial(0)/b/n on input line 35.
+(Font)                  TU/Arial(0)/m/n --> TU/Arial(0)/b/n on input line 36.
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `bold'
-(Font)                  OT1/cmr/bx/it --> TU/Arial(0)/b/it on input line 35.
+(Font)                  OT1/cmr/bx/it --> TU/Arial(0)/b/it on input line 36.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
-(Font)                  OT1/cmss/bx/n --> TU/Arial(1)/b/n on input line 35.
+(Font)                  OT1/cmss/bx/n --> TU/Arial(0)/b/n on input line 36.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
-(Font)                  OT1/cmtt/m/n --> TU/Consolas(0)/b/n on input line 35.
+(Font)                  OT1/cmtt/m/n --> TU/Consolas(0)/b/n on input line 36.
 Package babel Info: Main language set to 'brazilian'.
 (./pre-textual/TodasInformacoes.tex) (./pre-textual/Capa.tex
 LaTeX Font Info:    Calculating math sizes for size <11> on input line 20.
@@ -1004,14 +1042,14 @@ Package luatex.def Info: ./figuras/logo_mba.png  used on input line 91.
 [1{C:/Users/ander/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}
 
 <./figuras/logo_mba.png>]) (./pre-textual/Resumo.tex)
-Underfull \hbox (badness 1400) in paragraph at lines 31--100
-\TU/Arial(0)/b/n/10.95 Palavras-chave: \TU/Arial(1)/m/n/10.95 Fe-de-ral Re-serve
+Underfull \hbox (badness 1400) in paragraph at lines 31--101
+\TU/Arial(0)/b/n/10.95 Palavras-chave: \TU/Arial(0)/m/n/10.95 Fe-de-ral Re-serve
 ; po-lí-tica mo-ne-tá-ria; mo-de-los de lin-gua-gem; gra-fos;
  []
 
 File: ./figuras/logo_mba.png Graphic file (type png)
 <use ./figuras/logo_mba.png>
-Package luatex.def Info: ./figuras/logo_mba.png  used on input line 100.
+Package luatex.def Info: ./figuras/logo_mba.png  used on input line 101.
 (luatex.def)             Requested size: 69.4351pt x 28.45274pt.
 [2] (./textual/Introducao.tex
 Cap\'{\i }tulo 1.
@@ -1022,7 +1060,7 @@ Class memoir Warning: The \rm font command is deprecated.
 
 
 Underfull \hbox (badness 2318) in paragraph at lines 17--23
-[]\TU/Arial(1)/m/n/10.95 A in-ter-pre-ta-ção des-sas co-mu-ni-ca-ções, con-t
+[]\TU/Arial(0)/m/n/10.95 A in-ter-pre-ta-ção des-sas co-mu-ni-ca-ções, con-t
 udo, é di-fi-cul-tada pelo vo-lume de
  []
 
@@ -1034,7 +1072,7 @@ Package luatex.def Info: ./figuras/logo_mba.png  used on input line 56.
 
 ]
 Underfull \hbox (badness 1173) in paragraph at lines 65--71
-\TU/Arial(1)/m/n/10.95 se-pa-rar con-jun-tos de si-nais com maior si-mi-la-ri-da
+\TU/Arial(0)/m/n/10.95 se-pa-rar con-jun-tos de si-nais com maior si-mi-la-ri-da
 de se-mân-tica en-tre si, fa-vo-re-cendo a
  []
 
@@ -1045,26 +1083,93 @@ Package luatex.def Info: ./figuras/logo_mba.png  used on input line 1.
 (luatex.def)             Requested size: 69.4351pt x 28.45274pt.
  [4]
 Cap\'{\i }tulo 2.
+
+Underfull \hbox (badness 1515) in paragraph at lines 21--25
+\TU/Arial(0)/m/n/10.95 (FOMC), atas, dis-cur-sos de di-ri-gen-tes, tes-te-mu-nho
+s e co-mu-ni-ca-dos à im-prensa. Os
+ []
+
+
+Underfull \hbox (badness 2080) in paragraph at lines 40--44
+[]\TU/Arial(0)/m/n/10.95 Quando o con-te-údo es-tava dis-po-ní-vel em PDF, o 
+ar-quivo cor-res-pon-dente foi
+ []
+
 File: ./figuras/logo_mba.png Graphic file (type png)
 <use ./figuras/logo_mba.png>
-Package luatex.def Info: ./figuras/logo_mba.png  used on input line 61.
+Package luatex.def Info: ./figuras/logo_mba.png  used on input line 60.
 (luatex.def)             Requested size: 69.4351pt x 28.45274pt.
 [5]
-Underfull \hbox (badness 1231) in paragraph at lines 62--69
-[]\TU/Arial(1)/m/n/10.95 So-bre essa rede, o al-go-ritmo de Lei-den foi exe-cu-t
-ado uti-li-zando o es-core de
+Underfull \hbox (badness 1546) in paragraph at lines 61--67
+\TU/Arial(0)/m/n/10.95 mo-ne-tá-ria: \TU/Arial(0)/m/it/10.95 do-vish\TU/Arial(
+0)/m/n/10.95 , \TU/Arial(0)/m/it/10.95 mos-tly do-vish\TU/Arial(0)/m/n/10.95 , 
+\TU/Arial(0)/m/it/10.95 neu-tral\TU/Arial(0)/m/n/10.95 , \TU/Arial(0)/m/it/10.9
+5 mos-tly haw-kish \TU/Arial(0)/m/n/10.95 e \TU/Arial(0)/m/it/10.95 haw-kish\TU
+/Arial(0)/m/n/10.95 . As de-fi-ni-ções
  []
 
 
-Underfull \hbox (badness 5504) in paragraph at lines 62--69
-\TU/Arial(1)/m/n/10.95 si-mi-la-ri-dade como peso das re-la-ções, per-mi-tindo
- iden-ti-fi-car co-mu-ni-da-des de si-nais
+Underfull \hbox (badness 7047) in paragraph at lines 90--93
+[]\TU/Arial(0)/m/n/10.95 Dessa forma, va-lo-res ne-ga-ti-vos re-pre-sen-tam ori-
+en-ta-ção re-la-ti-va-mente mais
  []
 
 
-Underfull \hbox (badness 4582) in paragraph at lines 91--95
-[]\TU/Arial(1)/m/n/10.95 Con-si-de-rando o ca-rá-ter ex-plo-ra-tó-rio da pes-q
-uisa, os re-sul-ta-dos de-vem ser
+Underfull \hbox (badness 1939) in paragraph at lines 116--119
+[]\TU/Arial(0)/m/n/10.95 Como a si-mi-la-ri-dade se-mân-tica não pos-sui uma 
+di-re-ção na-tu-ral, as re-la-ções
+ []
+
+File: ./figuras/logo_mba.png Graphic file (type png)
+<use ./figuras/logo_mba.png>
+Package luatex.def Info: ./figuras/logo_mba.png  used on input line 119.
+(luatex.def)             Requested size: 69.4351pt x 28.45274pt.
+[6]
+Underfull \hbox (badness 1648) in paragraph at lines 135--141
+[]\TU/Arial(0)/m/n/10.95 em que $\OML/cmm/m/it/10.95 d[]$ \TU/Arial(0)/m/n/10.9
+5 cor-res-ponde à data de pu-bli-ca-ção do si-nal $\OML/cmm/m/it/10.95 j$\TU
+/Arial(0)/m/n/10.95 . Dessa forma, as
+ []
+
+
+Underfull \hbox (badness 2269) in paragraph at lines 166--168
+[]\TU/Arial(0)/m/n/10.95 A com-pa-ra-ção en-tre as duas es-tra-té-gias per-mi
+-tiu ava-liar a sen-si-bi-li-dade dos
+ []
+
+File: ./figuras/logo_mba.png Graphic file (type png)
+<use ./figuras/logo_mba.png>
+Package luatex.def Info: ./figuras/logo_mba.png  used on input line 176.
+(luatex.def)             Requested size: 69.4351pt x 28.45274pt.
+[7]
+Underfull \hbox (badness 1226) in paragraph at lines 201--203
+[]\TU/Arial(0)/m/n/10.95 Esse pro-ce-di-mento ori-gi-nou três in-di-ca-do-res, pon-de-ra-dos res-pec-ti-va-mente pela
+ []
+
+File: ./figuras/logo_mba.png Graphic file (type png)
+<use ./figuras/logo_mba.png>
+Package luatex.def Info: ./figuras/logo_mba.png  used on input line 262.
+(luatex.def)             Requested size: 69.4351pt x 28.45274pt.
+[8]
+Underfull \hbox (badness 1540) in paragraph at lines 293--295
+[]\TU/Arial(0)/m/n/10.95 Em se-guida, foi es-ti-mado se-pa-ra-da-mente para cada
+ in-di-ca-dor um mo-delo de
+ []
+
+File: ./figuras/logo_mba.png Graphic file (type png)
+<use ./figuras/logo_mba.png>
+Package luatex.def Info: ./figuras/logo_mba.png  used on input line 336.
+(luatex.def)             Requested size: 69.4351pt x 28.45274pt.
+[9]
+Underfull \hbox (badness 2269) in paragraph at lines 338--341
+[]\TU/Arial(0)/m/n/10.95 O ga-nho in-cre-men-tal foi ava-li-ado con-si-de-rando con-jun-ta-mente o au-mento do
+ []
+
+
+Underfull \hbox (badness 1478) in paragraph at lines 338--341
+\TU/Arial(0)/m/n/10.95 co-e-fi-ci-ente de de-ter-mi-na-ção ajus-tado, a sig-ni
+-fi-cân-cia es-ta-tís-tica do co-e-fi-ci-ente $\OML/cmm/m/it/10.95 []$ \TU/A
+rial(0)/m/n/10.95 com
  []
 
 ) (./textual/Resultados.tex
@@ -1072,11 +1177,11 @@ File: ./figuras/logo_mba.png Graphic file (type png)
 <use ./figuras/logo_mba.png>
 Package luatex.def Info: ./figuras/logo_mba.png  used on input line 1.
 (luatex.def)             Requested size: 69.4351pt x 28.45274pt.
- [6]
+ [10]
 Cap\'{\i }tulo 3.
 (./generated/link_count.tex)
 Underfull \hbox (badness 1546) in paragraph at lines 27--36
-[]\TU/Arial(1)/m/n/10.95 Fo-ram con-si-de-ra-das pá-gi-nas re-la-ci-o-na-das ao
+[]\TU/Arial(0)/m/n/10.95 Fo-ram con-si-de-ra-das pá-gi-nas re-la-ci-o-na-das ao
 s ma-te-ri-ais de po-lí-tica mo-ne-tá-ria,
  []
 
@@ -1084,13 +1189,13 @@ File: ./figuras/logo_mba.png Graphic file (type png)
 <use ./figuras/logo_mba.png>
 Package luatex.def Info: ./figuras/logo_mba.png  used on input line 76.
 (luatex.def)             Requested size: 69.4351pt x 28.45274pt.
-[7]
+[11]
 Underfull \hbox (badness 1072) in paragraph at lines 83--91
-[]\TU/Arial(1)/m/n/10.95 An-tes da ob-ten-ção do texto, fo-ram re-mo-vi-dos el
+[]\TU/Arial(0)/m/n/10.95 An-tes da ob-ten-ção do texto, fo-ram re-mo-vi-dos el
 e-men-tos HTML sem in-te-resse
  []
 
-<figuras/resultado_extracao_texto.png, id=29, 455.45157pt x 166.37157pt>
+<figuras/resultado_extracao_texto.png, id=51, 455.45157pt x 166.37157pt>
 File: figuras/resultado_extracao_texto.png Graphic file (type png)
 <use figuras/resultado_extracao_texto.png>
 Package luatex.def Info: figuras/resultado_extracao_texto.png  used on input li
@@ -1098,13 +1203,13 @@ ne 129.
 (luatex.def)             Requested size: 455.24411pt x 166.30005pt.
 
 Underfull \hbox (badness 1337) in paragraph at lines 139--145
-[]\TU/Arial(1)/m/n/10.95 Após a es-tru-tu-ra-ção da base tex-tual, foi re-a-l
+[]\TU/Arial(0)/m/n/10.95 Após a es-tru-tu-ra-ção da base tex-tual, foi re-a-l
 i-zada a etapa de iden-ti-fi-ca-ção e
  []
 
 
 Underfull \hbox (badness 1377) in paragraph at lines 139--145
-\TU/Arial(1)/m/n/10.95 clas-si-fi-ca-ção dos si-nais de po-lí-tica mo-ne-t
+\TU/Arial(0)/m/n/10.95 clas-si-fi-ca-ção dos si-nais de po-lí-tica mo-ne-t
 á-ria pre-sen-tes nas co-mu-ni-ca-ções do Fe-de-ral
  []
 
@@ -1112,178 +1217,336 @@ File: ./figuras/logo_mba.png Graphic file (type png)
 <use ./figuras/logo_mba.png>
 Package luatex.def Info: ./figuras/logo_mba.png  used on input line 145.
 (luatex.def)             Requested size: 69.4351pt x 28.45274pt.
-[8]
+[12]
 Underfull \hbox (badness 6047) in paragraph at lines 146--154
-[]\TU/Arial(1)/m/n/10.95 Para cada do-cu-mento, o prompt re-ce-beu como con-text
+[]\TU/Arial(0)/m/n/10.95 Para cada do-cu-mento, o prompt re-ce-beu como con-text
 o três in-for-ma-ções
  []
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 171--176
-[]|\TU/Arial(1)/m/n/10.95 Cle-arly sup-ports mo-ne-tary ea-sing or main-tai-ning
+[]|\TU/Arial(0)/m/n/10.95 Cle-arly sup-ports mo-ne-tary ea-sing or main-tai-ning
  an
  []
 
 
 Underfull \hbox (badness 1448) in paragraph at lines 171--176
-\TU/Arial(1)/m/n/10.95 ac-com-mo-da-tive stance. Use when the sig-nal in-di-ca-t
+\TU/Arial(0)/m/n/10.95 ac-com-mo-da-tive stance. Use when the sig-nal in-di-ca-t
 es that
  []
 
 
 Underfull \hbox (badness 1655) in paragraph at lines 192--197
-\TU/Arial(1)/m/n/10.95 per-sis-tent, broad-based, or ri-sing; eco-no-mic ac-ti-v
+\TU/Arial(0)/m/n/10.95 per-sis-tent, broad-based, or ri-sing; eco-no-mic ac-ti-v
 ity re-mains
  []
 
 File: ./figuras/logo_mba.png Graphic file (type png)
 <use ./figuras/logo_mba.png>
-Package luatex.def Info: ./figuras/logo_mba.png  used on input line 222.
+Package luatex.def Info: ./figuras/logo_mba.png  used on input line 202.
 (luatex.def)             Requested size: 69.4351pt x 28.45274pt.
-[9<./figuras/resultado_extracao_texto.png>]
+[13<./figuras/resultado_extracao_texto.png>]
 File: ./figuras/logo_mba.png Graphic file (type png)
 <use ./figuras/logo_mba.png>
-Package luatex.def Info: ./figuras/logo_mba.png  used on input line 258.
+Package luatex.def Info: ./figuras/logo_mba.png  used on input line 261.
 (luatex.def)             Requested size: 69.4351pt x 28.45274pt.
- [10]
-Underfull \hbox (badness 2368) in paragraph at lines 283--293
-\TU/Consolas(0)/m/n/10.95 classification\TU/Arial(1)/m/n/10.95 , \TU/Consolas(0
-)/m/n/10.95 score\TU/Arial(1)/m/n/10.95 , \TU/Consolas(0)/m/n/10.95 justificatio
-n\TU/Arial(1)/m/n/10.95 , \TU/Consolas(0)/m/n/10.95 evidence\TU/Arial(1)/m/n/10
-.95 , \TU/Consolas(0)/m/n/10.95 embedding_signal \TU/Arial(1)/m/n/10.95 e \TU/C
-onsolas(0)/m/n/10.95 date\TU/Arial(1)/m/n/10.95 . A
+ [14]
+Underfull \hbox (badness 2368) in paragraph at lines 287--297
+\TU/Consolas(0)/m/n/10.95 classification\TU/Arial(0)/m/n/10.95 , \TU/Consolas(0
+)/m/n/10.95 score\TU/Arial(0)/m/n/10.95 , \TU/Consolas(0)/m/n/10.95 justificatio
+n\TU/Arial(0)/m/n/10.95 , \TU/Consolas(0)/m/n/10.95 evidence\TU/Arial(0)/m/n/10
+.95 , \TU/Consolas(0)/m/n/10.95 embedding_signal \TU/Arial(0)/m/n/10.95 e \TU/C
+onsolas(0)/m/n/10.95 date\TU/Arial(0)/m/n/10.95 . A
  []
 
 
-Underfull \hbox (badness 2351) in paragraph at lines 294--301
-[]\TU/Arial(1)/m/n/10.95 A vin-cu-la-ção en-tre as pu-bli-ca-ções e os si-na
+Underfull \hbox (badness 2351) in paragraph at lines 298--305
+[]\TU/Arial(0)/m/n/10.95 A vin-cu-la-ção en-tre as pu-bli-ca-ções e os si-na
 is foi re-pre-sen-tada pela re-la-ção
  []
 
 
-Underfull \hbox (badness 1286) in paragraph at lines 294--301
-\TU/Consolas(0)/m/n/10.95 HAS_SIGNAL\TU/Arial(1)/m/n/10.95 , cri-ada en-tre cada
- nó \TU/Consolas(0)/m/n/10.95 Publication \TU/Arial(1)/m/n/10.95 e os res-pec-t
-i-vos nós \TU/Consolas(0)/m/n/10.95 Signal\TU/Arial(1)/m/n/10.95 . Essa
+Underfull \hbox (badness 1286) in paragraph at lines 298--305
+\TU/Consolas(0)/m/n/10.95 HAS_SIGNAL\TU/Arial(0)/m/n/10.95 , cri-ada en-tre cada
+ nó \TU/Consolas(0)/m/n/10.95 Publication \TU/Arial(0)/m/n/10.95 e os res-pec-t
+i-vos nós \TU/Consolas(0)/m/n/10.95 Signal\TU/Arial(0)/m/n/10.95 . Essa
  []
 
 
-Underfull \hbox (badness 6063) in paragraph at lines 302--310
-[]\TU/Arial(1)/m/n/10.95 Além das re-la-ções en-tre pu-bli-ca-ções e si-nai
+Underfull \hbox (badness 6063) in paragraph at lines 306--314
+[]\TU/Arial(0)/m/n/10.95 Além das re-la-ções en-tre pu-bli-ca-ções e si-nai
 s, fo-ram cons-tru-í-das re-la-ções
  []
 
 
-Underfull \hbox (badness 1342) in paragraph at lines 302--310
-\TU/Consolas(0)/m/n/10.95 SIMILAR_TO \TU/Arial(1)/m/n/10.95 en-tre si-nais se-ma
+Underfull \hbox (badness 1342) in paragraph at lines 306--314
+\TU/Consolas(0)/m/n/10.95 SIMILAR_TO \TU/Arial(0)/m/n/10.95 en-tre si-nais se-ma
 n-ti-ca-mente pró-xi-mos. Es-sas co-ne-xões fo-ram ob-ti-das a
  []
 
 File: ./figuras/logo_mba.png Graphic file (type png)
 <use ./figuras/logo_mba.png>
-Package luatex.def Info: ./figuras/logo_mba.png  used on input line 320.
+Package luatex.def Info: ./figuras/logo_mba.png  used on input line 314.
 (luatex.def)             Requested size: 69.4351pt x 28.45274pt.
-[11]
-<figuras/graph_schema.png, id=46, 1242.6425pt x 499.8675pt>
+[15]
+<figuras/graph_schema.png, id=65, 1242.6425pt x 499.8675pt>
 File: figuras/graph_schema.png Graphic file (type png)
 <use figuras/graph_schema.png>
-Package luatex.def Info: figuras/graph_schema.png  used on input line 326.
+Package luatex.def Info: figuras/graph_schema.png  used on input line 330.
 (luatex.def)             Requested size: 386.96027pt x 155.65903pt.
 File: ./figuras/logo_mba.png Graphic file (type png)
 <use ./figuras/logo_mba.png>
-Package luatex.def Info: ./figuras/logo_mba.png  used on input line 372.
+Package luatex.def Info: ./figuras/logo_mba.png  used on input line 359.
 (luatex.def)             Requested size: 69.4351pt x 28.45274pt.
- [12<./figuras/graph_schema.png>]
-<figuras/node_count_by_fomc_period.png, id=54, 715.7139pt x 209.8239pt>
+ [16<./figuras/graph_schema.png>]
+<figuras/node_count_by_fomc_period.png, id=70, 715.7139pt x 282.0939pt>
 File: figuras/node_count_by_fomc_period.png Graphic file (type png)
 <use figuras/node_count_by_fomc_period.png>
 Package luatex.def Info: figuras/node_count_by_fomc_period.png  used on input l
-ine 375.
-(luatex.def)             Requested size: 455.24411pt x 133.46721pt.
+ine 379.
+(luatex.def)             Requested size: 455.24411pt x 179.43755pt.
 
-Underfull \hbox (badness 1603) in paragraph at lines 386--393
-\TU/Consolas(0)/m/n/10.95 signal-cypher\TU/Arial(1)/m/n/10.95 , fo-ram in-clu-
-í-dos ape-nas os nós \TU/Consolas(0)/m/n/10.95 Signal \TU/Arial(1)/m/n/10.95 
+Underfull \hbox (badness 1603) in paragraph at lines 390--397
+\TU/Consolas(0)/m/n/10.95 signal-cypher\TU/Arial(0)/m/n/10.95 , fo-ram in-clu-
+í-dos ape-nas os nós \TU/Consolas(0)/m/n/10.95 Signal \TU/Arial(0)/m/n/10.95 
 per-ten-cen-tes ao pe-rí-odo e a
  []
 
 
-Underfull \hbox (badness 1810) in paragraph at lines 394--401
-[]\TU/Arial(1)/m/n/10.95 So-bre essa pro-je-ção foi exe-cu-tado o al-go-ritmo \TU/Arial(0)/m/it/10.95 k\TU/Arial(1)/m/n/10.95 -nearest neigh-bors (KNN). A
+Underfull \hbox (badness 1810) in paragraph at lines 398--405
+[]\TU/Arial(0)/m/n/10.95 So-bre essa pro-je-ção foi exe-cu-tado o al-go-ritmo \TU/Arial(0)/m/it/10.95 k\TU/Arial(0)/m/n/10.95 -nearest neigh-bors (KNN). A
  []
 
 
-Underfull \hbox (badness 1033) in paragraph at lines 394--401
-\TU/Arial(1)/m/n/10.95 com-pa-ra-ção en-tre os si-nais foi re-a-li-zada uti-li
+Underfull \hbox (badness 1033) in paragraph at lines 398--405
+\TU/Arial(0)/m/n/10.95 com-pa-ra-ção en-tre os si-nais foi re-a-li-zada uti-li
 -zando a si-mi-la-ri-dade do cos-seno apli-cada
  []
 
 
-Underfull \hbox (badness 1708) in paragraph at lines 394--401
-\TU/Arial(1)/m/n/10.95 se-man-ti-ca-mente mais pró-xi-mos (\TU/Consolas(0)/m/n
-/10.95 topK = 50\TU/Arial(1)/m/n/10.95 ), su-jei-tos tam-bém a um li-miar mí-n
+Underfull \hbox (badness 1708) in paragraph at lines 398--405
+\TU/Arial(0)/m/n/10.95 se-man-ti-ca-mente mais pró-xi-mos (\TU/Consolas(0)/m/n
+/10.95 topK = 50\TU/Arial(0)/m/n/10.95 ), su-jei-tos tam-bém a um li-miar mí-n
 imo de
  []
 
 File: ./figuras/logo_mba.png Graphic file (type png)
 <use ./figuras/logo_mba.png>
-Package luatex.def Info: ./figuras/logo_mba.png  used on input line 427.
+Package luatex.def Info: ./figuras/logo_mba.png  used on input line 414.
 (luatex.def)             Requested size: 69.4351pt x 28.45274pt.
-[13<./figuras/node_count_by_fomc_period.png>]
-Underfull \hbox (badness 2302) in paragraph at lines 435--444
-[]\TU/Arial(1)/m/n/10.95 Ao fi-nal do pro-ce-di-mento, cada in-ter-valo en-tre 
+[17<./figuras/node_count_by_fomc_period.png>]
+Underfull \hbox (badness 2302) in paragraph at lines 439--448
+[]\TU/Arial(0)/m/n/10.95 Ao fi-nal do pro-ce-di-mento, cada in-ter-valo en-tre 
 co-mu-ni-ca-dos con-se-cu-ti-vos do
  []
 
-<figuras/similarity_cutoff_by_fomc_period.png, id=59, 715.473pt x 209.8239pt>
+<figuras/similarity_cutoff_by_fomc_period.png, id=75, 715.473pt x 282.0939pt>
 File: figuras/similarity_cutoff_by_fomc_period.png Graphic file (type png)
 <use figuras/similarity_cutoff_by_fomc_period.png>
 Package luatex.def Info: figuras/similarity_cutoff_by_fomc_period.png  used on 
-input line 454.
-(luatex.def)             Requested size: 455.24411pt x 133.50563pt.
+input line 458.
+(luatex.def)             Requested size: 455.24411pt x 179.4892pt.
 File: ./figuras/logo_mba.png Graphic file (type png)
 <use ./figuras/logo_mba.png>
-Package luatex.def Info: ./figuras/logo_mba.png  used on input line 488.
+Package luatex.def Info: ./figuras/logo_mba.png  used on input line 464.
 (luatex.def)             Requested size: 69.4351pt x 28.45274pt.
-[14<./figuras/similarity_cutoff_by_fomc_period.png>]
-Underfull \hbox (badness 1448) in paragraph at lines 492--500
-\TU/Arial(1)/m/n/10.95 reu-niões con-se-cu-ti-vas do FOMC, fo-ram cal-cu-la-das
+[18]
+Underfull \hbox (badness 1448) in paragraph at lines 496--504
+\TU/Arial(0)/m/n/10.95 reu-niões con-se-cu-ti-vas do FOMC, fo-ram cal-cu-la-das
  di-fe-ren-tes ver-sões do in-di-ca-dor de
  []
 
-
-Underfull \hbox (badness 3375) in paragraph at lines 508--513
-[]\TU/Arial(1)/m/n/10.95 Como re-fe-rên-cia, foi cal-cu-lada a mé-dia sim-ples
+File: ./figuras/logo_mba.png Graphic file (type png)
+<use ./figuras/logo_mba.png>
+Package luatex.def Info: ./figuras/logo_mba.png  used on input line 511.
+(luatex.def)             Requested size: 69.4351pt x 28.45274pt.
+[19<./figuras/similarity_cutoff_by_fomc_period.png>]
+Underfull \hbox (badness 3375) in paragraph at lines 512--517
+[]\TU/Arial(0)/m/n/10.95 Como re-fe-rên-cia, foi cal-cu-lada a mé-dia sim-ples
  das pon-tu-a-ções dos si-nais
  []
 
-File: ./figuras/logo_mba.png Graphic file (type png)
-<use ./figuras/logo_mba.png>
-Package luatex.def Info: ./figuras/logo_mba.png  used on input line 547.
-(luatex.def)             Requested size: 69.4351pt x 28.45274pt.
-[15])
-Underfull \hbox (badness 1442) in paragraph at lines 622--144
-[]\TU/Arial(1)/m/n/10.95 Os mes-mos al-go-rit-mos e pro-ce-di-men-tos de cál-cu
-lo fo-ram uti-li-za-dos nas duas
+<figuras/sentiment_indicators_centrality_by_fomc_period.png, id=83, 1148.8521pt
+ x 426.393pt>
+File: figuras/sentiment_indicators_centrality_by_fomc_period.png Graphic file (
+type png)
+<use figuras/sentiment_indicators_centrality_by_fomc_period.png>
+Package luatex.def Info: figuras/sentiment_indicators_centrality_by_fomc_period
+.png  used on input line 570.
+(luatex.def)             Requested size: 455.24411pt x 168.96014pt.
+
+Underfull \hbox (badness 1442) in paragraph at lines 575--575
+[]\TU/Arial(0)/m/n/10.95 Fi-gura 5. In-di-ca-do-res de ori-en-ta-ção mo-ne-t
+á-ria ob-ti-dos usando Lei-den e me-di-das de
  []
 
 File: ./figuras/logo_mba.png Graphic file (type png)
 <use ./figuras/logo_mba.png>
-Package luatex.def Info: ./figuras/logo_mba.png  used on input line 144.
+Package luatex.def Info: ./figuras/logo_mba.png  used on input line 578.
 (luatex.def)             Requested size: 69.4351pt x 28.45274pt.
-[16] (./textual/Conclusao.tex
+[20]
+<figuras/sentiment_indicators_centrality_by_fomc_period_fixed.png, id=87, 1148.
+8521pt x 426.393pt>
+File: figuras/sentiment_indicators_centrality_by_fomc_period_fixed.png Graphic 
+file (type png)
+<use figuras/sentiment_indicators_centrality_by_fomc_period_fixed.png>
+Package luatex.def Info: figuras/sentiment_indicators_centrality_by_fomc_period
+_fixed.png  used on input line 581.
+(luatex.def)             Requested size: 455.24411pt x 168.96014pt.
+File: ./figuras/logo_mba.png Graphic file (type png)
+<use ./figuras/logo_mba.png>
+Package luatex.def Info: ./figuras/logo_mba.png  used on input line 619.
+(luatex.def)             Requested size: 69.4351pt x 28.45274pt.
+ [21<./figuras/sentiment_indicators_centrality_by_fomc_period.png><./figuras/sen
+timent_indicators_centrality_by_fomc_period_fixed.png>]
+Underfull \hbox (badness 1308) in paragraph at lines 654--660
+[]\TU/Arial(0)/m/n/10.95 As Fi-gu-ras 7[] e 8[] apre-sen-tam os in-di-ca-do-res re-sul-tan-tes da in-cor-po-ra-
+ção das
+ []
+
+
+Underfull \hbox (badness 2495) in paragraph at lines 654--660
+\TU/Arial(0)/m/n/10.95 co-mu-ni-da-des de Lei-den ao pro-cesso de agre-ga-ção.
+ No-va-mente, são apre-sen-ta-dos
+ []
+
+<figuras/sentiment_indicators_centrality_community_by_fomc_period.png, id=94, 1
+148.8521pt x 426.393pt>
+File: figuras/sentiment_indicators_centrality_community_by_fomc_period.png Grap
+hic file (type png)
+<use figuras/sentiment_indicators_centrality_community_by_fomc_period.png>
+Package luatex.def Info: figuras/sentiment_indicators_centrality_community_by_f
+omc_period.png  used on input line 663.
+(luatex.def)             Requested size: 455.24411pt x 168.96014pt.
+<figuras/sentiment_indicators_centrality_community_by_fomc_period_fixed.png, id
+=95, 1148.8521pt x 426.393pt>
+File: figuras/sentiment_indicators_centrality_community_by_fomc_period_fixed.pn
+g Graphic file (type png)
+<use figuras/sentiment_indicators_centrality_community_by_fomc_period_fixed.png
+>
+Package luatex.def Info: figuras/sentiment_indicators_centrality_community_by_f
+omc_period_fixed.png  used on input line 673.
+(luatex.def)             Requested size: 455.24411pt x 168.96014pt.
+File: ./figuras/logo_mba.png Graphic file (type png)
+<use ./figuras/logo_mba.png>
+Package luatex.def Info: ./figuras/logo_mba.png  used on input line 680.
+(luatex.def)             Requested size: 69.4351pt x 28.45274pt.
+[22<./figuras/sentiment_indicators_centrality_community_by_fomc_period.png>]
+File: ./figuras/logo_mba.png Graphic file (type png)
+<use ./figuras/logo_mba.png>
+Package luatex.def Info: ./figuras/logo_mba.png  used on input line 739.
+(luatex.def)             Requested size: 69.4351pt x 28.45274pt.
+
+[23<./figuras/sentiment_indicators_centrality_community_by_fomc_period_fixed.png
+>]
+<figuras/upper_rate_change_by_fomc_period.png, id=104, 715.473pt x 282.0939pt>
+File: figuras/upper_rate_change_by_fomc_period.png Graphic file (type png)
+<use figuras/upper_rate_change_by_fomc_period.png>
+Package luatex.def Info: figuras/upper_rate_change_by_fomc_period.png  used on 
+input line 761.
+(luatex.def)             Requested size: 455.24411pt x 179.4892pt.
+File: ./figuras/logo_mba.png Graphic file (type png)
+<use ./figuras/logo_mba.png>
+Package luatex.def Info: ./figuras/logo_mba.png  used on input line 822.
+(luatex.def)             Requested size: 69.4351pt x 28.45274pt.
+ [24<./figuras/upper_rate_change_by_fomc_period.png>]
+Underfull \hbox (badness 1303) in paragraph at lines 829--838
+[]\TU/Arial(0)/m/n/10.95 A com-pa-ra-ção en-tre as duas me-di-das mos-tra que os re-sul-ta-dos per-ma-ne-cem
+ []
+
+
+Underfull \hbox (badness 1168) in paragraph at lines 848--857
+[]\TU/Arial(0)/m/n/10.95 A cor-re-la-ção apre-sen-tada na se-ção an-te-rior in-dica a exis-t
+ên-cia de as-so-ci-a-ção
+ []
+
+
+Underfull \hbox (badness 1874) in paragraph at lines 864--868
+[]\TU/Arial(0)/m/n/10.95 Ini-ci-al-mente, fo-ram es-ti-ma-dos mo-de-los de re-gr
+es-são li-near re-la-ci-o-nando cada
+ []
+
+File: ./figuras/logo_mba.png Graphic file (type png)
+<use ./figuras/logo_mba.png>
+Package luatex.def Info: ./figuras/logo_mba.png  used on input line 868.
+(luatex.def)             Requested size: 69.4351pt x 28.45274pt.
+[25]
+Underfull \hbox (badness 2875) in paragraph at lines 924--931
+[]\TU/Arial(0)/m/n/10.95 Como teste adi-ci-o-nal, os mes-mos in-di-ca-do-res fo-
+ram re-la-ci-o-na-dos à de-ci-são
+ []
+
+File: ./figuras/logo_mba.png Graphic file (type png)
+<use ./figuras/logo_mba.png>
+Package luatex.def Info: ./figuras/logo_mba.png  used on input line 932.
+(luatex.def)             Requested size: 69.4351pt x 28.45274pt.
+[26]
+Underfull \hbox (badness 1281) in paragraph at lines 991--997
+[]\TU/Arial(0)/m/n/10.95 Por fim, foi re-a-li-zada uma va-li-da-ção tem-po-ral
+ fora da amos-tra uti-li-zando uma
+ []
+
+File: ./figuras/logo_mba.png Graphic file (type png)
+<use ./figuras/logo_mba.png>
+Package luatex.def Info: ./figuras/logo_mba.png  used on input line 1004.
+(luatex.def)             Requested size: 69.4351pt x 28.45274pt.
+[27]
+Underfull \hbox (badness 1038) in paragraph at lines 1041--1047
+\TU/Arial(0)/m/n/10.95 in-fe-ri-o-res ao mo-delo ba-se-ado na mé-dia his-tó-ri
+ca, cujo RMSE foi igual a 0,2847. Na
+ []
+
+
+Underfull \hbox (badness 1215) in paragraph at lines 1055--1061
+[]\TU/Arial(0)/m/n/10.95 Re-sul-tado se-me-lhante foi ob-ser-vado na iden-ti-fi-
+ca-ção da di-re-ção das de-ci-sões.
+ []
+
+File: ./figuras/logo_mba.png Graphic file (type png)
+<use ./figuras/logo_mba.png>
+Package luatex.def Info: ./figuras/logo_mba.png  used on input line 1068.
+(luatex.def)             Requested size: 69.4351pt x 28.45274pt.
+[28]
+Underfull \hbox (badness 4353) in paragraph at lines 1068--1077
+[]\TU/Arial(0)/m/n/10.95 Con-si-de-rando con-jun-ta-mente as aná-li-ses re-a-li
+-za-das, os re-sul-ta-dos for-ne-cem
+ []
+
+
+Underfull \hbox (badness 1033) in paragraph at lines 1068--1077
+\TU/Arial(0)/m/n/10.95 e pe-los co-e-fi-ci-en-tes es-ta-tis-ti-ca-mente sig-ni-f
+i-ca-ti-vos das re-gres-sões. En-tre-tanto, não foi
+ []
+
+) (./textual/Conclusao.tex
+File: ./figuras/logo_mba.png Graphic file (type png)
+<use ./figuras/logo_mba.png>
+Package luatex.def Info: ./figuras/logo_mba.png  used on input line 1.
+(luatex.def)             Requested size: 69.4351pt x 28.45274pt.
+ [29]
 Cap\'{\i }tulo 4.
-) (./Tese.bbl
 File: ./figuras/logo_mba.png Graphic file (type png)
 <use ./figuras/logo_mba.png>
-Package luatex.def Info: ./figuras/logo_mba.png  used on input line 52.
+Package luatex.def Info: ./figuras/logo_mba.png  used on input line 12.
 (luatex.def)             Requested size: 69.4351pt x 28.45274pt.
- [17])
+[30]) (./Tese.bbl)
 File: ./figuras/logo_mba.png Graphic file (type png)
 <use ./figuras/logo_mba.png>
-Package luatex.def Info: ./figuras/logo_mba.png  used on input line 162.
+Package luatex.def Info: ./figuras/logo_mba.png  used on input line 163.
 (luatex.def)             Requested size: 69.4351pt x 28.45274pt.
- [18] (./Tese.aux)
+ [31] (./pos-textual/Apendices.tex
+File: ./figuras/logo_mba.png Graphic file (type png)
+<use ./figuras/logo_mba.png>
+Package luatex.def Info: ./figuras/logo_mba.png  used on input line 38.
+(luatex.def)             Requested size: 69.4351pt x 28.45274pt.
+ [32
+
+])
+File: ./figuras/logo_mba.png Graphic file (type png)
+<use ./figuras/logo_mba.png>
+Package luatex.def Info: ./figuras/logo_mba.png  used on input line 176.
+(luatex.def)             Requested size: 69.4351pt x 28.45274pt.
+ [33] (./Tese.aux)
  ***********
 LaTeX2e <2026-06-01>
 L3 programming layer <2020/03/25>
@@ -1296,29 +1559,34 @@ LaTeX Font Warning: Size substitutions with differences
 )
 
 Here is how much of LuaTeX's memory you used:
- 12289 strings out of 475635
- 125061,953878 words of node,token memory allocated
- 1348 words of node memory still in use:
-   7 hlist, 2 vlist, 2 rule, 5 glue, 4 kern, 1 glyph, 31 attribute, 203 glue_spe
-c, 16 attribute_list, 4 write nodes
-   avail lists: 1:4,2:808,3:186,4:52,5:111,6:85,7:8793,8:27,9:607,10:16,11:1229
- 34829 multiletter control sequences out of 65536+600000
- 78 fonts using 22016647 bytes
- 85i,16n,105p,585b,576s stack positions out of 10000i,1000n,20000p,200000b,200000s
-<C:/WINDOWS/Fonts/consola.ttf><C:/WINDOWS/Fonts/ariali.ttf><C:/WINDOWS/Fonts/ari
-albd.ttf><C:/WINDOWS/Fonts/arial.ttf><C:/Users/ander/AppData/Local/Programs/MiKT
-eX/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Users/ander/AppData/Local/Progr
-ams/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/ander/AppData/Loc
-al/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi6.pfb><C:/Users/ander/AppD
-ata/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Users/and
-er/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Us
-ers/ander/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr8.pfb>
-<C:/Users/ander/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cms
-y10.pfb><C:/Users/ander/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfont
-s/cm/cmsy8.pfb>
-Output written on Tese.pdf (18 pages, 631402 bytes).
+ 14044 strings out of 475635
+ 244297,953878 words of node,token memory allocated
+ 1426 words of node memory still in use:
+   7 hlist, 2 vlist, 2 rule, 5 glue, 4 kern, 1 glyph, 59 attribute, 203 glue_spe
+c, 30 attribute_list, 2 write nodes
+   avail lists: 1:5,2:8707,3:257,4:76,5:2413,6:104,7:11679,8:37,9:7576,10:16,11:
+2281
+ 36493 multiletter control sequences out of 65536+600000
+ 94 fonts using 26261367 bytes
+ 85i,16n,105p,585b,694s stack positions out of 10000i,1000n,20000p,200000b,200000s
+<C:/WINDOWS/Fonts/arialbi.ttf><C:/WINDOWS/Fonts/consola.ttf><C:/WINDOWS/Fonts/ar
+iali.ttf><C:/WINDOWS/Fonts/arialbd.ttf><C:/WINDOWS/Fonts/arial.ttf><C:/Users/and
+er/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx8.pfb><C:/Us
+ers/ander/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmex10.pf
+b><C:/Users/ander/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/c
+mmi10.pfb><C:/Users/ander/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfo
+nts/cm/cmmi6.pfb><C:/Users/ander/AppData/Local/Programs/MiKTeX/fonts/type1/publi
+c/amsfonts/cm/cmmi7.pfb><C:/Users/ander/AppData/Local/Programs/MiKTeX/fonts/type
+1/public/amsfonts/cm/cmmi8.pfb><C:/Users/ander/AppData/Local/Programs/MiKTeX/fon
+ts/type1/public/amsfonts/cm/cmmib10.pfb><C:/Users/ander/AppData/Local/Programs/M
+iKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/ander/AppData/Local/Pro
+grams/MiKTeX/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Users/ander/AppData/Loc
+al/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/ander/App
+Data/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy7.pfb><C:/Users/an
+der/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy8.pfb>
+Output written on Tese.pdf (33 pages, 3677040 bytes).
 
-PDF statistics: 137 PDF objects out of 1000 (max. 8388607)
+PDF statistics: 221 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 1048576)
  1 words of extra memory for PDF output out of 10000 (max. 100000000)
 

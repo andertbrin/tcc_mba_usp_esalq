@@ -1,95 +1,364 @@
 \newpage
 \chapter{Material e Métodos}
-\addcontentsline{toc}{chapter}{Material e Métodos}
 
-Este estudo possui uma abordagem qualitativa e quantitativa, e
-objetivo exploratório, uma vez que busca investigar a viabilidade
-de uma abordagem metodológica. De acordo com \cite{gil2010elaborar}, pesquisas
-exploratórias têm como finalidade obter maiores informações sobre o
-assunto que se pretende estudar, de maneira a proporcionar uma melhor
-delimitação do tema pesquisado, tornando-o mais explícito ou permitindo
-a construção de hipóteses. Nesse sentido, o objetivo metodológico não é
-estimar um modelo preditivo definitivo, mas avaliar a viabilidade de um procedimento
-para transformar comunicações de política monetária em sinais estruturados e
-comparáveis ao longo do tempo.
+Este estudo possui abordagem qualitativa e quantitativa e caráter exploratório,
+uma vez que busca avaliar a viabilidade de um procedimento para transformar
+comunicações do Federal Reserve (Fed) em sinais estruturados de orientação
+monetária e investigar sua relação com decisões posteriores de política
+monetária. De acordo com \citep{gil2010elaborar}, pesquisas exploratórias
+contribuem para tornar o problema investigado mais explícito e possibilitam a
+construção e avaliação inicial de hipóteses.
 
-\section{Coleta dos documentos}
+O procedimento foi organizado em sete etapas principais: coleta e preparação
+das comunicações do Federal Reserve; extração e classificação dos sinais
+monetários por modelo de linguagem; geração das representações vetoriais;
+construção das redes de similaridade semântica; cálculo dos indicadores de
+orientação monetária; obtenção das decisões de taxa de juros; e avaliação
+estatística e temporal dos indicadores.
 
-O conjunto textual utilizado é composto por documentos oficiais publicados pelo FED,
-incluindo comunicados das reuniões do FOMC, atas,
-discursos de dirigentes, testemunhos e comunicados de imprensa. Os documentos foram
-coletados a partir do site oficial da instituição. Para cada publicação, foram
-armazenadas informações de identificação, como o endereço eletrônico, a data e o
-texto, permitindo relacionar os sinais extraídos ao documento de origem e ao período
-correspondente.
+\section{Coleta e preparação dos documentos}
 
-\section{Extração e classificação dos sinais}
+O conjunto textual utilizado foi composto por comunicações oficiais publicadas
+pelo Federal Reserve, incluindo comunicados das reuniões do Federal Open Market
+Committee (FOMC), atas, discursos de dirigentes, testemunhos e comunicados à
+imprensa. Os documentos foram obtidos a partir do site oficial da instituição.
 
-Após a coleta dos documentos, modelos de linguagem de grande porte
-(LLMs) foram utilizados para identificar sinais relacionados à política monetária e
-organizar as informações extraídas. Cada sinal recebeu uma classificação de postura
-monetária, podendo ser \textit{hawkish}, \textit{mostly hawkish}, \textit{neutral},
-\textit{mostly dovish} ou \textit{dovish}, além de uma pontuação numérica, uma
-justificativa e o trecho de evidência correspondente.
+A coleta partiu de páginas institucionais que concentram links para os
+documentos do Federal Reserve, incluindo os materiais de política monetária, o
+calendário do FOMC e as páginas de discursos e testemunhos. Nas páginas com
+navegação paginada, a coleta dos endereços eletrônicos foi realizada com
+Selenium. Para o calendário do FOMC foram utilizadas requisições HTTP por meio
+da biblioteca Requests e interpretação do conteúdo HTML com Beautiful Soup.
 
-\section{Representação vetorial e construção da rede}
+Após a obtenção dos endereços, cada publicação foi processada individualmente.
+Nos documentos disponibilizados diretamente em HTML, foram removidos elementos
+sem interesse analítico, como \texttt{script}, \texttt{style},
+\texttt{noscript}, \texttt{header} e \texttt{footer}. O
+conteúdo restante foi convertido em texto e submetido a tratamento para remoção
+de espaços excedentes e linhas vazias.
 
-Para representar o conteúdo semântico dos sinais, cada um foi associado a um vetor
-de \textit{embedding}. A partir desses vetores, foi calculada a similaridade do
-cosseno entre os sinais. O algoritmo \textit{k-nearest neighbors} (KNN) foi então
-aplicado para selecionar, para cada sinal, os vizinhos semanticamente mais próximos,
-respeitando um número máximo de vizinhos e um limiar mínimo de similaridade.
+Quando o conteúdo estava disponível em PDF, o arquivo correspondente foi
+identificado a partir dos hiperlinks presentes na página, baixado
+temporariamente e processado com a biblioteca PyPDF2. O texto foi extraído
+sequencialmente de suas páginas e concatenado em um único conteúdo textual.
 
-O resultado é uma rede de similaridade semântica ponderada e não direcionada. Seus
-nós representam sinais monetários, enquanto suas arestas representam relações
-\texttt{SIMILAR\_TO}; o peso de cada aresta corresponde ao escore de similaridade
-calculado entre os respectivos vetores. A rede permite identificar proximidades entre
-sinais que podem ter sido extraídos de documentos ou datas diferentes, mesmo quando
-essa relação não está explicitamente indicada no texto original. As informações de
-publicação, data, classificação, pontuação e evidência são mantidas como atributos
-dos sinais, permitindo análises posteriores por período.
+Para cada publicação, foram armazenados a URL de origem, o título, a data de
+publicação e o conteúdo textual. O título e a data foram identificados com
+auxílio de um modelo de linguagem e a data foi padronizada no formato
+\texttt{YYYY-MM-DD}. Os resultados foram armazenados incrementalmente em
+formato JSON, permitindo evitar o processamento repetido de documentos já
+extraídos.
 
-\section{Análise da estrutura da rede de similaridade semântica}
+\section{Extração e classificação dos sinais monetários}
 
-As análises foram realizadas separadamente para cada período de interesse. Antes da
-identificação das comunidades, foi aplicado o algoritmo de componentes fracamente
-conectados (\textit{weakly connected components} -- WCC) para avaliar a conectividade
-da rede. O limiar mínimo de similaridade foi reduzido em etapas sucessivas até que
-os sinais do período formassem uma única componente conexa. Esse procedimento buscou
-evitar que a análise fosse realizada sobre grupos isolados e definiu a rede utilizada
-nas etapas seguintes.
+A partir dos documentos estruturados, foi utilizado um modelo de linguagem de
+grande porte para identificar sinais relacionados à política monetária. O
+modelo recebeu como contexto o título da publicação, sua data e o conteúdo
+textual, juntamente com um \textit{prompt} estruturado no qual era instruído a
+atuar como um economista especializado na análise de comunicações de bancos
+centrais.
 
-Sobre essa rede, o algoritmo de Leiden foi executado utilizando o escore de
-similaridade como peso das relações, permitindo identificar comunidades de sinais
-semanticamente próximos. Para caracterizar sua estrutura, foram registrados o número
-de comunidades, o tamanho da maior comunidade e a pontuação média dos sinais em cada
-grupo. A modularidade não foi utilizada como critério de seleção no procedimento
-implementado; a interpretação das comunidades baseou-se em sua composição, tamanho
-e orientação média.
+Cada sinal identificado foi classificado em uma das cinco categorias de
+orientação monetária: \textit{dovish}, \textit{mostly dovish},
+\textit{neutral}, \textit{mostly hawkish} e \textit{hawkish}. As definições
+consideraram principalmente informações relacionadas à inflação, à atividade
+econômica, ao mercado de trabalho e às implicações dessas condições para a
+orientação da política monetária.
 
-A relevância estrutural dos sinais foi avaliada por três medidas ponderadas pelo
-escore de similaridade: centralidade de intermediação, centralidade de grau e
-PageRank. A primeira destaca nós situados nos caminhos entre diferentes regiões da
-rede; a segunda mensura a intensidade total de suas conexões; e o PageRank considera
-também a relevância dos nós vizinhos. Para cada medida, foi calculada uma média
-ponderada da pontuação de postura monetária dos sinais. Também foram obtidas a média
-simples das pontuações e medidas agregadas por comunidade, incluindo médias com pesos
-iguais e ponderadas pelo PageRank. Esses resultados compõem as versões do indicador
-experimental avaliadas na etapa de comparação temporal.
+Para cada sinal, o modelo retornou três informações: o conteúdo sintetizado do
+sinal (\texttt{signal}), uma justificativa para a classificação
+(\texttt{justification}) e um trecho da comunicação original utilizado como
+evidência (\texttt{evidence}). Cada sinal deveria representar uma única ideia
+principal, e categorias sem sinais relevantes eram retornadas como listas
+vazias. O \textit{prompt} completo utilizado nessa etapa é apresentado no
+Apêndice I.
 
+Após a extração, as categorias textuais foram convertidas deterministicamente
+em uma escala numérica de orientação monetária:
 
+\[
+s_i =
+\begin{cases}
+-1,   & \text{\textit{dovish}},\\
+-0,5, & \text{\textit{mostly dovish}},\\
+0,    & \text{\textit{neutral}},\\
+0,5,  & \text{\textit{mostly hawkish}},\\
+1,    & \text{\textit{hawkish}}.
+\end{cases}
+\]
 
-\section{Comparação temporal e avaliação - REFINAR}
+Dessa forma, valores negativos representam orientação relativamente mais
+expansionista e valores positivos representam orientação relativamente mais
+restritiva.
 
-Por fim, o indicador foi organizado por período e comparado com as decisões
-observadas do FOMC, especialmente com a direção dos movimentos da taxa de juros. A
-avaliação foi realizada por meio da comparação temporal entre a trajetória do
-indicador e as decisões efetivamente tomadas, buscando verificar se os sinais
-extraídos e sua organização na rede acompanham mudanças na orientação da política
-monetária e se apresentam indícios de antecipação dessas mudanças.
+\section{Representação vetorial e construção do grafo}
 
-Considerando o caráter exploratório da pesquisa, os resultados devem ser
-interpretados como evidência inicial sobre a utilidade da abordagem. A análise
-privilegia a coerência entre os sinais, a estrutura da rede e os eventos observados,
-sem pressupor, nesta etapa, a obtenção de elevado poder preditivo.
+Para representar semanticamente os sinais extraídos, o conteúdo do campo
+\texttt{signal} foi fornecido ao modelo
+\texttt{text-embedding-3-large}. Cada sinal foi convertido em um vetor de
+\textit{embedding} com 3.072 componentes, armazenado na propriedade
+\texttt{embedding\_signal}. Esses vetores foram posteriormente utilizados no
+cálculo da proximidade semântica entre os sinais.
 
+Os dados foram armazenados no Neo4j utilizando dois tipos principais de nós:
+\texttt{Publication}, representando as comunicações do Federal Reserve, e
+\texttt{Signal}, representando individualmente os sinais monetários extraídos.
+Os nós \texttt{Publication} foram identificados pela URL do documento e ligados
+aos respectivos nós \texttt{Signal} por relações
+\texttt{HAS\_SIGNAL}.
+
+Os nós \texttt{Signal} armazenaram, entre outras informações, sua classificação,
+pontuação numérica, justificativa, evidência, data de publicação e
+\textit{embedding}. Relações \texttt{SIMILAR\_TO} foram utilizadas para
+representar a proximidade semântica entre os sinais, sendo o valor da
+similaridade armazenado na propriedade \texttt{score\_similarity}.
+
+Como a similaridade semântica não possui uma direção natural, as relações
+\texttt{SIMILAR\_TO} foram tratadas como não direcionadas nas projeções
+utilizadas pelos algoritmos de análise de grafos.
+
+\section{Definição dos períodos e construção das redes de similaridade}
+
+As análises foram realizadas separadamente para os intervalos compreendidos
+entre duas reuniões consecutivas do FOMC. As datas utilizadas como delimitadores
+foram obtidas a partir das publicações cujo título correspondia a
+\textit{Federal Reserve issues FOMC statement}. Após a remoção de duplicidades,
+as datas foram ordenadas cronologicamente.
+
+Para duas datas consecutivas, $t_i$ e $t_{i+1}$, foram selecionados os sinais
+publicados no intervalo
+
+\[
+t_i \leq d_j < t_{i+1},
+\]
+
+em que $d_j$ corresponde à data de publicação do sinal $j$. Dessa forma, as
+comunicações publicadas na data inicial são incorporadas ao período, enquanto
+aquelas publicadas na data da reunião subsequente são excluídas. Essa
+delimitação foi adotada para preservar a ordem temporal entre as informações
+utilizadas na construção do indicador e a decisão do FOMC utilizada
+posteriormente como referência.
+
+Para cada período, os nós selecionados foram projetados em memória utilizando o
+Neo4j Graph Data Science (GDS). Sobre os vetores de \textit{embedding}, foi
+aplicado o algoritmo \textit{k-nearest neighbors} (KNN), com similaridade do
+cosseno e máximo de 50 vizinhos por nó (\texttt{topK = 50}). As relações
+selecionadas pelo algoritmo foram persistidas como
+\texttt{SIMILAR\_TO}, utilizando a similaridade calculada como peso.
+
+Foram avaliadas duas estratégias para definição do limiar mínimo de
+similaridade.
+
+Na primeira, denominada abordagem de limiar variável, o procedimento foi
+iniciado com limiar igual a 0,80. Após a construção da rede, foi aplicado o
+algoritmo de componentes fracamente conectadas (\textit{Weakly Connected
+Components} -- WCC). Quando mais de uma componente era identificada, o limiar
+era reduzido em 0,01 e a rede reconstruída. O procedimento era repetido até que
+todos os nós do período pertencessem a uma única componente conexa ou até que
+fosse atingido o limite mínimo de 0,10. Dessa forma, foi mantido para cada
+período o maior limiar testado capaz de produzir uma rede conectada.
+
+Na segunda estratégia, foi utilizado um único limiar para todos os períodos.
+Esse valor foi definido a partir da mediana dos limiares obtidos no procedimento
+variável. O procedimento resultou em um limiar fixo igual a 0,72, posteriormente
+utilizado para reconstruir todas as redes sob um mesmo critério de similaridade.
+
+A comparação entre as duas estratégias permitiu avaliar a sensibilidade dos
+indicadores à forma utilizada para definir as relações semânticas.
+
+\section{Construção dos indicadores de orientação monetária}
+
+Após a construção de cada rede, foram calculadas medidas destinadas a incorporar
+a posição estrutural dos sinais à agregação de suas pontuações monetárias.
+Foram utilizados o algoritmo de Leiden para detecção de comunidades e três
+medidas de centralidade: centralidade de intermediação
+(\textit{betweenness centrality}), centralidade de grau ponderado e PageRank.
+
+Como medida de referência, foi calculada a média simples das pontuações dos
+sinais:
+
+\[
+I_{\text{média},t}
+=
+\frac{1}{N_t}
+\sum_{i=1}^{N_t}s_i,
+\]
+
+em que $N_t$ representa o número de sinais existentes no período $t$.
+
+Para cada medida de centralidade $c_i$, foi também calculada uma média ponderada:
+
+\[
+I_{c,t}
+=
+\frac{
+\sum_{i=1}^{N_t}s_i c_i
+}{
+\sum_{i=1}^{N_t}c_i
+}.
+\]
+
+Esse procedimento originou três indicadores, ponderados respectivamente pela
+centralidade de intermediação, centralidade de grau e PageRank.
+
+O algoritmo de Leiden foi aplicado utilizando a similaridade semântica como
+peso das relações. Inicialmente, calculou-se a média da orientação monetária dos
+sinais em cada comunidade. Em seguida, essas médias foram agregadas com pesos
+iguais:
+
+\[
+I_{\text{Leiden},t}
+=
+\frac{1}{K_t}
+\sum_{k=1}^{K_t}
+\left(
+\frac{1}{N_{k,t}}
+\sum_{i \in C_{k,t}}s_i
+\right),
+\]
+
+em que $K_t$ representa o número de comunidades no período, $C_{k,t}$ a
+comunidade $k$ e $N_{k,t}$ seu número de sinais.
+
+Foram ainda construídas três medidas combinando comunidades e centralidade. Para
+cada comunidade, a pontuação foi inicialmente ponderada por uma das medidas de
+centralidade:
+
+\[
+I_{k,c,t}
+=
+\frac{
+\sum_{i\in C_{k,t}}s_i c_i
+}{
+\sum_{i\in C_{k,t}}c_i
+}.
+\]
+
+Posteriormente, os resultados das comunidades foram agregados com pesos iguais:
+
+\[
+I_{\text{Leiden},c,t}
+=
+\frac{1}{K_t}
+\sum_{k=1}^{K_t}I_{k,c,t}.
+\]
+
+Ao todo, foram calculadas oito formas de agregação: média simples; três
+indicadores ponderados pelas centralidades; média das comunidades de Leiden; e
+três indicadores que combinam comunidades de Leiden e centralidade. Os mesmos
+procedimentos foram aplicados às redes construídas com limiar variável e com
+limiar fixo.
+
+\section{Obtenção das decisões da \textit{Federal Funds Rate}}
+
+As decisões de política monetária utilizadas como referência foram obtidas por
+meio da API do Federal Reserve Economic Data (FRED). Foram utilizadas as séries
+\texttt{DFEDTARL} e \texttt{DFEDTARU}, correspondentes, respectivamente, aos
+limites inferior e superior da faixa-alvo da \textit{Federal Funds Rate}.
+
+Como a unidade temporal da análise corresponde às reuniões do FOMC, foram
+selecionadas apenas as observações cujas datas coincidiam com os comunicados
+utilizados para delimitar os períodos.
+
+A mudança na política de juros foi representada pela variação do limite superior
+da faixa-alvo entre duas reuniões consecutivas:
+
+\[
+\Delta r_t
+=
+r^U_t-r^U_{t-1},
+\]
+
+em que $r^U_t$ corresponde ao limite superior da faixa-alvo na reunião $t$.
+Valores positivos representam elevação da faixa-alvo, valores negativos
+representam redução e valores iguais a zero representam manutenção.
+
+Para avaliar a relação prospectiva entre as comunicações e a política
+monetária, o indicador construído a partir dos sinais pertencentes ao intervalo
+entre $t_i$ e $t_{i+1}$ foi associado à decisão observada na data
+$t_{i+1}$.
+
+\section{Avaliação estatística e temporal dos indicadores}
+
+A avaliação dos indicadores foi realizada em etapas complementares, buscando
+distinguir associação estatística, capacidade explicativa e desempenho
+preditivo.
+
+Inicialmente, foram calculados os coeficientes de correlação de Pearson e
+Spearman entre cada indicador e a variação subsequente da faixa-alvo da
+\textit{Federal Funds Rate}. O coeficiente de Pearson foi utilizado para medir
+a associação linear, enquanto o coeficiente de Spearman foi empregado para
+avaliar associações monotônicas sem pressupor linearidade.
+
+Em seguida, foi estimado separadamente para cada indicador um modelo de regressão
+linear da forma
+
+\[
+\Delta r_{t+1}
+=
+\alpha+\beta I_t+\varepsilon_t,
+\]
+
+em que $I_t$ corresponde ao indicador produzido a partir das comunicações do
+período anterior à decisão. Os erros-padrão foram estimados utilizando o
+procedimento HAC de Newey-West, robusto à heterocedasticidade e à
+autocorrelação, com uma defasagem.
+
+Como análise complementar, os indicadores também foram relacionados à decisão
+observada no início de cada intervalo. Essa comparação permitiu avaliar se sua
+associação era mais intensa com a decisão subsequente do que com a orientação
+de política monetária já vigente.
+
+\subsection{Avaliação do valor incremental da estrutura do grafo}
+
+Para investigar se as informações provenientes da estrutura da rede acrescentam
+capacidade explicativa ou preditiva à classificação individual dos sinais, foi
+utilizada a média simples como modelo de referência:
+
+\[
+M_0:
+\quad
+\Delta r_{t+1}
+=
+\alpha+\beta_1I^{\text{média}}_t+\varepsilon_t.
+\]
+
+Esse modelo foi comparado com uma especificação contendo adicionalmente um dos
+indicadores derivados do grafo:
+
+\[
+M_1:
+\quad
+\Delta r_{t+1}
+=
+\alpha+\beta_1I^{\text{média}}_t
++\beta_2I^{\text{grafo}}_t+\varepsilon_t.
+\]
+
+O ganho incremental foi avaliado considerando conjuntamente o aumento do
+coeficiente de determinação ajustado, a significância estatística do coeficiente
+$\beta_2$ com erros-padrão HAC e a redução do erro de previsão fora da amostra.
+
+\subsection{Validação temporal fora da amostra}
+
+Por fim, a capacidade preditiva foi avaliada utilizando uma estratégia de
+validação temporal com janela expansiva. As primeiras 30 reuniões foram
+utilizadas como conjunto inicial de estimação. A partir desse ponto, o modelo
+foi utilizado para prever a decisão da reunião seguinte. Após cada previsão, a
+observação realizada era incorporada ao conjunto de treinamento e o modelo era
+novamente estimado, preservando a ordem cronológica dos dados.
+
+O desempenho das previsões foi avaliado por meio do erro absoluto médio
+(\textit{Mean Absolute Error} -- MAE), da raiz do erro quadrático médio
+(\textit{Root Mean Squared Error} -- RMSE) e da capacidade de identificar a
+direção da decisão.
+
+Para a avaliação da direção, variações superiores a 0,125 ponto percentual foram
+classificadas como aumento, variações inferiores a $-0,125$ ponto percentual
+como redução e os valores compreendidos entre esses limites como manutenção.
+
+Como referência, foi utilizado um modelo simples no qual a previsão para a
+reunião seguinte corresponde à média histórica das variações da taxa disponíveis
+até aquele momento. A comparação com esse modelo permitiu avaliar se os
+indicadores extraídos das comunicações acrescentavam informação preditiva em
+relação a uma referência baseada apenas no histórico das próprias decisões.

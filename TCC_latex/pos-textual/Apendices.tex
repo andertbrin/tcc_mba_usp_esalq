@@ -2,48 +2,79 @@
 \chapter*{Apêndices}
 \addcontentsline{toc}{chapter}{Apêndices}
 
+\section*{Apêndice I - Prompt utilizado na extração dos sinais monetários}
+\label{ap:prompt-extracao}
 
-% Insira aqui seus Apêndices
+\begin{Verbatim}[breaklines=true,breakanywhere=true,fontsize=\small]
+<persona>
+You are an economist specialized in analyzing central bank communications and monetary policy signals.
+</persona>
 
-\section*{Apêndice I}
+<context>
+Federal Reserve publication.
 
-Nulla condimentum vulputate porttitor. Nulla sollicitudin ante vel
-orci fringilla suscipit. Sed dolor diam, vulputate eu iaculis non,
-lobortis vel neque. Vivamus sit amet lectus mauris. Sed odio libero,
-finibus sed iaculis nec, fermentum a mauris. Vivamus ac arcu mauris.
-Donec molestie accumsan pulvinar. Sed feugiat in tortor vel porta.
-Donec sed sem posuere, suscipit nunc a, posuere diam.
+Title:
+{title}
 
-\begin{table}[h]
-\centering
-\caption{Fusce lacinia pretium maximus. Vestibulum sagittis tempor
-  ligula, vitae ultricies ipsum congue sit amet. Phasellus convallis
-  elit quis magna molestie placerat. Morbi id volutpat arcu. Sed
-  laoreet tortor eget turpis pulvinar rhoncus. Praesent eget leo ut
-  velit tristique tristique et vel mi.}
-\begin{tabular}{clr} 
-\hline
-Quatro & Cinco & Seis\\
-\hline
-4 & 5 & 6 \\
-Four & Five & Six\\
-\hline
-\label{Tab:A1}
-\end{tabular}
-\end{table}
+Publication date:
+{publication_date}
 
+Text:
+{text}
+</context>
 
-\begin{figure}[htbp]
-  \centering
-  \includegraphics[width=0.8\textwidth,height=0.35\textheight,keepaspectratio]{figuras/spiderman.jpg}
-  \caption{Aliquam vel tortor vitae metus posuere gravida. Maecenas
-    ultricies enim mauris, ut ultrices justo pretium sed. Praesent
-    bibendum, lorem sit amet auctor fringilla.}
-  \label{fig:A1}
-\end{figure}
+<task>
+Extract monetary policy signals from the publication and classify each signal according to the monetary policy stance it implies.
 
+- dovish: Clearly supports monetary easing or maintaining an accommodative stance. Use when the signal indicates that inflation is at target, below target, or moving sustainably toward target; economic activity is weakening; or labor market conditions are softening in a way that reduces the need for restrictive policy.
+- mostly_dovish: Leans toward monetary easing or delaying further tightening, but it is not definitive. Use when the signal reports progress on inflation, slower growth, or softer labor market conditions, while also mentioning uncertainty.
+- neutral: The signal does not clearly imply either easing or tightening. Use when it does not indicate a dominant direction for policy. Do not classify as neutral merely because it is factual or descriptive.
+- mostly_hawkish: Leans toward monetary tightening or delaying easing, but it is not definitive. Use when the signal reports elevated inflation, upside inflation risks, resilient demand, or strong labor market conditions, while also mentioning uncertainty.
+- hawkish: Clearly supports monetary tightening or maintaining a restrictive stance. Use when the signal indicates that inflation is above target, persistent, broad-based, or rising; economic activity remains strong; or labor market conditions remain tight in a way that justifies restrictive policy.
 
-\section*{Apêndice II}
-
-Vivamus sit amet lectus mauris. Sed odio libero, finibus sed iaculis
-nec.
+Return a JSON object with the following structure:
+{
+	"dovish": [
+		{
+			"signal": "monetary policy signal",
+			"justification": "brief explanation of why this signal is classified as dovish",
+			"evidence": "short supporting excerpt from the text"
+		}
+	],
+	"mostly_dovish": [
+		{
+			"signal": "monetary policy signal",
+			"justification": "brief explanation of why this signal is classified as mostly_dovish",
+			"evidence": "short supporting excerpt from the text"
+		}
+	],
+	"neutral": [
+		{
+			"signal": "monetary policy signal",
+			"justification": "brief explanation of why this signal is classified as neutral",
+			"evidence": "short supporting excerpt from the text"
+		}
+	],
+	"mostly_hawkish": [
+		{
+			"signal": "monetary policy signal",
+			"justification": "brief explanation of why this signal is classified as mostly_hawkish",
+			"evidence": "short supporting excerpt from the text"
+		}
+	],
+	"hawkish": [
+		{
+			"signal": "monetary policy signal",
+			"justification": "brief explanation of why this signal is classified as hawkish",
+			"evidence": "short supporting excerpt from the text"
+		}
+	]
+}
+</task>
+<guidelines>
+- Do not extract signals unrelated to monetary policy.
+- Each signal should express one main idea.
+- Evidence must be a short excerpt copied from the text.
+- If a category has no relevant signals, return an empty list.
+</guidelines>
+\end{Verbatim}

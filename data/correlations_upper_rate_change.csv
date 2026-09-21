@@ -1,0 +1,17 @@
+indicador,correlacao_pearson,cenario
+Comunidades Leiden,0.494618262565956,Limiar variável
+Leiden + PageRank,0.4860380307357258,Limiar variável
+Leiden + Grau,0.485619684347375,Limiar variável
+Média simples,0.4854897713665232,Limiar variável
+PageRank,0.476986550605222,Limiar variável
+Grau,0.47465014219106627,Limiar variável
+Betweenness,0.459525157083584,Limiar variável
+Leiden + Betweenness,0.45821830232910304,Limiar variável
+Betweenness,0.5017527722258154,Limiar fixo
+Média simples,0.48511661253505706,Limiar fixo
+PageRank,0.4801258436646948,Limiar fixo
+Grau,0.47676930100592957,Limiar fixo
+Leiden + Betweenness,0.46945118453398027,Limiar fixo
+Comunidades Leiden,0.44653316264086956,Limiar fixo
+Leiden + PageRank,0.4437675109954727,Limiar fixo
+Leiden + Grau,0.4411049835396284,Limiar fixo
