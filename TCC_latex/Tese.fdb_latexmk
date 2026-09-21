@@ -1,13 +1,13 @@
 # Fdb version 4
-["bibtex Tese"] 1789952321.38557 "Tese.aux" "Tese.bbl" "Tese" 1789952358.28632 0
+["bibtex Tese"] 1789953037.13894 "Tese.aux" "Tese.bbl" "Tese" 1789953044.69437 0
   "./referencias/bibliografia.bib" 1789854591 4627 31b50450912f35c3aaaefb08511dd185 ""
   "./referencias/genetics.bst" 1789271145 27264 14d33ce67956de02d69ac3dcf55e3edc ""
-  "Tese.aux" 1789952357 13010 0654449fed9f14dd8a9e5e3e56b57735 "lualatex"
+  "Tese.aux" 1789953043 13025 bb6bcad8f7e6d4bf3cea2e341f541fcd "lualatex"
   (generated)
   "Tese.bbl"
   "Tese.blg"
   (rewritten before read)
-["lualatex"] 1789952350.88188 "c:/Users/ander/OneDrive/Cursos/MBA ciencia de dados EsalqUSP/tcc/TCC_latex/Tese.tex" "Tese.pdf" "Tese" 1789952358.28701 0
+["lualatex"] 1789953037.40584 "c:/Users/ander/OneDrive/Cursos/MBA ciencia de dados EsalqUSP/tcc/TCC_latex/Tese.tex" "Tese.pdf" "Tese" 1789953044.69498 0
   "C:/Users/ander/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map" 1789938401 80909 eab91d9745dd2edfd62a31d53cd5fe15 ""
   "C:/Users/ander/AppData/Local/MiKTeX/luatex-cache/generic/fonts/otl/arial.luc" 1789262267 699107 2f2a2dc13d52eb7fc7467d131b49706b ""
   "C:/Users/ander/AppData/Local/MiKTeX/luatex-cache/generic/fonts/otl/arialbd.luc" 1789262267 695499 0baf781ee362a9ab0c833f27cd1d8d7e ""
@@ -195,8 +195,8 @@
   "C:/WINDOWS/Fonts/arialbi.ttf" 1781049893 724872 4717133d9e99de6a26a71ee6fcae5711 ""
   "C:/WINDOWS/Fonts/ariali.ttf" 1781049893 721584 c1cd3dd9698a3d07b50f8a2790708c10 ""
   "C:/WINDOWS/Fonts/consola.ttf" 1771034273 453088 e4d9557e530bdb7847f84a8967542b03 ""
-  "Tese.aux" 1789952357 13010 0654449fed9f14dd8a9e5e3e56b57735 "lualatex"
-  "Tese.bbl" 1789952321 3598 65611c3464089b8d34e61f4949e5c649 "bibtex Tese"
+  "Tese.aux" 1789953043 13025 bb6bcad8f7e6d4bf3cea2e341f541fcd "lualatex"
+  "Tese.bbl" 1789953037 3598 65611c3464089b8d34e61f4949e5c649 "bibtex Tese"
   "Tese.tex" 1789938391 5338 8e2ff669a2ad13e2c9e282910dab8685 ""
   "c:/Users/ander/OneDrive/Cursos/MBA ciencia de dados EsalqUSP/tcc/TCC_latex/Tese.tex" 1789938391 5338 8e2ff669a2ad13e2c9e282910dab8685 ""
   "figuras/graph_schema.png" 1789342649 33850 f83369cf9420108d14823f04303db1da ""
@@ -218,7 +218,7 @@
   "textual/Conclusao.tex" 1789948740 417 ceb21d61a59b72f1a4711cf32153288b ""
   "textual/Introducao.tex" 1789855514 6416 3674af7d9d2431692ef5ba2837aebc49 ""
   "textual/MatMet.tex" 1789952350 15814 34de383f3e3179bf25c72062e37146d0 ""
-  "textual/Resultados.tex" 1789951870 51924 3536ca5568c0a5c926027b72852d9d58 ""
+  "textual/Resultados.tex" 1789953029 34694 54f0e78b8705be1a016a9d237dc5abfb ""
   (generated)
   "Tese.aux"
   "Tese.log"

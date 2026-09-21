@@ -268,62 +268,15 @@ Os novos registros eram concatenados aos resultados já existentes e
 armazenados incrementalmente em arquivo CSV, permitindo preservar os 
 sinais previamente processados e retomar a execução sem duplicação de documentos.
 
-\section{Construção do grafo}
+\section{Estrutura do grafo resultante}
 
-Após a estruturação e classificação dos sinais monetários, os dados foram 
-inseridos em um banco de dados orientado a grafos utilizando o Neo4j. 
-A modelagem adotada foi composta por dois tipos de nós: 
-\texttt{Publication}, utilizado para representar cada comunicação do 
-Federal Reserve, e \texttt{Signal}, utilizado para representar 
-individualmente os sinais de política monetária extraídos dessas comunicações.
-
-Os nós \texttt{Publication} foram identificados de forma única pela 
-URL da publicação. Para cada nó, foram armazenadas as 
-propriedades \texttt{title} e \texttt{publication\_date}, correspondentes, 
-respectivamente, ao título e à data de publicação do documento. 
-O uso da URL como identificador permitiu que diferentes sinais extraídos 
-de uma mesma comunicação fossem associados a um único nó de publicação.
-
-Os nós \texttt{Signal}, por sua vez, foram identificados pela 
-combinação entre o conteúdo textual do sinal e a URL da publicação 
-de origem. Dessa forma, sinais com conteúdos semelhantes ou mesmo 
-idênticos, mas provenientes de documentos distintos, puderam ser 
-mantidos como entidades independentes no grafo. 
-Cada nó recebeu as propriedades \texttt{classification}, 
-\texttt{score}, \texttt{justification}, \texttt{evidence}, 
-\texttt{embedding\_signal} e \texttt{date}. A propriedade 
-\texttt{date} corresponde à data de publicação do documento 
-do qual o sinal foi extraído.
-
-A vinculação entre as publicações e os sinais foi representada 
-pela relação \texttt{HAS\_SIGNAL}, criada entre cada 
-nó \texttt{Publication} e os respectivos nós \texttt{Signal}. 
-Essa estrutura preserva a origem documental de cada sinal e, 
-em conjunto com as propriedades \texttt{justification} e 
-\texttt{evidence}, permite rastrear a classificação até o 
-conteúdo da comunicação utilizada pelo modelo de linguagem.
-
-Além das relações entre publicações e sinais, foram construídas 
-relações \texttt{SIMILAR\_TO} entre sinais semanticamente próximos. 
-Essas conexões foram obtidas a partir da comparação dos vetores 
-armazenados em \texttt{embedding\_signal} e receberam a propriedade 
-\texttt{score\_similarity}, correspondente à similaridade entre os 
-respectivos vetores. Como a proximidade semântica representa uma 
-associação simétrica, a direção das relações foi desconsiderada 
-nas projeções utilizadas nas análises de rede.
-
-Diferentemente dos nós e das relações \texttt{HAS\_SIGNAL}, 
-que constituem a estrutura permanente do grafo, as relações 
-\texttt{SIMILAR\_TO} foram reconstruídas separadamente para cada 
-período de análise. Antes do processamento de um novo período, 
-as relações desse tipo existentes eram removidas e uma nova 
-rede de similaridade era criada contendo apenas os sinais 
-pertencentes ao intervalo temporal considerado. 
-A definição desses períodos e o procedimento utilizado para estabelecer 
-as conexões semânticas são apresentados na seção seguinte.
-
-
-Essa estrutura é ilustrada na Figura~\ref{fig:esquema-grafo}.
+A estrutura obtida no Neo4j é apresentada na
+Figura~\ref{fig:esquema-grafo}. As publicações foram representadas por nós
+\texttt{Publication} e os sinais monetários por nós \texttt{Signal}, ligados
+por relações \texttt{HAS\_SIGNAL}. Essa organização preservou a origem
+documental de cada sinal e permitiu rastrear sua classificação até a evidência
+textual correspondente. As relações \texttt{SIMILAR\_TO}, por sua vez,
+formaram as redes de proximidade semântica analisadas em cada período.
 
 \begin{figure}[htb]
 	\centering
@@ -335,44 +288,11 @@ Essa estrutura é ilustrada na Figura~\ref{fig:esquema-grafo}.
 
 \section{Caracterização das redes por período}
 
-A construção das relações \texttt{SIMILAR\_TO} foi realizada separadamente 
-para cada intervalo de análise. Essa estratégia restringiu as comparações 
-semânticas aos sinais associados ao mesmo período entre reuniões 
-consecutivas do FOMC, evitando a formação de relações entre sinais 
-pertencentes a contextos temporais distintos.
-
-As datas que delimitam os períodos foram obtidas da base textual 
-produzida nas etapas anteriores. Foram selecionadas as publicações 
-cujo título correspondia exatamente a \textit{Federal Reserve issues FOMC statement}, 
-referentes aos comunicados oficiais divulgados após as reuniões do FOMC. 
-As respectivas datas de publicação foram reunidas, eventuais duplicidades 
-foram eliminadas e os valores foram ordenados cronologicamente.
-
-A partir dessa sequência, cada intervalo foi definido por duas datas consecutivas 
-de divulgação dos comunicados do FOMC. Para um período iniciado em $t_i$ e 
-encerrado em $t_{i+1}$, foram selecionados os nós \texttt{Signal} 
-que possuíam a propriedade \texttt{embedding\_signal} e 
-cuja data satisfazia a condição 
-
-\[
-t_i \leq \text{data de publicação} < t_{i+1}.
-\]
-
-Consequentemente, as comunicações publicadas na data inicial foram incluídas no 
-período, enquanto aquelas divulgadas na data do comunicado subsequente 
-foram excluídas. Essa definição evita que o indicador referente ao 
-intervalo incorpore informações publicadas simultaneamente à decisão do 
-FOMC utilizada posteriormente como referência para sua avaliação, 
-preservando o caráter prospectivo da análise.
-
-A quantidade de sinais monetários disponíveis para a construção da 
-rede variou entre os períodos analisados, em função do número e do 
-conteúdo das comunicações publicadas entre reuniões consecutivas do FOMC. 
-A Figura~\ref{fig:node_count_by_fomc_period} apresenta o número de 
-nós \texttt{Signal} selecionados 
-em cada intervalo. Cada nó corresponde a um sinal monetário extraído das 
-comunicações publicadas entre a data inicial do período, inclusive, 
-e a data do comunicado subsequente, exclusive.
+A quantidade de sinais monetários utilizada na construção das redes variou ao
+longo da série, conforme mostra a
+Figura~\ref{fig:node_count_by_fomc_period}. Essa variação decorre de diferenças
+no volume e no conteúdo das comunicações publicadas entre reuniões consecutivas
+do FOMC.
 
 \begin{figure}[H]
 \centering
@@ -382,76 +302,15 @@ e a data do comunicado subsequente, exclusive.
 \label{fig:node_count_by_fomc_period}
 \end{figure}
 
-A variação no número de nós evidencia que a quantidade de 
-informações disponíveis para a construção das redes não é constante 
-ao longo do tempo. Sendo que o mínimo de sinais disponíveis ocorre nas reuniões
-de realizadas no começo da pandemia de COVID-19.
+O número de nós não permaneceu constante, e os menores conjuntos de sinais
+foram observados no início da pandemia de COVID-19. Essa heterogeneidade é
+relevante porque períodos com menor volume de comunicações oferecem menos
+informação para representar a orientação monetária e podem produzir indicadores
+mais sensíveis a sinais individuais.
 
-Para cada intervalo, os sinais selecionados foram projetados temporariamente 
-em memória por meio do Neo4j Graph Data Science (GDS). Na primeira projeção, 
-denominada \texttt{signal-cypher}, foram incluídos apenas os nós 
-\texttt{Signal} pertencentes ao período e a propriedade vetorial 
-\texttt{embedding\_signal}. Essa projeção não altera a estrutura persistida 
-no banco de dados e foi utilizada exclusivamente como entrada para o 
-cálculo das relações de similaridade.
-
-Sobre essa projeção foi executado o algoritmo \textit{k}-nearest neighbors (KNN). 
-A comparação entre os 
-sinais foi realizada utilizando a similaridade do cosseno 
-aplicada aos vetores de \textit{embedding}. Para cada nó, foram 
-considerados no máximo 50 vizinhos semanticamente mais 
-próximos (\texttt{topK = 50}), sujeitos também a um limiar 
-mínimo de similaridade.
-
-O procedimento retornou, para cada conexão selecionada, os identificadores 
-dos dois nós e o respectivo valor de similaridade. Esses identificadores 
-foram convertidos novamente nos nós \texttt{Signal} armazenados no Neo4j. 
-Para impedir a criação duplicada de uma mesma associação, os pares 
-foram filtrados de acordo com seus identificadores internos antes 
-da persistência da relação. Para cada par mantido, foi criada 
-uma relação \texttt{SIMILAR\_TO}, e o valor calculado pelo KNN 
-foi armazenado na propriedade \texttt{score\_similarity}.
-
-O limiar mínimo de similaridade foi determinado de forma adaptativa 
-para cada período. O procedimento foi iniciado com valor igual a 0,80. 
-Após a construção das relações, uma nova projeção, 
-denominada \texttt{signal-wcc}, foi formada com os nós e as conexões 
-daquele intervalo, considerando as relações como não direcionadas. 
-Em seguida, foi aplicado o algoritmo de componentes 
-fracamente conectadas (\textit{Weakly Connected Components} - WCC) 
-para determinar o número de componentes conexas existentes na rede.
-
-Quando mais de uma componente era identificada, o limiar de 
-similaridade era reduzido em 0,01 e as relações \texttt{SIMILAR\_TO} 
-eram reconstruídas. O procedimento era repetido até que todos os nós 
-do período pertencessem a uma única componente conexa ou até que 
-fosse atingido o limite mínimo de 0,10. Dessa forma, para cada 
-período foi selecionado o maior limiar, dentro da sequência 
-testada, capaz de produzir uma rede conectada.
-
-Esse procedimento procurou estabelecer um equilíbrio entre duas 
-características da rede. Limiares elevados preservam apenas 
-relações de maior proximidade semântica, porém podem produzir 
-grupos isolados de sinais. A redução progressiva do limiar adiciona 
-conexões menos semelhantes até que seja obtida uma estrutura 
-conectada.
-
-Ao final do procedimento, cada intervalo entre comunicados 
-consecutivos do FOMC foi representado por uma rede semântica 
-ponderada. Os nós correspondem aos sinais monetários 
-identificados nas comunicações publicadas durante o período, 
-enquanto as relações representam sua proximidade semântica e 
-são ponderadas pela propriedade \texttt{score\_similarity}. 
-Essa representação constitui a entrada para os algoritmos de 
-detecção de comunidades e de centralidade empregados na construção 
-dos indicadores de orientação monetária.
-
-Os limiares de similaridade obtidos pelo procedimento 
-adaptativo variaram entre os períodos analisados, refletindo 
-diferenças na estrutura semântica dos sinais disponíveis em 
-cada intervalo. A Figura~\ref{fig:similarity_cutoff} apresenta 
-o valor do limiar necessário para que a rede correspondente 
-a cada período formasse uma única componente conexa.
+Os limiares obtidos na construção adaptativa também variaram entre os períodos.
+A Figura~\ref{fig:similarity_cutoff} apresenta o maior limiar de similaridade
+capaz de manter cada rede em uma única componente conexa.
 
 \begin{figure}[H]
 \centering
@@ -462,108 +321,28 @@ cada período entre comunicados consecutivos do FOMC.
 \label{fig:similarity_cutoff}
 \end{figure}
 
-Os resultados mostram que não foi necessário utilizar o 
-mesmo nível mínimo de similaridade em todos os períodos 
-para obter uma rede conectada. Um limiar mais elevado indica 
-que os diferentes documentos apresentam pontos de vista mais 
-próximos entre si, permitindo conectar os sinais com relações 
-de maior proximidade semântica e preservando uma rede mais 
-coesa quanto ao conteúdo abordado. Em contraste, um limiar 
-mais baixo indica maior dispersão entre os pontos de vista 
-expressos nos documentos: para formar uma única rede, foi 
-necessário incorporar relações entre sinais progressivamente 
-menos semelhantes. Assim, o limiar sintetiza o grau de 
-convergência semântica necessário para conectar os sinais 
-produzidos no período, sem representar diretamente a 
-orientação favorável ou contrária da política monetária.
+Os períodos com limiares mais elevados permaneceram conectados mesmo quando
+apenas relações de maior proximidade semântica foram preservadas. Nos períodos
+com limiares menores, foi necessário incorporar conexões entre sinais menos
+semelhantes para integrar todos os nós. Esse resultado sugere diferenças no grau
+de heterogeneidade semântica das comunicações ao longo do tempo, sem que o limiar
+represente, por si só, uma orientação mais \textit{dovish} ou mais
+\textit{hawkish}.
 
-Além da abordagem com limiar de similaridade adaptativo, 
-foi avaliada uma segunda configuração utilizando um limiar 
-constante para todos os períodos. Para definir esse valor, 
-foi calculada a mediana dos limiares de similaridade 
-obtidos individualmente pelo procedimento adaptativo ao 
-longo dos intervalos analisados. A mediana resultante foi 
-igual a \ConstantSimilarityCutoff. Valor adotado como limiar 
-fixo no segundo cenário. 
-Essa escolha permite utilizar um valor representativo dos 
-limiares requeridos para a formação das redes no procedimento adaptativo, 
-ao mesmo tempo em que mantém constante o critério de conexão entre os sinais 
-ao longo de toda a série temporal.
+A mediana dos limiares adaptativos foi igual a
+\ConstantSimilarityCutoff, valor adotado na configuração com limiar fixo. A
+comparação entre as duas configurações permitiu verificar, nas análises
+subsequentes, se os resultados dependiam da adaptação do critério de conexão a
+cada período.
 
 
-\section{Construção dos indicadores}
+\section{Evolução temporal dos indicadores}
 
-Após a construção da rede de similaridade semântica para cada período 
-entre reuniões consecutivas do FOMC, foram calculadas diferentes versões 
-do indicador de orientação monetária. Para isso, foram combinadas as 
-pontuações atribuídas aos sinais monetários com informações 
-estruturais extraídas do grafo. Foram utilizados o algoritmo de 
-Leiden para detecção de comunidades e três medidas de 
-centralidade: centralidade de intermediação (\textit{betweenness centrality}), 
-centralidade de grau (\textit{degree centrality}) e PageRank.
-
-Inicialmente, as três medidas de centralidade foram 
-calculadas para cada nó \texttt{Signal} da rede. Os 
-resultados foram associados por meio do identificador 
-de cada nó, formando uma base contendo, para cada sinal, 
-sua pontuação de orientação monetária (\texttt{node\_score}) 
-e os respectivos valores de centralidade. 
-
-Como referência, foi calculada a média simples das pontuações 
-dos sinais pertencentes ao período. Esse indicador atribui o 
-mesmo peso a todos os nós e, portanto, não incorpora informações 
-sobre a posição de cada sinal na estrutura da rede. 
-Sua expressão pode ser representada por
-
-\[
-I_{\text{média}} =
-\frac{1}{N}\sum_{i=1}^{N}s_i,
-\]
-
-em que $s_i$ representa a pontuação de orientação monetária 
-do sinal $i$ e $N$ corresponde ao número de sinais 
-considerados no período.
-
-Em seguida, foram construídos três indicadores utilizando as 
-medidas de centralidade como fatores de ponderação. De forma geral, 
-para uma medida de centralidade $c_i$, o indicador foi calculado por
-
-\[
-I_c =
-\frac{\sum_{i=1}^{N}s_i c_i}
-{\sum_{i=1}^{N}c_i}.
-\]
-
-A primeira ponderação utilizou a centralidade de intermediação. 
-Essa medida destaca sinais que ocupam posições de intermediação 
-na rede, isto é, nós que participam com maior frequência dos 
-caminhos que conectam diferentes regiões do grafo. 
-Dessa forma, sinais com maior centralidade de intermediação 
-receberam maior peso na composição do indicador 
-\texttt{betweenness\_weighted\_sentiment}.
-
-A segunda versão utilizou a centralidade de grau ponderado. 
-Nesse caso, o peso atribuído a cada sinal decorre da intensidade 
-de suas conexões com os demais nós da rede, 
-produzindo o indicador \texttt{degree\_weighted\_sentiment}. 
-Essa abordagem atribui maior influência aos sinais que apresentam 
-maior relevância local na estrutura de similaridade semântica.
-
-A terceira ponderação foi realizada utilizando o PageRank. 
-Essa medida considera a relevância estrutural do nó 
-levando em conta não apenas suas próprias conexões, 
-mas também a relevância dos nós aos quais ele está conectado. 
-Os valores calculados pelo algoritmo foram utilizados como pesos 
-das pontuações monetárias, resultando no indicador 
-\texttt{pagerank\_weighted\_sentiment}.
-
-
-As Figuras~\ref{fig:variable_cutoff} e
-\ref{fig:fixed_cutoff} apresentam a evolução temporal para Leiden e dos 
-três indicadores ponderados por centralidade. A primeira 
-corresponde às redes construídas com limiar de similaridade 
-variável entre os períodos, enquanto a segunda utiliza o l
-imiar fixo de \ConstantSimilarityCutoff.
+As Figuras~\ref{fig:variable_cutoff} e~\ref{fig:fixed_cutoff} apresentam
+a evolução dos indicadores baseados em centralidade e de suas respectivas
+medidas de referência nas configurações com limiar variável e fixo. Em ambos os
+casos, as séries exibem trajetórias próximas e identificam os mesmos movimentos
+gerais da orientação monetária.
 
 \begin{figure}[H]
 \centering
@@ -587,76 +366,26 @@ similaridade igual a \ConstantSimilarityCutoff.
 \label{fig:fixed_cutoff}
 \end{figure}
 
-Além dos indicadores calculados diretamente sobre todos os nós da rede, 
-o algoritmo de Leiden foi utilizado para incorporar a estrutura 
-de comunidades à agregação dos sinais. Para cada período, o 
-algoritmo associou cada nó a uma comunidade, permitindo 
-separar a rede em grupos de sinais semanticamente 
-relacionados.
+Entre 2015 e 2016, os indicadores permaneceram predominantemente negativos,
+caracterizando uma orientação relativamente mais \textit{dovish}. A partir de
+2017, observou-se uma elevação gradual, com valores positivos em parte de 2018.
+Esse movimento foi revertido em 2019 e se intensificou no início de 2020, quando
+as séries atingiram seus menores valores. A partir de 2021, os indicadores
+voltaram a subir e alcançaram o pico positivo em 2022, sinalizando uma mudança
+acentuada para uma orientação mais \textit{hawkish}. Nos períodos seguintes,
+houve moderação e maior oscilação, embora os indicadores tenham permanecido
+positivos durante parte relevante de 2023 e 2024.
 
+As diferenças entre as medidas aparecem principalmente na intensidade dos picos
+e vales, e não na direção dos movimentos. Isso indica que a ponderação pela
+posição estrutural dos sinais altera a magnitude do indicador em períodos
+específicos, mas preserva a identificação dos principais ciclos de mudança na
+orientação das comunicações.
 
-A primeira medida baseada em Leiden foi construída 
-calculando-se, inicialmente, a média simples da pontuação dos 
-sinais pertencentes a cada comunidade. Posteriormente, 
-as médias das comunidades foram agregadas com pesos iguais, conforme
-
-\[
-I_{\text{Leiden}} =
-\frac{1}{K}
-\sum_{k=1}^{K}
-\left(
-\frac{1}{N_k}
-\sum_{i \in C_k}s_i
-\right),
-\]
-
-em que $K$ representa o número de comunidades identificadas, 
-$C_k$ corresponde à comunidade $k$ e $N_k$ representa seu número 
-de sinais. O resultado corresponde ao indicador 
-\texttt{leiden\_equal\_weight\_sentiment}. Esse procedimento 
-faz com que cada comunidade contribua igualmente para o resultado 
-final, independentemente de sua quantidade de nós.
-
-
-Também foram construídas três versões que combinam a detecção de 
-comunidades com as medidas de centralidade. Nesse procedimento, 
-a ponderação pelas centralidades foi realizada inicialmente 
-dentro de cada comunidade. Para uma medida de centralidade $c$, 
-a orientação monetária da comunidade $k$ foi calculada como
-
-\[
-I_{k,c} =
-\frac{
-\sum_{i \in C_k}s_i c_i
-}{
-\sum_{i \in C_k}c_i
-}.
-\]
-
-Após o cálculo individual para cada comunidade, os valores obtidos 
-foram agregados por meio de uma média simples entre as comunidades:
-
-\[
-I_{\text{Leiden},c} =
-\frac{1}{K}
-\sum_{k=1}^{K} I_{k,c}.
-\]
-
-Dessa combinação resultaram três indicadores: um baseado na centralidade
-de intermediação, outro na centralidade de grau e o terceiro no PageRank.
-Em cada caso, a importância estrutural dos sinais é calculada dentro de
-cada comunidade. Posteriormente, os valores das comunidades são agregados
-por meio de uma média simples, de modo que todas recebam o mesmo peso no
-indicador final. Essa abordagem diferencia esses indicadores daqueles
-calculados diretamente sobre toda a rede.
-
-
-As Figuras~\ref{fig:sentiment_indicators_centrality_community_by_fomc_period} e
-\ref{fig:sentiment_indicators_centrality_community_by_fomc_period_fixed} 
-apresentam os indicadores resultantes da incorporação das 
-comunidades de Leiden ao processo de agregação. Novamente, são 
-apresentados separadamente os resultados produzidos pelas redes 
-construídas com limiar variável e com limiar fixo de similaridade.
+As Figuras~\ref{fig:sentiment_indicators_centrality_community_by_fomc_period}
+e~\ref{fig:sentiment_indicators_centrality_community_by_fomc_period_fixed}
+mostram os indicadores que combinam as comunidades de Leiden com as medidas de
+centralidade.
 
 \begin{figure}[H]
 \centering
@@ -678,83 +407,18 @@ redes com limiar fixo de similaridade igual a \ConstantSimilarityCutoff.
 \label{fig:sentiment_indicators_centrality_community_by_fomc_period_fixed}
 \end{figure}
 
-Ao todo, foram obtidas oito formas de agregação da 
-orientação monetária em cada período: a média simples; 
-três indicadores ponderados diretamente pelas centralidades 
-de intermediação, grau e PageRank; 
-o indicador de comunidades de Leiden com pesos iguais; 
-e três indicadores que combinam Leiden com as respectivas 
-medidas de centralidade. Essa estrutura permite comparar 
-uma agregação que utiliza exclusivamente as classificações 
-individuais com diferentes formas de incorporação da 
-organização estrutural e semântica da rede. Além disso, 
-os mesmos algoritmos e procedimentos de cálculo foram 
-utilizados nas duas estratégias de construção das redes 
-consideradas neste trabalho. 
+As quatro séries mantiveram forte proximidade ao longo do tempo nas duas
+configurações de limiar. As maiores diferenças ocorreram em períodos de mudança
+mais abrupta, como em 2020 e 2022, quando o peso atribuído às comunidades e aos
+nós mais centrais produziu amplitudes distintas. Ainda assim, a concordância na
+direção das séries mostra que as diferentes formas de agregação oferecem leituras
+semelhantes dos ciclos monetários; a contribuição específica da estrutura do
+grafo é examinada quantitativamente nas seções seguintes.
 
+\section{Evolução da \textit{Federal Funds Rate}}
 
-\section{Obtenção da \textit{Federal Funds Rate}}
-
-Para avaliar a relação entre os indicadores de orientação 
-monetária e as decisões 
-posteriores do Federal Open Market Committee (FOMC), 
-foram obtidas informações 
-referentes à faixa-alvo da Federal Funds Rate. 
-Os dados foram consultados por meio 
-da API do Federal Reserve Economic Data (FRED), 
-utilizando duas séries temporais: 
-\texttt{DFEDTARL}, correspondente ao limite 
-inferior da faixa-alvo, e 
-\texttt{DFEDTARU}, correspondente ao limite superior.
-
-Como a análise deste trabalho é organizada de acordo 
-com os períodos delimitados 
-pelos comunicados das reuniões do FOMC, foram mantidas 
-apenas as observações da 
-taxa de juros cujas datas coincidiam com as datas de 
-publicação dos comunicados 
-\textit{Federal Reserve issues FOMC statement}. 
-Dessa forma, a série diária 
-original foi reduzida às observações correspondentes 
-às decisões de política 
-monetária utilizadas como referência na análise.
-
-Para representar a mudança na política de juros entre 
-reuniões consecutivas, foi 
-utilizado o limite superior da faixa-alvo. 
-Para uma reunião ocorrida na data $t$, 
-a variação foi calculada pela diferença entre o 
-limite superior observado nessa 
-data e o limite superior correspondente à reunião anterior:
-
-\[
-\Delta r_t = r_t^{U} - r_{t-1}^{U},
-\]
-
-em que $r_t^{U}$ representa o limite superior da 
-faixa-alvo da Federal Funds Rate 
-na data $t$ e $r_{t-1}^{U}$ representa o limite 
-superior observado na reunião 
-anterior.
-
-
-Assim, valores positivos de $\Delta r_t$ representam 
-elevação do limite superior 
-da faixa-alvo entre duas reuniões consecutivas, 
-valores negativos representam 
-redução e valores iguais a zero indicam manutenção. 
-Para a primeira observação da 
-série, para a qual não existe uma reunião anterior 
-disponível para o cálculo da 
-diferença, o valor foi preenchido com zero.
-
-A evolução da variação do limite superior da faixa-alvo 
-ao longo das reuniões
-do FOMC é apresentada na Figura~\ref{fig:upper_rate_change}. 
-Os valores
-positivos indicam elevações da taxa, enquanto 
-os valores negativos representam
-reduções entre reuniões consecutivas.
+A Figura~\ref{fig:upper_rate_change} apresenta a variação do limite superior da
+faixa-alvo da \textit{Federal Funds Rate} entre reuniões consecutivas do FOMC.
 
 \begin{figure}[H]
 \centering
@@ -766,17 +430,21 @@ consecutivas do FOMC.
 \label{fig:upper_rate_change}
 \end{figure}
 
+A série evidencia diferentes fases da política monetária no período analisado.
+Entre 2015 e 2018, as elevações ocorreram predominantemente em incrementos de
+0,25 ponto percentual. Em 2019, iniciou-se um ciclo de reduções, seguido pela
+queda mais intensa da série no início de 2020. Após um período prolongado de
+manutenção, o ciclo de aperto iniciado em 2022 produziu aumentos de até 0,75
+ponto percentual por reunião. Posteriormente, as decisões voltaram a incluir
+manutenções e reduções da faixa-alvo. Essa alternância entre ciclos de elevação,
+manutenção e corte fornece a variação necessária para avaliar se os indicadores
+acompanham ou antecedem mudanças na política monetária.
 
-\section{Correlação entre os Indicadores e a Variação da \textit{Federal Funds Rate}}
 
-Para avaliar a associação entre a orientação monetária identificada nas 
-comunicações do Federal Reserve e a variação do limite superior da faixa-alvo da 
-\textit{Federal Funds Rate}, representada por $\Delta r_t$, foram calculados os 
-coeficientes de correlação de Pearson e de Spearman. A correlação de Pearson 
-mede a associação linear entre as variáveis, enquanto a correlação de Spearman 
-avalia a relação monotônica a partir das posições relativas das observações. 
-Foram considerados os indicadores construídos com limiar de similaridade variável 
-e com limiar fixo de $0,72$. Os resultados são apresentados na 
+\section{Correlação entre os indicadores e a variação da \textit{Federal Funds Rate}}
+
+As correlações entre os indicadores e a variação subsequente do limite superior
+da \textit{Federal Funds Rate} são apresentadas na
 Tabela~\ref{tab:correlacoes-upper-rate-change}.
 
 \begin{table}[htbp]
@@ -819,7 +487,7 @@ enquanto o maior valor de Spearman foi obtido pela média simples (0,497). Os
 indicadores Grau e PageRank também apresentaram valores elevados de Spearman, 
 ambos iguais a 0,495.
 
-Com limiar fixo de $0,72$, os coeficientes de Pearson variaram entre 0,448 e 0,503, 
+Com limiar fixo de \ConstantSimilarityCutoff, os coeficientes de Pearson variaram entre 0,448 e 0,503, 
 e os de Spearman entre 0,436 e 0,501. O maior valor de Pearson foi obtido pelo 
 indicador ponderado pela centralidade de intermediação (\textit{Betweenness}), com 
 0,503. Para Spearman, o maior coeficiente foi observado no indicador ponderado por 
@@ -845,15 +513,10 @@ isoladamente, as correlações não demonstram capacidade preditiva dos indicado
 
 \section{Avaliação da utilidade e da capacidade preditiva dos indicadores}
 
-A correlação apresentada na seção anterior indica a existência de associação
-positiva entre os indicadores de orientação monetária e a variação subsequente da
-faixa-alvo da \textit{Federal Funds Rate}. Entretanto, a existência de correlação,
-isoladamente, não permite determinar se os indicadores apresentam utilidade para
-antecipar as decisões do FOMC ou se a incorporação da estrutura do grafo acrescenta
-informação em relação à média simples das classificações. Para investigar essas
-questões, foram realizadas três análises complementares: regressões com erros-padrão
-robustos, avaliação do valor incremental dos indicadores de grafo e validação temporal
-fora da amostra.
+A associação positiva identificada pelas correlações não é suficiente para
+demonstrar capacidade de antecipação. Por isso, os resultados foram examinados
+também quanto à relação com a decisão subsequente, ao valor incremental da
+estrutura do grafo e ao desempenho fora da amostra.
 
 
 
@@ -861,23 +524,8 @@ fora da amostra.
 
 \subsection{Relação dos indicadores com a decisão subsequente}
 
-Inicialmente, foram estimados modelos de regressão linear relacionando cada indicador
-calculado no período entre duas reuniões consecutivas do FOMC com a variação da taxa
-observada na reunião seguinte. Para um indicador $I_t$, o modelo pode ser representado
-por
-
-\[
-\Delta r_{t+1} = \alpha + \beta I_t + \varepsilon_t,
-\]
-
-em que $\Delta r_{t+1}$ corresponde à variação do limite superior da faixa-alvo
-observada ao final do período. As regressões foram estimadas utilizando erros-padrão
-robustos à heterocedasticidade e à autocorrelação pelo procedimento HAC de
-Newey-West, considerando uma defasagem.
-
-A mesma análise foi realizada para as redes construídas com limiar de similaridade
-variável e com limiar fixo de 0,72. Foram utilizadas 95 observações em cada
-configuração. Os principais resultados são apresentados na
+As regressões utilizaram 95 observações em cada configuração de rede. Os
+coeficientes estimados e os respectivos valores de $R^2$ são apresentados na
 Tabela~\ref{tab:regressao-decisao-seguinte}.
 
 \begin{table}[H]
@@ -936,38 +584,11 @@ produzidas após a reunião que inicia o período.
 
 \subsection{Valor incremental da estrutura do grafo}
 
-Uma segunda análise foi realizada para verificar se os indicadores derivados da
-estrutura do grafo acrescentam informação à média simples das classificações. Para
-isso, foram comparados dois modelos. O modelo de referência utilizou exclusivamente
-a média simples dos sinais:
+Na comparação com o modelo que utiliza apenas a média simples, nenhum dos
+indicadores de grafo satisfez simultaneamente os três critérios de valor
+incremental definidos no capítulo de Material e Métodos.
 
-\[
-M_0:\quad
-\Delta r_{t+1}
-=
-\alpha + \beta_1 I^{\text{média}}_t + \varepsilon_t,
-\]
-
-enquanto o segundo modelo acrescentou um dos indicadores derivados do grafo:
-
-\[
-M_1:\quad
-\Delta r_{t+1}
-=
-\alpha + \beta_1 I^{\text{média}}_t
-+
-\beta_2 I^{\text{grafo}}_t
-+
-\varepsilon_t.
-\]
-
-O valor incremental foi avaliado considerando conjuntamente três critérios:
-aumento do $R^2$ ajustado, redução do RMSE fora da amostra e significância
-estatística do coeficiente associado ao indicador de grafo, utilizando novamente
-erros-padrão HAC de Newey-West.
-
-Nenhum dos indicadores avaliados satisfez simultaneamente os três critérios. Na
-configuração com limiar variável, os pequenos aumentos de $R^2$ ajustado
+Na configuração com limiar variável, os pequenos aumentos de $R^2$ ajustado
 observados para PageRank e Comunidades Leiden não foram acompanhados por redução
 do RMSE fora da amostra, e seus coeficientes adicionais não apresentaram
 significância estatística.
@@ -988,24 +609,11 @@ classificações.
 
 \subsection{Validação temporal fora da amostra}
 
-Por fim, foi realizada uma validação temporal fora da amostra utilizando uma
-janela expansiva. As primeiras 30 reuniões foram utilizadas para estimar o modelo
-inicial. Em seguida, a decisão da reunião subsequente foi prevista e incorporada
-ao conjunto de treinamento antes da estimação da previsão seguinte. Esse
-procedimento foi repetido sequencialmente, preservando a ordem temporal das
-observações.
-
-A avaliação resultou em 65 previsões fora da amostra, compreendendo o período
-entre dezembro de 2018 e setembro de 2026. O desempenho foi avaliado pelo erro
-absoluto médio (MAE), pela raiz do erro quadrático médio (RMSE) e pela capacidade
-de identificar a direção da decisão. Para essa última medida, variações superiores
-a 0,125 ponto percentual foram classificadas como alta, variações inferiores a
-$-0,125$ ponto percentual como corte e os demais casos como manutenção.
-
-Além dos indicadores de orientação monetária, foi utilizado como referência um
-modelo que prevê a decisão seguinte a partir da média histórica das variações da
-taxa observadas até aquele momento. Os resultados são apresentados na
-Tabela~\ref{tab:validacao-temporal-indicadores}.
+A validação temporal resultou em 65 previsões fora da amostra, compreendendo o
+período entre dezembro de 2018 e setembro de 2026. A
+Tabela~\ref{tab:validacao-temporal-indicadores} compara o desempenho dos
+indicadores com o modelo de referência baseado na média histórica das variações
+da taxa.
 
 \begin{table}[H]
 \centering

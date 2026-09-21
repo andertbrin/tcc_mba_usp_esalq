@@ -1,4 +1,4 @@
-This is LuaHBTeX, Version 1.25.7 (MiKTeX 26.5) (format=lualatex 2026.9.12)  20 SEP 2026 21:59
+This is LuaHBTeX, Version 1.25.7 (MiKTeX 26.5) (format=lualatex 2026.9.12)  20 SEP 2026 22:10
  restricted system commands enabled.
  file:line:error style messages enabled.
 **"c:/Users/ander/OneDrive/Cursos/MBA ciencia de dados EsalqUSP/tcc/TCC_latex/T
@@ -1251,269 +1251,166 @@ File: ./figuras/logo_mba.png Graphic file (type png)
 Package luatex.def Info: ./figuras/logo_mba.png  used on input line 261.
 (luatex.def)             Requested size: 69.4351pt x 28.45274pt.
  [14]
-Underfull \hbox (badness 2368) in paragraph at lines 287--297
-\TU/Consolas(0)/m/n/10.95 classification\TU/Arial(0)/m/n/10.95 , \TU/Consolas(0
-)/m/n/10.95 score\TU/Arial(0)/m/n/10.95 , \TU/Consolas(0)/m/n/10.95 justificatio
-n\TU/Arial(0)/m/n/10.95 , \TU/Consolas(0)/m/n/10.95 evidence\TU/Arial(0)/m/n/10
-.95 , \TU/Consolas(0)/m/n/10.95 embedding_signal \TU/Arial(0)/m/n/10.95 e \TU/C
-onsolas(0)/m/n/10.95 date\TU/Arial(0)/m/n/10.95 . A
- []
-
-
-Underfull \hbox (badness 2351) in paragraph at lines 298--305
-[]\TU/Arial(0)/m/n/10.95 A vin-cu-la-ção en-tre as pu-bli-ca-ções e os si-na
-is foi re-pre-sen-tada pela re-la-ção
- []
-
-
-Underfull \hbox (badness 1286) in paragraph at lines 298--305
-\TU/Consolas(0)/m/n/10.95 HAS_SIGNAL\TU/Arial(0)/m/n/10.95 , cri-ada en-tre cada
- nó \TU/Consolas(0)/m/n/10.95 Publication \TU/Arial(0)/m/n/10.95 e os res-pec-t
-i-vos nós \TU/Consolas(0)/m/n/10.95 Signal\TU/Arial(0)/m/n/10.95 . Essa
- []
-
-
-Underfull \hbox (badness 6063) in paragraph at lines 306--314
-[]\TU/Arial(0)/m/n/10.95 Além das re-la-ções en-tre pu-bli-ca-ções e si-nai
-s, fo-ram cons-tru-í-das re-la-ções
- []
-
-
-Underfull \hbox (badness 1342) in paragraph at lines 306--314
-\TU/Consolas(0)/m/n/10.95 SIMILAR_TO \TU/Arial(0)/m/n/10.95 en-tre si-nais se-ma
-n-ti-ca-mente pró-xi-mos. Es-sas co-ne-xões fo-ram ob-ti-das a
- []
-
-File: ./figuras/logo_mba.png Graphic file (type png)
-<use ./figuras/logo_mba.png>
-Package luatex.def Info: ./figuras/logo_mba.png  used on input line 314.
-(luatex.def)             Requested size: 69.4351pt x 28.45274pt.
-[15]
-<figuras/graph_schema.png, id=65, 1242.6425pt x 499.8675pt>
+<figuras/graph_schema.png, id=62, 1242.6425pt x 499.8675pt>
 File: figuras/graph_schema.png Graphic file (type png)
 <use figuras/graph_schema.png>
-Package luatex.def Info: figuras/graph_schema.png  used on input line 330.
+Package luatex.def Info: figuras/graph_schema.png  used on input line 283.
 (luatex.def)             Requested size: 386.96027pt x 155.65903pt.
 File: ./figuras/logo_mba.png Graphic file (type png)
 <use ./figuras/logo_mba.png>
-Package luatex.def Info: ./figuras/logo_mba.png  used on input line 359.
+Package luatex.def Info: ./figuras/logo_mba.png  used on input line 296.
 (luatex.def)             Requested size: 69.4351pt x 28.45274pt.
- [16<./figuras/graph_schema.png>]
-<figuras/node_count_by_fomc_period.png, id=70, 715.7139pt x 282.0939pt>
+ [15<./figuras/graph_schema.png>]
+<figuras/node_count_by_fomc_period.png, id=67, 715.7139pt x 282.0939pt>
 File: figuras/node_count_by_fomc_period.png Graphic file (type png)
 <use figuras/node_count_by_fomc_period.png>
 Package luatex.def Info: figuras/node_count_by_fomc_period.png  used on input l
-ine 379.
+ine 299.
 (luatex.def)             Requested size: 455.24411pt x 179.43755pt.
-
-Underfull \hbox (badness 1603) in paragraph at lines 390--397
-\TU/Consolas(0)/m/n/10.95 signal-cypher\TU/Arial(0)/m/n/10.95 , fo-ram in-clu-
-í-dos ape-nas os nós \TU/Consolas(0)/m/n/10.95 Signal \TU/Arial(0)/m/n/10.95 
-per-ten-cen-tes ao pe-rí-odo e a
- []
-
-
-Underfull \hbox (badness 1810) in paragraph at lines 398--405
-[]\TU/Arial(0)/m/n/10.95 So-bre essa pro-je-ção foi exe-cu-tado o al-go-ritmo \TU/Arial(0)/m/it/10.95 k\TU/Arial(0)/m/n/10.95 -nearest neigh-bors (KNN). A
- []
-
-
-Underfull \hbox (badness 1033) in paragraph at lines 398--405
-\TU/Arial(0)/m/n/10.95 com-pa-ra-ção en-tre os si-nais foi re-a-li-zada uti-li
--zando a si-mi-la-ri-dade do cos-seno apli-cada
- []
-
-
-Underfull \hbox (badness 1708) in paragraph at lines 398--405
-\TU/Arial(0)/m/n/10.95 se-man-ti-ca-mente mais pró-xi-mos (\TU/Consolas(0)/m/n
-/10.95 topK = 50\TU/Arial(0)/m/n/10.95 ), su-jei-tos tam-bém a um li-miar mí-n
-imo de
- []
-
-File: ./figuras/logo_mba.png Graphic file (type png)
-<use ./figuras/logo_mba.png>
-Package luatex.def Info: ./figuras/logo_mba.png  used on input line 414.
-(luatex.def)             Requested size: 69.4351pt x 28.45274pt.
-[17<./figuras/node_count_by_fomc_period.png>]
-Underfull \hbox (badness 2302) in paragraph at lines 439--448
-[]\TU/Arial(0)/m/n/10.95 Ao fi-nal do pro-ce-di-mento, cada in-ter-valo en-tre 
-co-mu-ni-ca-dos con-se-cu-ti-vos do
- []
-
-<figuras/similarity_cutoff_by_fomc_period.png, id=75, 715.473pt x 282.0939pt>
+<figuras/similarity_cutoff_by_fomc_period.png, id=68, 715.473pt x 282.0939pt>
 File: figuras/similarity_cutoff_by_fomc_period.png Graphic file (type png)
 <use figuras/similarity_cutoff_by_fomc_period.png>
 Package luatex.def Info: figuras/similarity_cutoff_by_fomc_period.png  used on 
-input line 458.
+input line 317.
 (luatex.def)             Requested size: 455.24411pt x 179.4892pt.
-File: ./figuras/logo_mba.png Graphic file (type png)
-<use ./figuras/logo_mba.png>
-Package luatex.def Info: ./figuras/logo_mba.png  used on input line 464.
-(luatex.def)             Requested size: 69.4351pt x 28.45274pt.
-[18]
-Underfull \hbox (badness 1448) in paragraph at lines 496--504
-\TU/Arial(0)/m/n/10.95 reu-niões con-se-cu-ti-vas do FOMC, fo-ram cal-cu-la-das
- di-fe-ren-tes ver-sões do in-di-ca-dor de
+
+Underfull \hbox (badness 1655) in paragraph at lines 324--331
+\TU/Arial(0)/m/n/10.95 li-mi-a-res me-no-res, foi ne-ces-sá-rio in-cor-po-rar 
+co-ne-xões en-tre si-nais me-nos se-me-lhan-tes
  []
 
 File: ./figuras/logo_mba.png Graphic file (type png)
 <use ./figuras/logo_mba.png>
-Package luatex.def Info: ./figuras/logo_mba.png  used on input line 511.
+Package luatex.def Info: ./figuras/logo_mba.png  used on input line 331.
 (luatex.def)             Requested size: 69.4351pt x 28.45274pt.
-[19<./figuras/similarity_cutoff_by_fomc_period.png>]
-Underfull \hbox (badness 3375) in paragraph at lines 512--517
-[]\TU/Arial(0)/m/n/10.95 Como re-fe-rên-cia, foi cal-cu-lada a mé-dia sim-ples
- das pon-tu-a-ções dos si-nais
- []
-
-<figuras/sentiment_indicators_centrality_by_fomc_period.png, id=83, 1148.8521pt
+[16<./figuras/node_count_by_fomc_period.png><./figuras/similarity_cutoff_by_fomc
+_period.png>]
+<figuras/sentiment_indicators_centrality_by_fomc_period.png, id=74, 1148.8521pt
  x 426.393pt>
 File: figuras/sentiment_indicators_centrality_by_fomc_period.png Graphic file (
 type png)
 <use figuras/sentiment_indicators_centrality_by_fomc_period.png>
 Package luatex.def Info: figuras/sentiment_indicators_centrality_by_fomc_period
-.png  used on input line 570.
+.png  used on input line 349.
 (luatex.def)             Requested size: 455.24411pt x 168.96014pt.
 
-Underfull \hbox (badness 1442) in paragraph at lines 575--575
+Underfull \hbox (badness 1442) in paragraph at lines 354--354
 []\TU/Arial(0)/m/n/10.95 Fi-gura 5. In-di-ca-do-res de ori-en-ta-ção mo-ne-t
 á-ria ob-ti-dos usando Lei-den e me-di-das de
  []
 
-File: ./figuras/logo_mba.png Graphic file (type png)
-<use ./figuras/logo_mba.png>
-Package luatex.def Info: ./figuras/logo_mba.png  used on input line 578.
-(luatex.def)             Requested size: 69.4351pt x 28.45274pt.
-[20]
-<figuras/sentiment_indicators_centrality_by_fomc_period_fixed.png, id=87, 1148.
+<figuras/sentiment_indicators_centrality_by_fomc_period_fixed.png, id=75, 1148.
 8521pt x 426.393pt>
 File: figuras/sentiment_indicators_centrality_by_fomc_period_fixed.png Graphic 
 file (type png)
 <use figuras/sentiment_indicators_centrality_by_fomc_period_fixed.png>
 Package luatex.def Info: figuras/sentiment_indicators_centrality_by_fomc_period
-_fixed.png  used on input line 581.
+_fixed.png  used on input line 360.
 (luatex.def)             Requested size: 455.24411pt x 168.96014pt.
 File: ./figuras/logo_mba.png Graphic file (type png)
 <use ./figuras/logo_mba.png>
-Package luatex.def Info: ./figuras/logo_mba.png  used on input line 619.
+Package luatex.def Info: ./figuras/logo_mba.png  used on input line 368.
 (luatex.def)             Requested size: 69.4351pt x 28.45274pt.
- [21<./figuras/sentiment_indicators_centrality_by_fomc_period.png><./figuras/sen
-timent_indicators_centrality_by_fomc_period_fixed.png>]
-Underfull \hbox (badness 1308) in paragraph at lines 654--660
-[]\TU/Arial(0)/m/n/10.95 As Fi-gu-ras 7[] e 8[] apre-sen-tam os in-di-ca-do-res re-sul-tan-tes da in-cor-po-ra-
-ção das
- []
-
-
-Underfull \hbox (badness 2495) in paragraph at lines 654--660
-\TU/Arial(0)/m/n/10.95 co-mu-ni-da-des de Lei-den ao pro-cesso de agre-ga-ção.
- No-va-mente, são apre-sen-ta-dos
- []
-
-<figuras/sentiment_indicators_centrality_community_by_fomc_period.png, id=94, 1
+[17<./figuras/sentiment_indicators_centrality_by_fomc_period.png>]
+<figuras/sentiment_indicators_centrality_community_by_fomc_period.png, id=80, 1
 148.8521pt x 426.393pt>
 File: figuras/sentiment_indicators_centrality_community_by_fomc_period.png Grap
 hic file (type png)
 <use figuras/sentiment_indicators_centrality_community_by_fomc_period.png>
 Package luatex.def Info: figuras/sentiment_indicators_centrality_community_by_f
-omc_period.png  used on input line 663.
+omc_period.png  used on input line 392.
 (luatex.def)             Requested size: 455.24411pt x 168.96014pt.
+File: ./figuras/logo_mba.png Graphic file (type png)
+<use ./figuras/logo_mba.png>
+Package luatex.def Info: ./figuras/logo_mba.png  used on input line 399.
+(luatex.def)             Requested size: 69.4351pt x 28.45274pt.
+ [18<./figuras/sentiment_indicators_centrality_by_fomc_period_fixed.png>]
 <figuras/sentiment_indicators_centrality_community_by_fomc_period_fixed.png, id
-=95, 1148.8521pt x 426.393pt>
+=85, 1148.8521pt x 426.393pt>
 File: figuras/sentiment_indicators_centrality_community_by_fomc_period_fixed.pn
 g Graphic file (type png)
 <use figuras/sentiment_indicators_centrality_community_by_fomc_period_fixed.png
 >
 Package luatex.def Info: figuras/sentiment_indicators_centrality_community_by_f
-omc_period_fixed.png  used on input line 673.
+omc_period_fixed.png  used on input line 402.
 (luatex.def)             Requested size: 455.24411pt x 168.96014pt.
-File: ./figuras/logo_mba.png Graphic file (type png)
-<use ./figuras/logo_mba.png>
-Package luatex.def Info: ./figuras/logo_mba.png  used on input line 680.
-(luatex.def)             Requested size: 69.4351pt x 28.45274pt.
-[22<./figuras/sentiment_indicators_centrality_community_by_fomc_period.png>]
-File: ./figuras/logo_mba.png Graphic file (type png)
-<use ./figuras/logo_mba.png>
-Package luatex.def Info: ./figuras/logo_mba.png  used on input line 739.
-(luatex.def)             Requested size: 69.4351pt x 28.45274pt.
 
-[23<./figuras/sentiment_indicators_centrality_community_by_fomc_period_fixed.png
->]
-<figuras/upper_rate_change_by_fomc_period.png, id=104, 715.473pt x 282.0939pt>
+Underfull \hbox (badness 1852) in paragraph at lines 410--417
+[]\TU/Arial(0)/m/n/10.95 As qua-tro sé-ries man-ti-ve-ram forte pro-xi-mi-dade ao longo do tempo nas duas
+ []
+
+<figuras/upper_rate_change_by_fomc_period.png, id=86, 715.473pt x 282.0939pt>
 File: figuras/upper_rate_change_by_fomc_period.png Graphic file (type png)
 <use figuras/upper_rate_change_by_fomc_period.png>
 Package luatex.def Info: figuras/upper_rate_change_by_fomc_period.png  used on 
-input line 761.
+input line 425.
 (luatex.def)             Requested size: 455.24411pt x 179.4892pt.
 File: ./figuras/logo_mba.png Graphic file (type png)
 <use ./figuras/logo_mba.png>
-Package luatex.def Info: ./figuras/logo_mba.png  used on input line 822.
+Package luatex.def Info: ./figuras/logo_mba.png  used on input line 432.
 (luatex.def)             Requested size: 69.4351pt x 28.45274pt.
- [24<./figuras/upper_rate_change_by_fomc_period.png>]
-Underfull \hbox (badness 1303) in paragraph at lines 829--838
+[19<./figuras/sentiment_indicators_centrality_community_by_fomc_period.png><./fi
+guras/sentiment_indicators_centrality_community_by_fomc_period_fixed.png>]
+File: ./figuras/logo_mba.png Graphic file (type png)
+<use ./figuras/logo_mba.png>
+Package luatex.def Info: ./figuras/logo_mba.png  used on input line 482.
+(luatex.def)             Requested size: 69.4351pt x 28.45274pt.
+
+[20<./figuras/upper_rate_change_by_fomc_period.png>]
+Underfull \hbox (badness 1303) in paragraph at lines 497--506
 []\TU/Arial(0)/m/n/10.95 A com-pa-ra-ção en-tre as duas me-di-das mos-tra que os re-sul-ta-dos per-ma-ne-cem
  []
 
 
-Underfull \hbox (badness 1168) in paragraph at lines 848--857
-[]\TU/Arial(0)/m/n/10.95 A cor-re-la-ção apre-sen-tada na se-ção an-te-rior in-dica a exis-t
-ên-cia de as-so-ci-a-ção
- []
-
-
-Underfull \hbox (badness 1874) in paragraph at lines 864--868
-[]\TU/Arial(0)/m/n/10.95 Ini-ci-al-mente, fo-ram es-ti-ma-dos mo-de-los de re-gr
-es-são li-near re-la-ci-o-nando cada
+Underfull \hbox (badness 1072) in paragraph at lines 527--530
+[]\TU/Arial(0)/m/n/10.95 As re-gres-sões uti-li-za-ram 95 ob-ser-va-ções em 
+cada con-fi-gu-ra-ção de rede. Os
  []
 
 File: ./figuras/logo_mba.png Graphic file (type png)
 <use ./figuras/logo_mba.png>
-Package luatex.def Info: ./figuras/logo_mba.png  used on input line 868.
+Package luatex.def Info: ./figuras/logo_mba.png  used on input line 559.
 (luatex.def)             Requested size: 69.4351pt x 28.45274pt.
-[25]
-Underfull \hbox (badness 2875) in paragraph at lines 924--931
+[21]
+Underfull \hbox (badness 2875) in paragraph at lines 572--579
 []\TU/Arial(0)/m/n/10.95 Como teste adi-ci-o-nal, os mes-mos in-di-ca-do-res fo-
 ram re-la-ci-o-na-dos à de-ci-são
  []
 
-File: ./figuras/logo_mba.png Graphic file (type png)
-<use ./figuras/logo_mba.png>
-Package luatex.def Info: ./figuras/logo_mba.png  used on input line 932.
-(luatex.def)             Requested size: 69.4351pt x 28.45274pt.
-[26]
-Underfull \hbox (badness 1281) in paragraph at lines 991--997
-[]\TU/Arial(0)/m/n/10.95 Por fim, foi re-a-li-zada uma va-li-da-ção tem-po-ral
- fora da amos-tra uti-li-zando uma
+
+Underfull \hbox (badness 2142) in paragraph at lines 591--595
+[]\TU/Arial(0)/m/n/10.95 Na con-fi-gu-ra-ção com li-miar va-ri-á-vel, os pe-q
+ue-nos au-men-tos de $\OML/cmm/m/it/10.95 R[]$ \TU/Arial(0)/m/n/10.95 ajus-tado
  []
 
 File: ./figuras/logo_mba.png Graphic file (type png)
 <use ./figuras/logo_mba.png>
-Package luatex.def Info: ./figuras/logo_mba.png  used on input line 1004.
+Package luatex.def Info: ./figuras/logo_mba.png  used on input line 603.
 (luatex.def)             Requested size: 69.4351pt x 28.45274pt.
-[27]
-Underfull \hbox (badness 1038) in paragraph at lines 1041--1047
+[22]
+Underfull \hbox (badness 1038) in paragraph at lines 649--655
 \TU/Arial(0)/m/n/10.95 in-fe-ri-o-res ao mo-delo ba-se-ado na mé-dia his-tó-ri
 ca, cujo RMSE foi igual a 0,2847. Na
  []
 
 
-Underfull \hbox (badness 1215) in paragraph at lines 1055--1061
+Underfull \hbox (badness 1215) in paragraph at lines 663--669
 []\TU/Arial(0)/m/n/10.95 Re-sul-tado se-me-lhante foi ob-ser-vado na iden-ti-fi-
 ca-ção da di-re-ção das de-ci-sões.
  []
 
 File: ./figuras/logo_mba.png Graphic file (type png)
 <use ./figuras/logo_mba.png>
-Package luatex.def Info: ./figuras/logo_mba.png  used on input line 1068.
+Package luatex.def Info: ./figuras/logo_mba.png  used on input line 669.
 (luatex.def)             Requested size: 69.4351pt x 28.45274pt.
-[28]
-Underfull \hbox (badness 4353) in paragraph at lines 1068--1077
+[23]
+Underfull \hbox (badness 4353) in paragraph at lines 676--685
 []\TU/Arial(0)/m/n/10.95 Con-si-de-rando con-jun-ta-mente as aná-li-ses re-a-li
 -za-das, os re-sul-ta-dos for-ne-cem
  []
 
 
-Underfull \hbox (badness 1033) in paragraph at lines 1068--1077
+Underfull \hbox (badness 1033) in paragraph at lines 676--685
 \TU/Arial(0)/m/n/10.95 e pe-los co-e-fi-ci-en-tes es-ta-tis-ti-ca-mente sig-ni-f
 i-ca-ti-vos das re-gres-sões. En-tre-tanto, não foi
  []
@@ -1523,30 +1420,30 @@ File: ./figuras/logo_mba.png Graphic file (type png)
 <use ./figuras/logo_mba.png>
 Package luatex.def Info: ./figuras/logo_mba.png  used on input line 1.
 (luatex.def)             Requested size: 69.4351pt x 28.45274pt.
- [29]
+ [24]
 Cap\'{\i }tulo 4.
 File: ./figuras/logo_mba.png Graphic file (type png)
 <use ./figuras/logo_mba.png>
 Package luatex.def Info: ./figuras/logo_mba.png  used on input line 12.
 (luatex.def)             Requested size: 69.4351pt x 28.45274pt.
-[30]) (./Tese.bbl)
+[25]) (./Tese.bbl)
 File: ./figuras/logo_mba.png Graphic file (type png)
 <use ./figuras/logo_mba.png>
 Package luatex.def Info: ./figuras/logo_mba.png  used on input line 163.
 (luatex.def)             Requested size: 69.4351pt x 28.45274pt.
- [31] (./pos-textual/Apendices.tex
+ [26] (./pos-textual/Apendices.tex
 File: ./figuras/logo_mba.png Graphic file (type png)
 <use ./figuras/logo_mba.png>
 Package luatex.def Info: ./figuras/logo_mba.png  used on input line 38.
 (luatex.def)             Requested size: 69.4351pt x 28.45274pt.
- [32
+ [27
 
 ])
 File: ./figuras/logo_mba.png Graphic file (type png)
 <use ./figuras/logo_mba.png>
 Package luatex.def Info: ./figuras/logo_mba.png  used on input line 176.
 (luatex.def)             Requested size: 69.4351pt x 28.45274pt.
- [33] (./Tese.aux)
+ [28] (./Tese.aux)
  ***********
 LaTeX2e <2026-06-01>
 L3 programming layer <2020/03/25>
@@ -1559,12 +1456,12 @@ LaTeX Font Warning: Size substitutions with differences
 )
 
 Here is how much of LuaTeX's memory you used:
- 14044 strings out of 475635
- 244297,953878 words of node,token memory allocated
- 1426 words of node memory still in use:
-   7 hlist, 2 vlist, 2 rule, 5 glue, 4 kern, 1 glyph, 59 attribute, 203 glue_spe
-c, 30 attribute_list, 2 write nodes
-   avail lists: 1:5,2:8707,3:257,4:76,5:2413,6:104,7:11679,8:37,9:7576,10:16,11:
+ 14029 strings out of 475635
+ 244295,953878 words of node,token memory allocated
+ 1366 words of node memory still in use:
+   7 hlist, 2 vlist, 2 rule, 5 glue, 4 kern, 1 glyph, 39 attribute, 203 glue_spe
+c, 20 attribute_list, 2 write nodes
+   avail lists: 1:4,2:8707,3:257,4:76,5:2413,6:104,7:11679,8:37,9:7576,10:16,11:
 2281
  36493 multiletter control sequences out of 65536+600000
  94 fonts using 26261367 bytes
@@ -1584,9 +1481,9 @@ grams/MiKTeX/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Users/ander/AppData/Loc
 al/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/ander/App
 Data/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy7.pfb><C:/Users/an
 der/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy8.pfb>
-Output written on Tese.pdf (33 pages, 3677040 bytes).
+Output written on Tese.pdf (28 pages, 3654680 bytes).
 
-PDF statistics: 221 PDF objects out of 1000 (max. 8388607)
+PDF statistics: 205 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 1048576)
  1 words of extra memory for PDF output out of 10000 (max. 100000000)
 
